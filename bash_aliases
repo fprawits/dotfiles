@@ -1,0 +1,6 @@
+alias vi='vim'
+alias ip='ipython'
+alias ipq='ipython qtconsole'
+alias ipn='ipython notebook'
+alias vsc='ssh -X pra3@vsc.tuwien.ac.at'
+alias itp='ssh -X florian@guest.itp.tuwien.ac.at'
