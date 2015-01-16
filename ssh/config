@@ -10,4 +10,4 @@ Host itp
     ForwardX11 yes
     ForwardX11Trusted yes
     User florian
-    Hostname itp.tuwien.ac.at
+    Hostname guest.itp.tuwien.ac.at
