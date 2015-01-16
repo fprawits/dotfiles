@@ -1,0 +1,13 @@
+Host vsc
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    User pra3
+    Hostname vsc.tuwien.ac.at
+
+Host itp
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    User florian
+    Hostname itp.tuwien.ac.at

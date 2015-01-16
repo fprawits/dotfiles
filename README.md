@@ -13,3 +13,4 @@ Contents
 - bash_aliases
 - vimrc
 - makesymlinks.sh
+- ssh/config
