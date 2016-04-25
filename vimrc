@@ -198,7 +198,7 @@ try
 catch
 endtry
 
-set background=light
+set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf-8
@@ -324,7 +324,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ %P
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
