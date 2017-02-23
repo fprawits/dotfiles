@@ -53,11 +53,19 @@ set history=700
 filetype plugin on
 filetype indent on
 
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
 " Set to auto read when a file is changed from the outside
 set autoread
 au CursorMoved,CursorMovedI * :silent! !
 au CursorHold,CursorHoldI * :silent! !
-au FocusGained,WinEnter,BufEnter,BufWinEnter * :silent! !
+au WinEnter,BufEnter,BufWinEnter * :silent! !
+" Command disabled for now, as this causes gvim to ignore clicks in menu-bar
+" see: http://askubuntu.com/questions/886138/gvim-menubar-panel-not-working?noredirect=1#comment1383940_886138
+"au FocusGained * : silent! !
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -367,6 +375,11 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
