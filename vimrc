@@ -24,6 +24,7 @@
 "
 " Sections:
 "    -> General
+"    -> Plugins
 "    -> VIM user interface
 "    -> Colors and Fonts
 "    -> Files and backups
@@ -59,6 +60,7 @@ filetype indent on
 let g:tex_flavor='latex'
 
 " Set to auto read when a file is changed from the outside
+" | execute 'redraw!'
 set autoread
 au CursorMoved,CursorMovedI * :silent! !
 au CursorHold,CursorHoldI * :silent! !
@@ -82,6 +84,42 @@ command W w !sudo tee % > /dev/null
 " better copy & paste
 set pastetoggle=<F11>
 set clipboard=unnamed,unnamedplus
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug configuration, see: 
+" https://github.com/junegunn/vim-plug/wiki/tutorial
+"
+" Plugins will be downloaded under the specified directory.
+" Make sure you use single quotes
+call plug#begin('~/.vim/plugged')
+
+    "latex-suite for vim
+    Plug 'vim-latex/vim-latex'
+
+    "highlight yanked text
+    Plug 'machakann/vim-highlightedyank'
+
+    "better manipulation of brackets and HTML/XML tags
+    Plug 'tpope/vim-surround'
+
+    "Better Statusbar - vim airline + themes
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
+    " collection of color schemes
+    Plug 'rafi/awesome-vim-colorschemes'
+    Plug 'vim-scripts/peaksea'
+    Plug 'skielbasa/vim-material-monokai'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+"needed for highlightedyank to work
+map y <Plug>(highlightedyank)
+let g:highlightedyank_highlight_duration = 750
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,8 +273,12 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
+" softtabstop additionally added in order to no have to delete
+" tab generated whitespace individually, see:
+" https://stackoverflow.com/questions/1562336/tab-vs-space-preferences-in-vim?rq=1
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 set shiftround
 
 " Linebreak on 500 characters
@@ -246,6 +288,8 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set nowrap "dont wrap lines
+"except when not coding, e.g. writing *.txt or *.tex files
+au BufRead,BufNewFile *.txt,*.tex set wrap linebreak nolist textwidth=0 wrapmargin=0
 
 
 """"""""""""""""""""""""""""""
@@ -331,7 +375,7 @@ set viminfo^=%
 " Always show the status line
 set laststatus=2
 
-" Format the status line
+" Format the status line -> overwritten by airline plugin!
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ %P
 
 
