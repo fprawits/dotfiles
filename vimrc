@@ -1,5 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" " Maintainer: 
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
@@ -51,13 +50,9 @@ autocmd! BufWritePost .vimrc source %
 set history=700
 
 " Enable filetype plugins
+" see file specific configurations in $HOME/.vim/ftplugin
 filetype plugin on
 filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
 
 " Set to auto read when a file is changed from the outside
 " | execute 'redraw!'
@@ -71,19 +66,24 @@ au WinEnter,BufEnter,BufWinEnter * :silent! !
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "ä"
+let g:mapleader = "ä"
 
 " Fast saving
 nmap <leader>w :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " better copy & paste
 set pastetoggle=<F11>
 set clipboard=unnamed,unnamedplus
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,6 +114,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-scripts/peaksea'
     Plug 'skielbasa/vim-material-monokai'
 
+    " new text object based on indentation level
+    Plug 'michaeljsmith/vim-indent-object'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -126,7 +129,8 @@ let g:highlightedyank_highlight_duration = 750
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set scrolloff=7
+set sidescrolloff=5
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
@@ -217,7 +221,7 @@ set foldcolumn=1
 
 " show whitespace
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:␣,extends:>,precedes:<,nbsp:+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,7 +230,6 @@ set listchars=tab:▸\ ,eol:¬
 " Enable syntax highlighting
 syntax enable 
 
-set t_Co=256
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -304,8 +307,8 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
 " then press ``>`` several times.
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+vnoremap < <gv
+vnoremap > >gv
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -313,6 +316,10 @@ vnoremap > >gv  " better indentation
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+
+" Remap H and L since they are basically never used
+noremap H ^
+noremap L $
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
@@ -353,7 +360,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2

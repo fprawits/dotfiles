@@ -12,5 +12,6 @@ Contents
 - bashrc
 - bash_aliases
 - vimrc
+- vim/ftplugin/
 - makesymlinks.sh
 - ssh/config
