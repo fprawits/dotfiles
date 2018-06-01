@@ -120,7 +120,12 @@ call plug#begin('~/.vim/plugged')
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-"needed for highlightedyank to work
+" Remap latexsuite's placeholder jump to avoid clash with window navigation
+imap <C-@> <Plug>IMAP_JumpForward
+nmap <C-@> <Plug>IMAP_JumpForward
+vmap <C-@> <Plug>IMAP_JumpForward
+
+" needed for highlightedyank to work
 map y <Plug>(highlightedyank)
 let g:highlightedyank_highlight_duration = 750
 
@@ -322,8 +327,10 @@ noremap H ^
 noremap L $
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+noremap <space> /
+" This key is used for latexsuite's placeholder jumping for now
+" Remark: <C-space> is send to vim by the terminal as <C-@>
+" noremap <C-@> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader>c :noh<cr>
