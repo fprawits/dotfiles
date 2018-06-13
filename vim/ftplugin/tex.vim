@@ -7,3 +7,7 @@ let g:Tex_MultipleCompileFormats='pdf,dvi'
 " Add ':' to keywords, in order to have CTRL+N complete popular labels like 
 " fig:, eq:, ect
 set iskeyword+=:
+
+" Add spellchecking
+setlocal spell
+setlocal spelllang=en_us,de_de
