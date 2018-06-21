@@ -8,7 +8,10 @@
 dir=$HOME/.dotfiles
 files="bashrc bash_aliases \
     ssh/config \
-    vimrc gvimrc vim/ftplugin/tex.vim vim/ftplugin/latex.vim"
+    vimrc gvimrc \
+    vim/ftplugin/tex.vim \
+    vim/ftplugin/latex.vim \
+    vim/ftplugin/text.vim"
 
 for file in $files; do
     echo "Creating symlink to $file in $HOME ..."
