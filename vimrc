@@ -290,14 +290,12 @@ set softtabstop=4
 set shiftround
 
 " Linebreak on 500 characters
-set lbr
-set tw=500
+set linebreak
+set textwidth=500
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent
+set smartindent
 set nowrap "dont wrap lines
-"except when not coding, e.g. writing *.txt or *.tex files
-au BufRead,BufNewFile *.txt,*.tex set wrap linebreak nolist textwidth=0 wrapmargin=0
 
 
 """"""""""""""""""""""""""""""

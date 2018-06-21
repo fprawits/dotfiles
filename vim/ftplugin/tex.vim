@@ -6,8 +6,20 @@ let g:Tex_MultipleCompileFormats='pdf,dvi'
 
 " Add ':' to keywords, in order to have CTRL+N complete popular labels like 
 " fig:, eq:, ect
-set iskeyword+=:
+setlocal iskeyword+=:
 
 " Add spellchecking
 setlocal spell
 setlocal spelllang=en_us,de_de
+
+" Set text wrapping
+setlocal wrap
+setlocal wrapmargin=0
+setlocal textwidth=0
+setlocal linebreak
+setlocal breakindent
+"setlocal showbreak=>\ 
+"setlocal showbreak=+++\ 
+
+" Disable visual hints for tabs, EOL, trailing whitespace etc.
+"setlocal nolist
