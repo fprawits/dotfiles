@@ -72,12 +72,12 @@ let g:mapleader = "ä"
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" :W sudo saves the file 
+" :w!! sudo saves the file 
 " (useful for handling the permission-denied error)
-command! W w !sudo tee % > /dev/null
+cnoremap w!! w !sudo tee % > /dev/null
 
 " better copy & paste
-set pastetoggle=<F11>
+set pastetoggle=<F10>
 set clipboard=unnamed,unnamedplus
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
@@ -466,13 +466,15 @@ map <leader>p :cp<cr>
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+noremap <leader>st :setlocal spell!
+noremap <leader>se :setlocal spell spelllang=en_us<cr>
+noremap <leader>sd :setlocal spell spelllang=de_de<cr>
 
 " Shortcuts using <leader>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
-map <leader>s? z=
+map <leader>ss z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
