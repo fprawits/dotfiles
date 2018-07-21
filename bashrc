@@ -113,6 +113,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# PATH extensions
-PATH=$PATH:$HOME/bin
-export PATH
