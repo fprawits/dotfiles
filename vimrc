@@ -136,6 +136,9 @@ call plug#begin('~/.vim/plugged')
     " new motion: sneak
     Plug 'justinmk/vim-sneak'
 
+    " autocompletion for python
+    Plug 'davidhalter/jedi-vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
