@@ -112,6 +112,9 @@ call plug#begin('~/.vim/plugged')
     " make vim's repeat command '.' work with plugins
     Plug 'tpope/vim-repeat'
 
+    " add 'gc' command for commenting
+    Plug 'tpope/vim-commentary'
+
     "Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
