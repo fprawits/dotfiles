@@ -148,6 +148,10 @@ vmap <C-@> <Plug>IMAP_JumpForward
 map y <Plug>(highlightedyank)
 let g:highlightedyank_highlight_duration = 750
 
+" Quick-Scope:
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
