@@ -147,6 +147,9 @@ imap <C-@> <Plug>IMAP_JumpForward
 nmap <C-@> <Plug>IMAP_JumpForward
 vmap <C-@> <Plug>IMAP_JumpForward
 
+" Let Airline show the list of buffers in the top line
+let g:airline#extensions#tabline#enabled = 1
+
 " needed for highlightedyank to work
 map y <Plug>(highlightedyank)
 let g:highlightedyank_highlight_duration = 750
@@ -307,12 +310,12 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-" softtabstop additionally added in order to no have to delete
-" tab generated whitespace individually, see:
+" softtabstop additionally added in order to no have to delete tab generated 
+" whitespace individually, see (negative value uses shiftwidth):
 " https://stackoverflow.com/questions/1562336/tab-vs-space-preferences-in-vim?rq=1
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4
+set softtabstop=-1
 set shiftround
 
 " Linebreak on 500 characters
@@ -414,7 +417,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line -> overwritten by airline plugin!
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ %P
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ %P
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
