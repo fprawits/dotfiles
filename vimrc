@@ -106,9 +106,6 @@ call plug#begin('~/.vim/plugged')
     " latex-suite for vim
     Plug 'vim-latex/vim-latex'
 
-    " highlight yanked text
-    Plug 'machakann/vim-highlightedyank'
-
     "better manipulation of brackets and HTML/XML tags
     Plug 'tpope/vim-surround'
 
@@ -126,6 +123,15 @@ call plug#begin('~/.vim/plugged')
 
     " new text object based on indentation level
     Plug 'michaeljsmith/vim-indent-object'
+
+    " highlight yanked text
+    Plug 'machakann/vim-highlightedyank'
+
+    " highlight targets of next f/F/t/T find command
+    Plug 'unblevable/quick-scope'
+
+    " new motion: sneak
+    Plug 'justinmk/vim-sneak'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
