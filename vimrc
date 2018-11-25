@@ -103,14 +103,17 @@ endif
 " Make sure you use single quotes
 call plug#begin('~/.vim/plugged')
 
-    "latex-suite for vim
+    " latex-suite for vim
     Plug 'vim-latex/vim-latex'
 
-    "highlight yanked text
+    " highlight yanked text
     Plug 'machakann/vim-highlightedyank'
 
     "better manipulation of brackets and HTML/XML tags
     Plug 'tpope/vim-surround'
+
+    " make vim's repeat command '.' work with plugins
+    Plug 'tpope/vim-repeat'
 
     "Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
