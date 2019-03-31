@@ -1,6 +1,6 @@
 alias vi='vim'
-alias ip='ipython'
-alias ipq='ipython qtconsole'
-alias ipn='ipython notebook'
-alias mir='mirage *jpg &'
-alias mirc='mirage *coeff*jpg &'
+
+alias ipy='ipython'
+alias jqt='jupyter qtconsole'
+alias jnb='jupyter notebook'
+alias jlab='jupyter lab --browser chromium-browser 1>/tmp/jupyter-lab.log 2>&1 & disown "$!"'
