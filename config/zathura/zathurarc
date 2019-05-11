@@ -1,0 +1,37 @@
+# use only base name instead of full path for window title
+set window-title-basename true
+
+# include current page number in window title
+set window-title-page true
+
+# contract $HOME in path to tilde
+set statusbar-home-tilde true
+
+# set clipboard to CLIPBOARD for accessing contents with ctrl+v
+# set clipboard to PRIMARY (default) for accessing contents with middle mouse
+#set selection-clipboard "clipboard"
+
+# Shows or hides GUI elements.
+# If it contains 'c', the command line is displayed.
+# If it contains 's', the statusbar is displayed.
+# If it contains 'h', the vertical scrollbar is displayed.
+# If it contains 'v', the horizontal scrollbar is displayed.
+set guioptions 'v'
+
+# Change lateral background when page is fit do display from black to lightgrey
+set default-bg "#585858"
+
+# Start application in bigger window
+set window-width  1200
+set window-height 1080
+
+# Change the page background from white to sepia
+# This mode can be deactivated using 'ctrl+r'
+set recolor true
+set recolor-lightcolor "#FDF5E6"
+set recolor-darkcolor "#000000"
+
+# Change font color of input bar to black
+# set inputbar-bg "#AFEEEE"
+set inputbar-fg "#000000"
+set inputbar-bg "#E0FFFF"
