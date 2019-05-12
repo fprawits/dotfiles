@@ -58,12 +58,11 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 " | execute 'redraw!'
 set autoread
-au CursorMoved,CursorMovedI * :silent! !
-au CursorHold,CursorHoldI * :silent! !
-au WinEnter,BufEnter,BufWinEnter * :silent! !
-" Command disabled for now, as this causes gvim to ignore clicks in menu-bar
-" see: http://askubuntu.com/questions/886138/gvim-menubar-panel-not-working?noredirect=1#comment1383940_886138
-"au FocusGained * : silent! !
+au FocusGained * : silent! checktime
+au WinEnter,BufEnter,BufWinEnter * :silent! checktime
+au CursorMoved,CursorMovedI * :silent! checktime
+" Disable if performance hit becomes noticable
+au CursorHold,CursorHoldI * :silent! checktime
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -85,6 +84,9 @@ set clipboard=unnamed,unnamedplus
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
+
+" Start netrw with dotfiles hidden
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,6 +117,9 @@ call plug#begin('~/.vim/plugged')
 
     " add 'gc' command for commenting
     Plug 'tpope/vim-commentary'
+
+    " enhance netrw behaviour
+    Plug 'tpope/vim-vinegar'
 
     "Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
@@ -235,7 +240,8 @@ set hlsearch
 set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw
+" Disabled as it causes the statusline to be drawn only after a key is pressed
+"set lazyredraw
 
 " For regular expressions turn magic on
 set magic
