@@ -58,11 +58,14 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 " | execute 'redraw!'
 set autoread
-au FocusGained * : silent! checktime
-au WinEnter,BufEnter,BufWinEnter * :silent! checktime
-au CursorMoved,CursorMovedI * :silent! checktime
-" Disable if performance hit becomes noticable
-au CursorHold,CursorHoldI * :silent! checktime
+augroup autoread
+    autocmd!
+    autocmd FocusGained * : silent! checktime
+    autocmd WinEnter,BufEnter,BufWinEnter * :silent! checktime
+    autocmd CursorMoved,CursorMovedI * :silent! checktime
+    " Disable if performance hit becomes noticable
+    autocmd CursorHold,CursorHoldI * :silent! checktime
+augroup END
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -391,7 +394,10 @@ map <leader>t<leader> :tabnext
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
+augroup lasttab
+    autocmd!
+    autocmd TabLeave * let g:lasttab = tabpagenr()
+augroup END
 
 
 " Opens a new tab with the current buffer's path
@@ -409,10 +415,14 @@ catch
 endtry
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+augroup lastedit
+    autocmd!
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+augroup END
+
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -459,8 +469,11 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+augroup trailingws
+    autocmd!
+    autocmd BufWrite *.py :call DeleteTrailingWS()
+    autocmd BufWrite *.coffee :call DeleteTrailingWS()
+augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
