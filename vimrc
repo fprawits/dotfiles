@@ -112,7 +112,7 @@ call plug#begin('~/.vim/plugged')
     " latex-suite for vim
     Plug 'vim-latex/vim-latex'
 
-    "better manipulation of brackets and HTML/XML tags
+    " better manipulation of brackets and HTML/XML tags
     Plug 'tpope/vim-surround'
 
     " make vim's repeat command '.' work with plugins
@@ -124,7 +124,7 @@ call plug#begin('~/.vim/plugged')
     " enhance netrw behaviour
     Plug 'tpope/vim-vinegar'
 
-    "Better Statusbar - vim airline + themes
+    " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
@@ -193,33 +193,27 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
+" when populating wildmenus, the suffixes list is considerd with least priority
+set suffixes+=".pdf,.png,.jpg"
+
 " Always show current position
 set ruler
 set cursorline
 
 " Show Column on right margin
 set colorcolumn=80
-highlight MatchParen cterm=bold ctermbg=none ctermfg=red
+" highlight MatchParen cterm=bold ctermbg=none ctermfg=red
 
 " toggle relative linenumber " default: hybrid mode
 set relativenumber
 set number
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-    set number
-  else
-    set number
-    set relativenumber
-  endif
-endfunc
-nnoremap <F3> :call NumberToggle()<CR>
+nnoremap <F3> :set relativenumber!<CR>
 
 " Height of the command bar
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -252,13 +246,13 @@ set magic
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+set timeoutlen=500
 
 " Add a bit extra margin to the left
 set foldcolumn=1
@@ -274,7 +268,6 @@ set listchars=tab:▸\ ,eol:¬,trail:␣,extends:>,precedes:<,nbsp:+
 " Enable syntax highlighting
 syntax enable
 
-
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -282,7 +275,6 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
-
 
 try
     colorscheme molokai
@@ -410,7 +402,7 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
-  set stal=2
+  set showtabline=2
 catch
 endtry
 
@@ -445,6 +437,10 @@ imap jj <ESC>
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
+
+" easier typing of go to mark command
+noremap gm `
+noremap gM '
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -515,7 +511,7 @@ map <leader>p :cp<cr>
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-noremap <leader>st :setlocal spell!
+noremap <leader>st :setlocal spell!<cr>
 noremap <leader>se :setlocal spell spelllang=en_us<cr>
 noremap <leader>sd :setlocal spell spelllang=de_de<cr>
 
@@ -533,10 +529,10 @@ map <leader>ss z=
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+map <leader>q :e ~/scribble<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
+map <leader>x :e ~/scribble.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
