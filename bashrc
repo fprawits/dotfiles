@@ -113,3 +113,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# colorize man pages, for available options see:
+# * bold, italic, etc.: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_parameters
+# * 8 colors: https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit
+# * 256 colors: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
+man() {
+    env \
+        LESS_TERMCAP_md=$(printf "\e[1;38;5;107m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;90;107m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;3;38;5;152m") \
+        man "$@"
+}
