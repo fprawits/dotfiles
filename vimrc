@@ -91,10 +91,6 @@ let g:tex_flavor='latex'
 " Start netrw with dotfiles hidden
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-" Configuration for jedi-vim
-let g:jedi#popup_on_dot=0
-let g:jedi#show_call_signatures_delay=0
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -170,6 +166,10 @@ let g:highlightedyank_highlight_duration = 750
 " Quick-Scope:
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Configuration for jedi-vim
+let g:jedi#popup_on_dot=0
+let g:jedi#show_call_signatures_delay=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
