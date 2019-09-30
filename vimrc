@@ -202,7 +202,6 @@ set cursorline
 
 " Show Column on right margin
 set colorcolumn=80
-" highlight MatchParen cterm=bold ctermbg=none ctermfg=red
 
 " toggle relative linenumber " default: hybrid mode
 set relativenumber
@@ -284,6 +283,12 @@ catch
 endtry
 
 set background=dark
+"
+" Fix irritating parens matching in standard molokai by:
+" * switching fg and bg
+" highlight MatchParen cterm=bold ctermbg=none ctermfg=208
+" * using a custom palette different form standard molokai:
+highlight MatchParen cterm=bold ctermbg=DarkGray ctermfg=DarkGreen
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf-8
@@ -485,7 +490,7 @@ set grepprg=grep\ -nH\ $*
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>g :Ack 
+map <leader>g :Ack
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
