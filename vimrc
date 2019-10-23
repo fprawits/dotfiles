@@ -156,8 +156,14 @@ imap <C-@> <Plug>IMAP_JumpForward
 nmap <C-@> <Plug>IMAP_JumpForward
 vmap <C-@> <Plug>IMAP_JumpForward
 
-" Let Airline show the list of buffers in the top line
+" Display buffers in the tab line if only one tab is open
 let g:airline#extensions#tabline#enabled = 1
+" Show only filename in tabline
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+" molokai airline theme has confusing palette for current/hidden/modified buffers
+" alternative candidates are: serene, badcat, raven, jellybeans, fairyfloss, luna
+" seagull, simple, sol
+let g:airline_theme = 'raven'
 
 " needed for highlightedyank to work
 map y <Plug>(highlightedyank)
@@ -268,8 +274,11 @@ set listchars=tab:▸\ ,eol:¬,trail:␣,extends:>,precedes:<,nbsp:+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+"
 " Enable syntax highlighting
 syntax enable
+
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -280,30 +289,27 @@ if has("gui_running")
 endif
 
 try
-    colorscheme molokai
     let g:molokai_original=1
     let g:rehash256=1
+    colorscheme molokai
+    " Fix irritating parens matching in standard molokai by:
+    " * switching fg and bg
+    "highlight MatchParen cterm=bold ctermbg=none ctermfg=208
+    " * using a custom palette different form standard molokai
+    highlight MatchParen cterm=bold ctermbg=DarkGray ctermfg=DarkGreen
 catch
 endtry
 
-set background=dark
-"
-" Fix irritating parens matching in standard molokai by:
-" * switching fg and bg
-" highlight MatchParen cterm=bold ctermbg=none ctermfg=208
-" * using a custom palette different form standard molokai:
-highlight MatchParen cterm=bold ctermbg=DarkGray ctermfg=DarkGreen
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
@@ -384,36 +390,6 @@ map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-augroup lasttab
-    autocmd!
-    autocmd TabLeave * let g:lasttab = tabpagenr()
-augroup END
-
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set showtabline=2
-catch
-endtry
 
 " Return to last edit position when opening files (You want this!)
 augroup lastedit
@@ -499,20 +475,13 @@ map <leader>g :Ack
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
 " When you search with Ack, display your results in cope by doing:
-"   <leader>cc
-"
+map <leader>cc :botright copen<cr>
+
 " To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
+
+" To go to the previous search results do:
 map <leader>p :cp<cr>
 
 
@@ -545,8 +514,6 @@ map <leader>x :e ~/scribble.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
