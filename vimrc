@@ -77,7 +77,7 @@ nmap <leader>w :w!<cr>
 
 " :w!! sudo saves the file
 " (useful for handling the permission-denied error)
-cnoremap w!! w !sudo tee % > /dev/null
+cabbrev w!! w !sudo /usr/bin/tee % > /dev/null
 
 " better copy & paste
 set pastetoggle=<F10>
