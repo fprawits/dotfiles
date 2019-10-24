@@ -206,17 +206,26 @@ endif
 " when populating wildmenus, the suffixes list is considerd with least priority
 set suffixes+=".pdf,.png,.jpg"
 
-" Always show current position
+" Always show current position - obsolete with airline
 set ruler
-set cursorline
+
+" toggle relative linenumber " default: hybrid mode
+set number
+nnoremap <F3> :set relativenumber!<CR>
+
+" Highlight current line in active window, disable relativenumber in inactive windows
+augroup HighlightActiveWindow
+    autocmd!
+    " autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    " autocmd WinLeave * setlocal nocursorline
+    autocmd VimEnter,WinEnter * set cursorline
+    autocmd VimEnter,WinEnter * set relativenumber
+    autocmd WinLeave * set nocursorline
+    autocmd WinLeave * set norelativenumber
+augroup END
 
 " Show Column on right margin
 set colorcolumn=80
-
-" toggle relative linenumber " default: hybrid mode
-set relativenumber
-set number
-nnoremap <F3> :set relativenumber!<CR>
 
 " Height of the command bar
 set cmdheight=2
