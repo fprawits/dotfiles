@@ -310,6 +310,10 @@ set noswapfile
 
 set undolevels=700
 
+" expand '%%' to path of current file, useful for quickly opening files in same
+" directory without the need to change cwd - try ':e %%'
+cnoremap <expr> %% getcmdtype()==':' ? expand('%:h') . '/' : '%%'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -377,6 +381,10 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" show bufferlist when switching/deleting buffers
+cnoreabbrev <expr> b  getcmdtype()==':' && getcmdpos()==2 ? 'buffers<CR>:buffer'  : 'b'
+cnoreabbrev <expr> bd getcmdtype()==':' && getcmdpos()==3 ? 'buffers<CR>:bdelete' : 'b'
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -508,6 +516,16 @@ map <leader>x :e ~/scribble.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" common typos
+command! -bang -nargs=? -complete=file E   e<bang> <args>
+command! -bang -nargs=? -complete=file W   w<bang> <args>
+command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+command! -bang Wa wa<bang>
+command! -bang WA wa<bang>
+command! -bang Q  q<bang>
+command! -bang Qa qa<bang>
+command! -bang QA qa<bang>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
