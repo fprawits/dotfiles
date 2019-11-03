@@ -1,42 +1,22 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer:
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version:
-"       5.0 - 29/05/12 15:43:36
-"
-" Blog_post:
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version:
-"       http://amix.dk/vim/vimrc.txt
+" Inspired_by::
+"   https://github.com/amix/vimrc
 "
 " Sections:
-"    -> General
-"    -> Plugins
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
+"   -> General
+"   -> Plugins
+"   -> VIM user interface
+"   -> Colors and Fonts
+"   -> Files and backups
+"   -> Text, tab and indent related
+"   -> Visual mode related
+"   -> Moving around, tabs and buffers
+"   -> Status line
+"   -> Editing mappings
+"   -> vimgrep searching and cope displaying
+"   -> Spell checking
+"   -> Misc
+"   -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -148,6 +128,10 @@ call plug#begin('~/.vim/plugged')
     " autocompletion for python
     Plug 'davidhalter/jedi-vim'
 
+    " fzf integration (fuzzy finder)
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -193,7 +177,7 @@ source $VIMRUNTIME/menu.vim
 
 " Turn on the WiLd menu
 set wildmenu
-set wildmode=list:longest,full
+set wildmode=longest:full,full
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
