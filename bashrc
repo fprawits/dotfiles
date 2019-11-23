@@ -20,7 +20,7 @@ HISTSIZE=10000
 HISTFILESIZE=10000
 
 # exclude these commands from the history as they are just polluting the hist
-HISTIGNORE="&:l[sal]:cd:[bf]g:exit:pwd:clear:mount:unmount"
+HISTIGNORE="&:l[sal]:cd:[bf]g:exit:pwd:history:clear:mount:unmount"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
