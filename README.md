@@ -9,9 +9,10 @@ Installation Guide
 
 Contents
 --------
-- bashrc
-- bash_aliases
-- vimrc
-- vim/ftplugin/
-- makesymlinks.sh
-- ssh/config
+- bashrc:           bash configuration
+- bash_aliases      custom abbreviations for often used commands
+- gvimrc:           gvim configuration, loaded in addition to vimrc
+- vimrc:            vim configuration
+- vim/ftplugin/     configuration specific to filetypes
+- makesymlinks.sh   install script
+- ssh/config        ssh configuration
