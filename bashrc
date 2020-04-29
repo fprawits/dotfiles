@@ -130,3 +130,18 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;3;38;5;152m") \
         man "$@"
 }
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sheep/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sheep/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sheep/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sheep/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
