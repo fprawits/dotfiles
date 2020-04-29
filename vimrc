@@ -492,18 +492,13 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " When you search with Ack, display your results in cope by doing:
 map <leader>cc :botright copen<cr>
 
-" To go to the next search result do:
-map <leader>n :cn<cr>
-
-" To go to the previous search results do:
-map <leader>p :cp<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-noremap <leader>st :setlocal spell!<cr>
+" Toggle spell checking
+noremap <leader>ts :setlocal spell!<cr>
+" Turn on spell checking with specific language
 noremap <leader>se :setlocal spell spelllang=en_us<cr>
 noremap <leader>sd :setlocal spell spelllang=de_de<cr>
 
@@ -527,7 +522,7 @@ map <leader>q :e ~/scribble<cr>
 map <leader>x :e ~/scribble.md<cr>
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>tp :setlocal paste!<cr>
 
 " common typos
 command! -bang -nargs=? -complete=file E   e<bang> <args>
