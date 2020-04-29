@@ -145,6 +145,12 @@ imap <C-@> <Plug>IMAP_JumpForward
 nmap <C-@> <Plug>IMAP_JumpForward
 vmap <C-@> <Plug>IMAP_JumpForward
 
+" Disable default option to show current mode, as airline will do this for us
+augroup airline_showmode
+    autocmd!
+    autocmd User AirlineToggledOn set noshowmode
+    autocmd User AirlineToggledOff set showmode
+augroup END
 " Display buffers in the tab line if only one tab is open
 let g:airline#extensions#tabline#enabled = 1
 " Show only filename in tabline
@@ -198,15 +204,22 @@ set ruler
 set number
 nnoremap <F3> :set relativenumber!<CR>
 
+" Change cursor depending on current mode, works for VTE compatible terminals
+" taken from: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+if &term =~ 'xterm'
+    let &t_SI = "\<Esc>[5 q"
+    let &t_SR = "\<Esc>[4 q"
+    let &t_EI = "\<Esc>[2 q"
+endif
+
+
 " Highlight current line in active window, disable relativenumber in inactive windows
-augroup HighlightActiveWindow
+augroup highlight_active_window
     autocmd!
     " autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     " autocmd WinLeave * setlocal nocursorline
-    autocmd VimEnter,WinEnter * set cursorline
-    autocmd VimEnter,WinEnter * set relativenumber
-    autocmd WinLeave * set nocursorline
-    autocmd WinLeave * set norelativenumber
+    autocmd VimEnter,WinEnter * set cursorline relativenumber colorcolumn=80
+    autocmd WinLeave * set nocursorline norelativenumber colorcolumn=
 augroup END
 
 " Show Column on right margin
@@ -375,7 +388,10 @@ noremap <space> /
 " noremap <C-@> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader>c :noh<cr>
+map <silent> <leader>c :nohlsearch<CR>
+" a better version of the above command would be to extend the standard redraw
+" <C-l> hotkey, however this is currently shadowed by the window navigation below
+"nnoremap <silent> <C-l> :<C-u>nohlsearch<cr><C-l>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
