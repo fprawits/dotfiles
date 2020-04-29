@@ -104,6 +104,9 @@ call plug#begin('~/.vim/plugged')
     " enhance netrw behaviour
     Plug 'tpope/vim-vinegar'
 
+    " pairs of useful mappings
+    Plug 'tpope/vim-unimpaired'
+
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -115,9 +118,6 @@ call plug#begin('~/.vim/plugged')
 
     " new text object based on indentation level
     Plug 'michaeljsmith/vim-indent-object'
-
-    " highlight yanked text
-    Plug 'machakann/vim-highlightedyank'
 
     " highlight targets of next f/F/t/T find command
     Plug 'unblevable/quick-scope'
@@ -135,6 +135,11 @@ call plug#begin('~/.vim/plugged')
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
 " Remap latexsuite's placeholder jump to avoid clash with window navigation
 imap <C-@> <Plug>IMAP_JumpForward
 nmap <C-@> <Plug>IMAP_JumpForward
@@ -148,10 +153,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " alternative candidates are: serene, badcat, raven, jellybeans, fairyfloss, luna
 " seagull, simple, sol
 let g:airline_theme = 'raven'
-
-" needed for highlightedyank to work
-map y <Plug>(highlightedyank)
-let g:highlightedyank_highlight_duration = 750
 
 " Quick-Scope:
 " Trigger a highlight in the appropriate direction when pressing these keys:
@@ -462,10 +463,6 @@ augroup END
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
 
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
