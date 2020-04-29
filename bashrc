@@ -145,3 +145,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# added by fzf install script
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
