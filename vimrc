@@ -419,7 +419,7 @@ augroup lastedit
 augroup END
 
 " Remember info about open buffers on close
-set viminfo^=%
+"set viminfo^=%
 
 
 """"""""""""""""""""""""""""""
