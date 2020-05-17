@@ -412,9 +412,21 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" show bufferlist when switching/deleting buffers
-cnoreabbrev <expr> b  getcmdtype()==':' && getcmdpos()==2 ? 'buffers<CR>:buffer'  : 'b'
-cnoreabbrev <expr> bd getcmdtype()==':' && getcmdpos()==3 ? 'buffers<CR>:bdelete' : 'b'
+" With this function we can create cabbreviations that trigger only if:
+"   1) commandline is beginning with ':', not '/' or '?'
+"   2) only right after the ':', i.e. there is nothing after the cursor
+function! CNoreAbbrev(abb, ...)
+    "execute 'cnoreabbrev <expr> '.a:abb.' getcmdtype()==":" && getcmdpos()==strlen('.string(a:abb).')+1 && getcmdline()=='.string(a:abb).' ? '.string(a:exp).' : '.string(a:abb)
+     execute 'cnoreabbrev <expr> '.a:abb.' getcmdtype()==":" && getcmdline()=='.string(a:abb).' ? '.string(join(a:000)).' : '.string(a:abb)
+endfunction
+command! -nargs=+ CNoreAbbrev call CNoreAbbrev(<f-args>)
+
+" show bufferlist when switching/deleting/splitting buffers
+CNoreAbbrev b buffers<CR>:buffer
+CNoreAbbrev bd buffers<CR>:bdelete
+CNoreAbbrev bdel buffers<CR>:bdelete
+CNoreAbbrev sb buffers<CR>:sb
+CNoreAbbrev vsb buffers<CR>:vertical sb
 
 " Close the current buffer
 noremap <Leader>bd :Bclose<cr>
