@@ -47,21 +47,30 @@ augroup autoread
     autocmd CursorHold,CursorHoldI * :silent! checktime
 augroup END
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = "ä"
-let g:mapleader = "ä"
+" NOTE: the usual way of setting the <Leader>:
+"   let mapleader = "\<Space>"
+" requires an additional mapping to prevent timeouts from triggering <Right>:
+"   nnoremap <Space> <Nop>
+" causing its own problems as the timedout sequence is trapped, see:
+" https://vi.stackexchange.com/questions/13862/using-a-no-op-key-in-insert-mode-cant-use-key-after-using-no-op-mapping
+map <Space> <Leader>
 
 " Fast saving
-nmap <leader>w :w!<cr>
+noremap <Leader>w :update<cr>
 
 " :w!! sudo saves the file
 " (useful for handling the permission-denied error)
-cabbrev w!! w !sudo /usr/bin/tee % > /dev/null
+cnoreabbrev w!! w !sudo /usr/bin/tee % > /dev/null
 
 " better copy & paste
 set pastetoggle=<F10>
 set clipboard=unnamed,unnamedplus
+" useful mappings for direct interaction with system clipboard
+nnoremap <Leader>y "+yiw <bar> :echo 'Yanked to clipboard:' <bar> echo '  '.@*<CR>
+nnoremap <Leader>Y "+Y
+xnoremap <Leader>y "+y <bar> :echo 'Yanked to clipboard:' <bar> echo '  '.@*<CR>
+nnoremap <Leader>p "+p
+xnoremap <Leader>p "+p
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -391,14 +400,17 @@ noremap j gj
 noremap k gk
 
 " Remap H and L since they are basically never used
+" TODO: remap these to something more useful, for now underutilized
 noremap H ^
 noremap L $
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-noremap <space> /
-" This key is used for latexsuite's placeholder jumping for now
+" Easier to enter cmd- and search-mode
 " Remark: <C-space> is send to vim by the terminal as <C-@>
-" noremap <C-@> ?
+noremap <Leader><Space> /
+noremap q<Space> q/
+noremap <Leader><C-@> :
+noremap q<C-@> q:
+
 
 " Disable highlight when <Leader>c is pressed
 noremap <silent> <Leader>c :nohlsearch<CR>
