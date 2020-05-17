@@ -71,10 +71,30 @@ let g:tex_flavor='latex'
 " Start netrw with dotfiles hidden
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
+" Disable interpretation of numbers with leading 0 as octal when using <C-a>/<C-x>
+set nrformats-=octal
+
+" Delete comment character when joining commented lines
+set formatoptions+=j
+
+" Remember global variables consisting of capital letters (e.g. 'KEEP_THIS')
+set viminfo^=!
+
+" Disable Ex-mode
+nnoremap Q <Nop>
+
+" search for tags in current directory and all parents (until root)
+if has('path_extra')
+    setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" activate the matchit plugin that ships with vi by default
+packadd! matchit
+
 " vim-plug configuration, see:
 " https://github.com/junegunn/vim-plug/wiki/tutorial
 "
