@@ -196,12 +196,6 @@ let g:jedi#show_call_signatures_delay=0
 set scrolloff=7
 set sidescrolloff=5
 
-" Avoid garbled characters in Chinese language windows OS
-let $LANG='en'
-set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-
 " Turn on the WiLd menu
 set wildmenu
 set wildmode=longest:full,full
@@ -224,6 +218,9 @@ set ruler
 set number
 nnoremap <F3> :set relativenumber!<CR>
 
+" Show Column on right margin
+set colorcolumn=80
+
 " Change cursor depending on current mode, works for VTE compatible terminals
 " taken from: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 if &term =~ 'xterm'
@@ -232,21 +229,18 @@ if &term =~ 'xterm'
     let &t_EI = "\<Esc>[2 q"
 endif
 
-
 " Highlight current line in active window, disable relativenumber in inactive windows
 augroup highlight_active_window
     autocmd!
-    " autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    " autocmd WinLeave * setlocal nocursorline
     autocmd VimEnter,WinEnter * set cursorline relativenumber colorcolumn=80
     autocmd WinLeave * set nocursorline norelativenumber colorcolumn=
 augroup END
 
-" Show Column on right margin
-set colorcolumn=80
-
 " Height of the command bar
 set cmdheight=2
+
+" Show typed commands, useful for showing incomplete sequences of mappings
+set showcmd
 
 " A buffer becomes hidden when it is abandoned
 set hidden
@@ -305,7 +299,6 @@ set background=dark
 "
 " Enable syntax highlighting
 syntax enable
-
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -394,8 +387,8 @@ vnoremap > >gv
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+noremap j gj
+noremap k gk
 
 " Remap H and L since they are basically never used
 noremap H ^
@@ -407,8 +400,8 @@ noremap <space> /
 " Remark: <C-space> is send to vim by the terminal as <C-@>
 " noremap <C-@> ?
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader>c :nohlsearch<CR>
+" Disable highlight when <Leader>c is pressed
+noremap <silent> <Leader>c :nohlsearch<CR>
 " a better version of the above command would be to extend the standard redraw
 " <C-l> hotkey, however this is currently shadowed by the window navigation below
 "nnoremap <silent> <C-l> :<C-u>nohlsearch<cr><C-l>
@@ -424,10 +417,10 @@ cnoreabbrev <expr> b  getcmdtype()==':' && getcmdpos()==2 ? 'buffers<CR>:buffer'
 cnoreabbrev <expr> bd getcmdtype()==':' && getcmdpos()==3 ? 'buffers<CR>:bdelete' : 'b'
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+noremap <Leader>bd :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+noremap <Leader>ba :1,1000 bd!<cr>
 
 " Return to last edit position when opening files (You want this!)
 augroup lastedit
@@ -437,9 +430,6 @@ augroup lastedit
         \   exe "normal! g`\"" |
         \ endif
 augroup END
-
-" Remember info about open buffers on close
-"set viminfo^=%
 
 
 """"""""""""""""""""""""""""""
@@ -459,7 +449,7 @@ set laststatus=2
 imap jj <ESC>
 
 " Remap VIM 0 to first non-blank character
-map 0 ^
+noremap 0 ^
 
 " easier typing of go to mark command
 noremap gm `
@@ -504,29 +494,27 @@ augroup END
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>g :Ack
+noremap <Leader>g :Ack
 
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+" When you press <Leader>r you can search and replace the selected text
+vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
 
 " When you search with Ack, display your results in cope by doing:
-map <leader>cc :botright copen<cr>
+noremap <Leader>cc :botright copen<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle spell checking
-noremap <leader>ts :setlocal spell!<cr>
 " Turn on spell checking with specific language
-noremap <leader>se :setlocal spell spelllang=en_us<cr>
-noremap <leader>sd :setlocal spell spelllang=de_de<cr>
+noremap <Leader>se :setlocal spell spelllang=en_us<CR>
+noremap <Leader>sd :setlocal spell spelllang=de_de<CR>
 
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>ss z=
+" Shortcuts using <Leader>
+noremap <Leader>sn ]s
+noremap <Leader>sp [s
+noremap <Leader>sa zg
+noremap <Leader>ss z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -536,13 +524,10 @@ map <leader>ss z=
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/scribble<cr>
+noremap <Leader>q :e ~/scribble<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/scribble.md<cr>
-
-" Toggle paste mode on and off
-map <leader>tp :setlocal paste!<cr>
+noremap <Leader>x :e ~/scribble.md<cr>
 
 " common typos
 command! -bang -nargs=? -complete=file E   e<bang> <args>
