@@ -1,4 +1,6 @@
 alias vi='vim'
+alias ..='cd ..'
+alias rs='rsync -avh'
 
 alias ipy='ipython'
 alias jqt='jupyter qtconsole'
