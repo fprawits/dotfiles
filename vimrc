@@ -63,14 +63,8 @@ noremap <Leader>w :update<cr>
 cnoreabbrev w!! w !sudo /usr/bin/tee % > /dev/null
 
 " better copy & paste
-set pastetoggle=<F10>
 set clipboard=unnamed,unnamedplus
-" useful mappings for direct interaction with system clipboard
-nnoremap <Leader>y "+yiw <bar> :echo 'Yanked to clipboard:' <bar> echo '  '.@*<CR>
-nnoremap <Leader>Y "+Y
-xnoremap <Leader>y "+y <bar> :echo 'Yanked to clipboard:' <bar> echo '  '.@*<CR>
-nnoremap <Leader>p "+p
-xnoremap <Leader>p "+p
+set pastetoggle=<F10>
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -95,6 +89,21 @@ nnoremap Q <Nop>
 " search for tags in current directory and all parents (until root)
 if has('path_extra')
     setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+
+" time to wait for completing mappings / terminal keycodes [ms]
+" NOTE: as keycodes aren't typed manually, low timeouts prevent blocking <Esc>
+set timeoutlen=750 ttimeoutlen=25
+
+" register terminal key codes here in order to use them in mappings
+if !has('gui_running')
+    if &term =~ 'xterm'
+        set <S-F3>=[1;2R
+        set <M-j>=j
+        set <M-k>=k
+        set <M-l>=l
+        set <M-h>=h
+    endif
 endif
 
 
@@ -223,13 +232,6 @@ set suffixes+=".pdf,.png,.jpg"
 " Always show current position - obsolete with airline
 set ruler
 
-" toggle relative linenumber " default: hybrid mode
-set number
-nnoremap <F3> :set relativenumber!<CR>
-
-" Show Column on right margin
-set colorcolumn=80
-
 " Change cursor depending on current mode, works for VTE compatible terminals
 " taken from: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 if &term =~ 'xterm'
@@ -238,7 +240,10 @@ if &term =~ 'xterm'
     let &t_EI = "\<Esc>[2 q"
 endif
 
-" Highlight current line in active window, disable relativenumber in inactive windows
+" show line numbers
+set number
+
+" Highlight active window with rel. line numbers, cursorline and colorcolumn
 augroup highlight_active_window
     autocmd!
     autocmd VimEnter,WinEnter * set cursorline relativenumber colorcolumn=80
@@ -291,7 +296,6 @@ set matchtime=2
 set noerrorbells
 set novisualbell
 set t_vb=
-set timeoutlen=500
 
 " Add a bit extra margin to the left
 set foldcolumn=1
@@ -405,7 +409,7 @@ noremap H ^
 noremap L $
 
 " Easier to enter cmd- and search-mode
-" Remark: <C-space> is send to vim by the terminal as <C-@>
+" Remark: <C-Space> is send to vim by the terminal as <C-@>
 noremap <Leader><Space> /
 noremap q<Space> q/
 noremap <Leader><C-@> :
@@ -470,7 +474,10 @@ set laststatus=2
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " press jj to enter command mode
-imap jj <ESC>
+inoremap jj <ESC>
+
+" Make Y consistent with other cmds in capital form
+noremap Y y$
 
 " Remap VIM 0 to first non-blank character
 noremap 0 ^
@@ -480,17 +487,10 @@ noremap gm `
 noremap gM '
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
+nnoremap <silent> <M-j> mz:move+<cr>`z
+nnoremap <silent> <M-k> mz:move-2<cr>`z
+xnoremap <silent> <M-j> :move'>+<cr>gv
+xnoremap <silent> <M-k> :move'<-2<cr>gv
 
 " show registers
 " taken from http://superuser.com/questions/656949/always-show-the-register-list-in-vim
@@ -508,12 +508,26 @@ augroup trailingws
     autocmd BufWrite *.coffee :call DeleteTrailingWS()
 augroup END
 
+" useful mappings for direct interaction with system clipboard
+if has('clipboard')
+    " nnoremap <Leader>y "+yiw <bar> :echo 'Yanked to clipboard:' <bar> echo '  '.@*<CR>
+    nnoremap <Leader>y "+y
+    xnoremap <Leader>y "+y
+    onoremap <Leader>y "+y
+    nnoremap <Leader>Y "+y$
+    nnoremap <expr> <Leader>p &paste ? '"+p' : ':setlocal paste<CR>"+p:setlocal nopaste<CR>'
+    xnoremap <expr> <Leader>p &paste ? '"+p' : ':setlocal paste<CR>"+p:setlocal nopaste<CR>'
+endif
+
+" delete to blackhole register
+noremap <Leader>d "_d
+noremap <Leader>D "_D
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
@@ -523,8 +537,13 @@ noremap <Leader>g :Ack
 " When you press <Leader>r you can search and replace the selected text
 vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
 
-" When you search with Ack, display your results in cope by doing:
-noremap <Leader>cc :botright copen<cr>
+" Open the quickfix window (display errors, search results)
+noremap <Leader>qq :botright copen<cr>
+
+" map <F3> and <S-F3> to jump between locations in a quickfix list, or
+" differences if in window in diff mode
+nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
+nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -545,13 +564,7 @@ noremap <Leader>ss z=
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-noremap <Leader>q :e ~/scribble<cr>
-
-" Quickly open a markdown buffer for scribble
-noremap <Leader>x :e ~/scribble.md<cr>
+noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 " common typos
 command! -bang -nargs=? -complete=file E   e<bang> <args>
@@ -563,6 +576,7 @@ command! -bang WA wa<bang>
 command! -bang Q  q<bang>
 command! -bang Qa qa<bang>
 command! -bang QA qa<bang>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
