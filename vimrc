@@ -206,6 +206,11 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:jedi#popup_on_dot=0
 let g:jedi#show_call_signatures_delay=0
 
+" Mappings for fzf
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>l :Locate<Space>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -353,6 +358,11 @@ set undolevels=700
 " expand '%%' to path of current file, useful for quickly opening files in same
 " directory without the need to change cwd - try ':e %%'
 cnoremap <expr> %% getcmdtype()==':' ? expand('%:h') . '/' : '%%'
+
+" abbreviations for often used file patterns
+" TODO: maybe replace by abbrev or use filetype specific mappings mapped to common key, e.g. <F9>
+cnoremap <expr> %c getcmdtype()==':' ? '**/*.[ch]' : '%c'
+cnoremap <expr> %py getcmdtype()==':' ? '**/*.py' : '%py'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
