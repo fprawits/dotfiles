@@ -3,8 +3,9 @@
 # for examples
 
 # If not running interactively, don't do anything
+# Additionally: disable XON/XOFF flow control for interactive shells
 case $- in
-    *i*) ;;
+    *i*) stty -ixon;;
       *) return;;
 esac
 
@@ -87,6 +88,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -131,6 +135,9 @@ man() {
         man "$@"
 }
 
+# added by fzf install script
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$("${HOME}/miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
@@ -145,6 +152,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# added by fzf install script
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
