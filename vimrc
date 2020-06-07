@@ -113,10 +113,8 @@ endif
 " activate the matchit plugin that ships with vi by default
 packadd! matchit
 
-" vim-plug configuration, see:
+" Make sure that vim-plug is installed, see:
 " https://github.com/junegunn/vim-plug/wiki/tutorial
-"
-" Make sure that we have vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -226,9 +224,9 @@ set wildmode=longest:full,full
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
     set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
 " when populating wildmenus, the suffixes list is considerd with least priority
@@ -354,6 +352,9 @@ set nowb
 set noswapfile
 
 set undolevels=700
+
+" variable assignment no longer blocks <C-X><C-F> filename completion
+set isfname-==
 
 " expand '%%' to path of current file, useful for quickly opening files in same
 " directory without the need to change cwd - try ':e %%'
