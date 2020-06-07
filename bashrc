@@ -140,15 +140,19 @@ man() {
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("${HOME}/miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
+
+# point to the local installation (usual default: ~/anaconda3 or ~/miniconda3)
+__anaconda_dir="${HOME}/miniconda3"
+
+__conda_setup="$("${__anaconda_dir}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "${HOME}/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "${HOME}/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "${__anaconda_dir}/etc/profile.d/conda.sh" ]; then
+        . "${__anaconda_dir}/etc/profile.d/conda.sh"
     else
-        export PATH="${HOME}/miniconda3/bin:$PATH"
+        export PATH="${__anaconda_dir}/bin:$PATH"
     fi
 fi
-unset __conda_setup
+unset __conda_setup __anaconda_dir
 # <<< conda initialize <<<
