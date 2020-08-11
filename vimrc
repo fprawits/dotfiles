@@ -456,12 +456,12 @@ CNoreAbbrev sb buffers<CR>:sb
 CNoreAbbrev vsb buffers<CR>:vertical sb
 
 " Close the current buffer
-noremap <Leader>bd :Bclose<cr>
+"noremap <Leader>bd :Bclose<cr>
 
 " Close all the buffers
-noremap <Leader>ba :1,1000 bd!<cr>
+"noremap <Leader>ba :1,1000 bd!<cr>
 
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 augroup lastedit
     autocmd!
     autocmd BufReadPost *
