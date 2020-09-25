@@ -142,7 +142,7 @@ man() {
 # !! Contents within this block are managed by 'conda init' !!
 
 # point to the local installation (usual default: ~/anaconda3 or ~/miniconda3)
-__anaconda_dir="${HOME}/miniconda3"
+__anaconda_dir=( "${HOME}"/@(ana|mini)conda3 )
 
 __conda_setup="$("${__anaconda_dir}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
