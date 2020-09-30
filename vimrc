@@ -155,6 +155,11 @@ call plug#begin('~/.vim/plugged')
     " new text object based on indentation level
     Plug 'michaeljsmith/vim-indent-object'
 
+    " create custom textobjects - requisite for unify plugin below
+    Plug 'kana/vim-textobj-user'
+    " unify (), [], {}, "", '', <> textobjects under shortcut `ib` and `ab`
+    Plug 'rhysd/vim-textobj-anyblock'
+
     " highlight targets of next f/F/t/T find command
     Plug 'unblevable/quick-scope'
 
@@ -195,6 +200,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " alternative candidates are: serene, badcat, raven, jellybeans, fairyfloss, luna
 " seagull, simple, sol
 let g:airline_theme = 'raven'
+
+" textoject-anyblock: restrict matching to (), [], {}, <>
+let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
 
 " Quick-Scope:
 " Trigger a highlight in the appropriate direction when pressing these keys:
