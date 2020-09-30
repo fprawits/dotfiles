@@ -9,7 +9,7 @@ set statusbar-home-tilde true
 
 # set clipboard to CLIPBOARD for accessing contents with ctrl+v
 # set clipboard to PRIMARY (default) for accessing contents with middle mouse
-#set selection-clipboard "clipboard"
+set selection-clipboard clipboard
 
 # Shows or hides GUI elements.
 # If it contains 'c', the command line is displayed.
@@ -35,3 +35,15 @@ set recolor-darkcolor "#000000"
 # set inputbar-bg "#AFEEEE"
 set inputbar-fg "#000000"
 set inputbar-bg "#E0FFFF"
+
+# Increase the font from 9 (default) to 12
+set font "monospace normal 12"
+
+# Set default page display to fit width (currently not working?)
+set adjust-open "width"
+
+# start a search with <Space>
+map <Space> feedkeys /
+
+# custom goto mark command
+map gm mark_evaluate
