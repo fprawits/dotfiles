@@ -237,8 +237,8 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-" when populating wildmenus, the suffixes list is considerd with least priority
-set suffixes+=".pdf,.png,.jpg"
+" when populating wildmenus, the suffixes list is considered with least priority
+set suffixes+=.pdf,.png,.jpg
 
 " Always show current position - obsolete with airline
 set ruler
