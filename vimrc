@@ -216,6 +216,7 @@ let g:jedi#show_call_signatures_delay=0
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>l :Locate<Space>
+nnoremap <Leader>h :Helptags<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
