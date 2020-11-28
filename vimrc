@@ -512,6 +512,13 @@ nnoremap <silent> <M-k> mz:move-2<cr>`z
 xnoremap <silent> <M-j> :move'>+<cr>gv
 xnoremap <silent> <M-k> :move'<-2<cr>gv
 
+" Bash like cmdline editing mappings for moving around
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+
 " show registers
 " taken from http://superuser.com/questions/656949/always-show-the-register-list-in-vim
 nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
