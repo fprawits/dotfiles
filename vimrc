@@ -11,7 +11,6 @@
 "   -> Text, tab and indent related
 "   -> Visual mode related
 "   -> Moving around, tabs and buffers
-"   -> Status line
 "   -> Editing mappings
 "   -> vimgrep searching and cope displaying
 "   -> Spell checking
@@ -47,6 +46,15 @@ augroup autoread
     autocmd CursorHold,CursorHoldI * :silent! checktime
 augroup END
 
+" Return to last edit position when opening files
+augroup lastedit
+    autocmd!
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+augroup END
+
 " NOTE: the usual way of setting the <Leader>:
 "   let mapleader = "\<Space>"
 " requires an additional mapping to prevent timeouts from triggering <Right>:
@@ -54,13 +62,6 @@ augroup END
 " causing its own problems as the timedout sequence is trapped, see:
 " https://vi.stackexchange.com/questions/13862/using-a-no-op-key-in-insert-mode-cant-use-key-after-using-no-op-mapping
 map <Space> <Leader>
-
-" Fast saving
-noremap <Leader>w :update<cr>
-
-" :w!! sudo saves the file
-" (useful for handling the permission-denied error)
-cnoreabbrev w!! w !sudo /usr/bin/tee % > /dev/null
 
 " better copy & paste
 set clipboard=unnamed,unnamedplus
@@ -262,6 +263,9 @@ augroup highlight_active_window
     autocmd WinLeave * set nocursorline norelativenumber colorcolumn=
 augroup END
 
+" Always show the status line
+set laststatus=2
+
 " Height of the command bar
 set cmdheight=2
 
@@ -409,12 +413,12 @@ set nowrap "dont wrap lines
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
-
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
 " then press ``>`` several times.
 vnoremap < <gv
 vnoremap > >gv
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -423,18 +427,12 @@ vnoremap > >gv
 noremap j gj
 noremap k gk
 
-" Remap H and L since they are basically never used
-" TODO: remap these to something more useful, for now underutilized
-noremap H ^
-noremap L $
-
 " Easier to enter cmd- and search-mode
 " Remark: <C-Space> is send to vim by the terminal as <C-@>
 noremap <Leader><Space> /
 noremap q<Space> q/
 noremap <Leader><C-@> :
 noremap q<C-@> q:
-
 
 " Disable highlight when <Leader>c is pressed
 noremap <silent> <Leader>c :nohlsearch<CR>
@@ -463,31 +461,6 @@ CNoreAbbrev bd buffers<CR>:bdelete
 CNoreAbbrev bdel buffers<CR>:bdelete
 CNoreAbbrev sb buffers<CR>:sb
 CNoreAbbrev vsb buffers<CR>:vertical sb
-
-" Close the current buffer
-"noremap <Leader>bd :Bclose<cr>
-
-" Close all the buffers
-"noremap <Leader>ba :1,1000 bd!<cr>
-
-" Return to last edit position when opening files
-augroup lastedit
-    autocmd!
-    autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
-augroup END
-
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line -> overwritten by airline plugin!
-"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ %P
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -550,19 +523,19 @@ endif
 noremap <Leader>d "_d
 noremap <Leader>D "_D
 
+" When you press <Leader>r you can search and replace the selected text
+vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+"vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
-noremap <Leader>g :Ack
-
-" When you press <Leader>r you can search and replace the selected text
-vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
+"noremap <Leader>g :Ack
 
 " Open the quickfix window (display errors, search results)
 noremap <Leader>qq :botright copen<cr>
@@ -592,6 +565,13 @@ noremap <Leader>ss z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
+
+" Fast saving
+noremap <Leader>w :update<cr>
+
+" :w!! sudo saves the file
+" (useful for handling the permission-denied error)
+cnoreabbrev w!! w !sudo /usr/bin/tee % > /dev/null
 
 " common typos
 command! -bang -nargs=? -complete=file E   e<bang> <args>
@@ -633,34 +613,4 @@ function! VisualSelection(direction, extra_filter) range
 
     let @/ = l:pattern
     let @" = l:saved_reg
-endfunction
-
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
 endfunction
