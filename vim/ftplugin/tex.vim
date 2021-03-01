@@ -9,6 +9,9 @@ if executable('zathura')
     let g:Tex_ViewRule_pdf='zathura'
 endif
 
+" Use Xelatex to compile
+let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
+
 " Add ':' to keywords, in order to have CTRL+N complete popular labels like
 " fig:, eq:, ect
 setlocal iskeyword+=:
