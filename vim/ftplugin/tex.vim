@@ -4,7 +4,12 @@
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf,dvi'
 
-" Add ':' to keywords, in order to have CTRL+N complete popular labels like 
+" Use zathura to view pdfs
+if executable('zathura')
+    let g:Tex_ViewRule_pdf='zathura'
+endif
+
+" Add ':' to keywords, in order to have CTRL+N complete popular labels like
 " fig:, eq:, ect
 setlocal iskeyword+=:
 
