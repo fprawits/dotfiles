@@ -1,28 +1,30 @@
 #!/bin/bash
 #
-# Create symlinks in home to the files in .dotfiles
-#
-# largely taken from:
-# https://github.com/michaeljsmalley/dotfiles/blob/master/makesymlinks.sh
+# Create symlinks in $HOME and its correct sub-directories to configuration
+# files in this repository.
 
-mkdir -p "$HOME/.ssh/"
-mkdir -p "$HOME/.vim/" "$HOME/.vim/ftplugin/"
-mkdir -p "$HOME/.config/zathura/"
+# bash 'strict' mode
+set -euo pipefail
+IFS='$\n\t'
 
-dir="$HOME/.dotfiles"
-files="bashrc \
-    bash_aliases \
-    config/zathura/zathurarc \
-    ssh/config \
-    gvimrc \
-    vimrc \
-    vim/ftplugin/tex.vim \
-    vim/ftplugin/latex.vim \
-    vim/ftplugin/text.vim"
+# setup for globbing all target files
+shopt -s extglob globstar
 
-for file in $files; do
-    echo "Creating symlink to $file in $HOME ..."
-    ln -sf "${dir}/$file" "${HOME}/.$file"
+# get the path to and name of this script, note that the cd into the repository
+# ensures that the globstar below works as expected
+cd "$(dirname "${BASH_SOURCE[0]}")"
+repo_root="$PWD"
+script_name="$(basename "${BASH_SOURCE[0]}")"
+
+i=0
+echo "Creating symlinks ..."
+for f in **/!(README.md|"${script_name}"); do
+    if [ -d "$f" ]; then
+        mkdir -p "${HOME}/.$f"
+    else
+        ln -sfi "${repo_root}/$f" "${HOME}/.$f"
+        echo "$f -> ${HOME}/.$f"
+        (( i+=1 ))
+    fi
 done
-
-echo "...done"
+echo "... done (total: $i links)"
