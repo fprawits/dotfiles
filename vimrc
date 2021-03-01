@@ -498,14 +498,16 @@ nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+  let l:winview = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:winview)
 endfunc
 augroup trailingws
     autocmd!
-    autocmd BufWrite *.py :call DeleteTrailingWS()
-    autocmd BufWrite *.coffee :call DeleteTrailingWS()
+    autocmd BufWritePre *.c,*.h :call DeleteTrailingWS()
+    autocmd BufWritePre *.cpp,.*hpp :call DeleteTrailingWS()
+    autocmd BufWritePre *.py :call DeleteTrailingWS()
+    autocmd BufWritePre *.coffee :call DeleteTrailingWS()
 augroup END
 
 " useful mappings for direct interaction with system clipboard
