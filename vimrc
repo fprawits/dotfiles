@@ -479,11 +479,6 @@ noremap 0 ^
 noremap gm `
 noremap gM '
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nnoremap <silent> <M-j> mz:move+<cr>`z
-nnoremap <silent> <M-k> mz:move-2<cr>`z
-xnoremap <silent> <M-j> :move'>+<cr>gv
-xnoremap <silent> <M-k> :move'<-2<cr>gv
 
 " Bash like cmdline editing mappings for moving around
 cnoremap <C-A> <Home>
