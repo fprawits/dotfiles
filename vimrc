@@ -81,7 +81,7 @@ map <C-Space> <LocalLeader>
 
 " better copy & paste
 set clipboard=unnamed,unnamedplus
-set pastetoggle=<F10>
+set pastetoggle=<F9>
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -91,7 +91,7 @@ let g:tex_flavor='latex'
 " Start netrw with dotfiles hidden
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-" Disable interpretation of numbers with leading 0 as octal when using <C-a>/<C-x>
+" Disable interpretation of numbers with leading 0 as octal when using <C-A>/<C-X>
 set nrformats-=octal
 
 " Delete comment character when joining commented lines
@@ -235,8 +235,9 @@ let g:vim_markdown_conceal_code_blocks = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
+" Better scrolling
 set scrolloff=7
+set sidescroll=1
 set sidescrolloff=5
 
 " Turn on the WiLd menu
@@ -299,7 +300,7 @@ endif
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases
+" Case sensitive search when the search pattern contains upper case
 set smartcase
 
 " Highlight search results
@@ -311,9 +312,6 @@ set incsearch
 " Don't redraw while executing macros (good performance config)
 " Disabled as it causes the statusline to be drawn only after a key is pressed
 "set lazyredraw
-
-" For regular expressions turn magic on
-set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -394,15 +392,15 @@ cnoremap <expr> %py getcmdtype()==':' ? '**/*.py' : '%py'
 " Use spaces instead of tabs
 set expandtab
 
-" Be smart when using tabs ;)
+" Respect shiftwidth setting when using <Tab> in front of a line
 set smarttab
 
 " 1 tab == 4 spaces
 " softtabstop additionally added in order to no have to delete tab generated
 " whitespace individually, see (negative value uses shiftwidth):
 " https://stackoverflow.com/questions/1562336/tab-vs-space-preferences-in-vim?rq=1
-set shiftwidth=4
 set tabstop=4
+let &shiftwidth = &tabstop
 set softtabstop=-1
 set shiftround
 
@@ -466,7 +464,7 @@ CNoreAbbrev vsb buffers<CR>:vertical sb
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" press jj to enter command mode
+" Press jj to enter command mode
 inoremap jj <ESC>
 
 " Make Y consistent with other cmds in capital form
@@ -475,10 +473,13 @@ noremap Y y$
 " Remap VIM 0 to first non-blank character
 noremap 0 ^
 
-" easier typing of go to mark command
+" Easier typing of go to mark command
 noremap gm `
 noremap gM '
 
+" Insert undo breaks
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
 
 " Bash like cmdline editing mappings for moving around
 cnoremap <C-A> <Home>
