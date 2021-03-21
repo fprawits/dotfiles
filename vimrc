@@ -180,6 +180,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
 
+    " markdown folding, concealing and syntax highlight
+    Plug 'plasticboy/vim-markdown'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -224,6 +227,9 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>l :Locate<Space>
 nnoremap <Leader>h :Helptags<CR>
+
+" Disable concealing of code fences
+let g:vim_markdown_conceal_code_blocks = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
