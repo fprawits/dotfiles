@@ -199,6 +199,15 @@ let g:airline#extensions#tabline#enabled = 1
 " Show only filename in tabline
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+" unicode symbols
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+
 " textoject-anyblock: restrict matching to (), [], {}, <>
 let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
 
@@ -315,7 +324,11 @@ set foldcolumn=1
 
 " show whitespace
 set list
-set listchars=tab:▸\ ,eol:¬,trail:␣,extends:>,precedes:<,nbsp:+
+set listchars=tab:▸\ ,eol:¬,trail:•,extends:»,precedes:«,nbsp:␣
+
+let &showbreak = '↪ '   " highlight wrapped lines
+set nowrap              " dont wrap lines
+set display+=lastline   " show as much of the last (wrapped) line as possible
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -393,7 +406,6 @@ set textwidth=500
 
 set autoindent
 set smartindent
-set nowrap "dont wrap lines
 
 
 """"""""""""""""""""""""""""""
