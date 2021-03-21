@@ -34,17 +34,32 @@ set history=700
 filetype plugin on
 filetype indent on
 
+" register terminal key codes here in order to use them in mappings
+if !has('gui_running')
+    if &term =~ 'xterm'
+        set <S-F3>=[1;2R
+        set <M-j>=j
+        set <M-k>=k
+        set <M-l>=l
+        set <M-h>=h
+        map <C-@> <C-Space>
+        imap <C-@> <C-Space>
+    endif
+endif
+
 " Set to auto read when a file is changed from the outside
 " | execute 'redraw!'
 set autoread
-augroup autoread
-    autocmd!
-    autocmd FocusGained * : silent! checktime
-    autocmd WinEnter,BufEnter,BufWinEnter * :silent! checktime
-    autocmd CursorMoved,CursorMovedI * :silent! checktime
-    " Disable if performance hit becomes noticable
-    autocmd CursorHold,CursorHoldI * :silent! checktime
-augroup END
+if !has("gui_running")
+    augroup autoread
+        autocmd!
+        autocmd FocusGained * : silent! checktime
+        autocmd WinEnter,BufEnter,BufWinEnter * :silent! checktime
+        autocmd CursorMoved,CursorMovedI * :silent! checktime
+        " Disable if performance hit becomes noticable
+        autocmd CursorHold,CursorHoldI * :silent! checktime
+    augroup END
+endif
 
 " Return to last edit position when opening files
 augroup lastedit
@@ -62,6 +77,7 @@ augroup END
 " causing its own problems as the timedout sequence is trapped, see:
 " https://vi.stackexchange.com/questions/13862/using-a-no-op-key-in-insert-mode-cant-use-key-after-using-no-op-mapping
 map <Space> <Leader>
+map <C-Space> <LocalLeader>
 
 " better copy & paste
 set clipboard=unnamed,unnamedplus
@@ -96,16 +112,6 @@ endif
 " NOTE: as keycodes aren't typed manually, low timeouts prevent blocking <Esc>
 set timeoutlen=750 ttimeoutlen=25
 
-" register terminal key codes here in order to use them in mappings
-if !has('gui_running')
-    if &term =~ 'xterm'
-        set <S-F3>=[1;2R
-        set <M-j>=j
-        set <M-k>=k
-        set <M-l>=l
-        set <M-h>=h
-    endif
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,11 +187,6 @@ call plug#end()
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
-
-" Remap latexsuite's placeholder jump to avoid clash with window navigation
-imap <C-@> <Plug>IMAP_JumpForward
-nmap <C-@> <Plug>IMAP_JumpForward
-vmap <C-@> <Plug>IMAP_JumpForward
 
 " Disable default option to show current mode, as airline will do this for us
 augroup airline_showmode
@@ -424,17 +425,8 @@ noremap q<Space> q/
 noremap <Leader><C-@> :
 noremap q<C-@> q:
 
-" Disable highlight when <Leader>c is pressed
-noremap <silent> <Leader>c :nohlsearch<CR>
-" a better version of the above command would be to extend the standard redraw
-" <C-l> hotkey, however this is currently shadowed by the window navigation below
-"nnoremap <silent> <C-l> :<C-u>nohlsearch<cr><C-l>
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" Redrawing the screen also causes to disable highlight and updated diffs
+nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " With this function we can create cabbreviations that trigger only if:
 "   1) commandline is beginning with ':', not '/' or '?'
