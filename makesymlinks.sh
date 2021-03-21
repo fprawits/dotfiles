@@ -5,7 +5,7 @@
 
 # bash 'strict' mode
 set -euo pipefail
-IFS='$\n\t'
+IFS=$'\n\t'
 
 # setup for globbing all target files
 shopt -s extglob globstar
