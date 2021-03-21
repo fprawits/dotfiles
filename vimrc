@@ -197,10 +197,6 @@ augroup END
 let g:airline#extensions#tabline#enabled = 1
 " Show only filename in tabline
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-" molokai airline theme has confusing palette for current/hidden/modified buffers
-" alternative candidates are: serene, badcat, raven, jellybeans, fairyfloss, luna
-" seagull, simple, sol
-let g:airline_theme = 'raven'
 
 " textoject-anyblock: restrict matching to (), [], {}, <>
 let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
@@ -331,21 +327,15 @@ syntax enable
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
+    set guioptions-=T  " remove toolbar
+    set guioptions-=e  " remove tabbar
     set t_Co=256
     set guitablabel=%M\ %t
 endif
 
 try
-    let g:molokai_original=1
-    let g:rehash256=1
-    colorscheme molokai
-    " Fix irritating parens matching in standard molokai by:
-    " * switching fg and bg
-    "highlight MatchParen cterm=bold ctermbg=none ctermfg=208
-    " * using a custom palette different form standard molokai
-    highlight MatchParen cterm=bold ctermbg=DarkGray ctermfg=DarkGreen
+    let g:gruvbox_italic = '1'
+    colorscheme gruvbox
 catch
 endtry
 
