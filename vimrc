@@ -112,6 +112,13 @@ endif
 " NOTE: as keycodes aren't typed manually, low timeouts prevent blocking <Esc>
 set timeoutlen=750 ttimeoutlen=25
 
+" vim 8 introduced a mode to discern between keys like <Tab> and <C-I> if the
+" terminal supports it (e.g. xterm). This however causes problems in
+" gnome-terminal, therefore this will be disabled (see `:h modifyOtherKeys`)
+if v:version >= 800
+    let &t_TI = ""
+    let &t_TE = ""
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
