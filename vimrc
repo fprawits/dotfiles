@@ -582,6 +582,9 @@ command! -bang Q  q<bang>
 command! -bang Qa qa<bang>
 command! -bang QA qa<bang>
 
+" insert current date and time
+iabbrev xdate <C-R>=strftime("%F %T")<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
