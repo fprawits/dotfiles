@@ -141,6 +141,9 @@ call plug#begin('~/.vim/plugged')
 
     " latex-suite for vim
     Plug 'vim-latex/vim-latex'
+    " set grep program to always generate a file-name, even for single match
+    set grepprg=grep\ -nH\ $*
+    " set grepprg=rg\ -H\ --vimgrep\ $*
 
     " better manipulation of brackets and HTML/XML tags
     Plug 'tpope/vim-surround'
@@ -160,6 +163,24 @@ call plug#begin('~/.vim/plugged')
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    " Disable default option to show current mode, as airline will do this for us
+    augroup airline_showmode
+        autocmd!
+        autocmd User AirlineToggledOn set noshowmode
+        autocmd User AirlineToggledOff set showmode
+    augroup END
+    " Display buffers in the tab line if only one tab is open
+    let g:airline#extensions#tabline#enabled = 1
+    " Show only filename in tabline
+    let g:airline#extensions#tabline#formatter = 'unique_tail'
+    " unicode symbols
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    let g:airline_symbols.crypt = '🔒'
+    let g:airline_symbols.branch = '⎇'
+    let g:airline_symbols.spell = 'Ꞩ'
+    let g:airline_symbols.notexists = 'Ɇ'
 
     " collection of color schemes
     Plug 'rafi/awesome-vim-colorschemes'
@@ -173,73 +194,42 @@ call plug#begin('~/.vim/plugged')
     Plug 'kana/vim-textobj-user'
     " unify (), [], {}, "", '', <> textobjects under shortcut `ib` and `ab`
     Plug 'rhysd/vim-textobj-anyblock'
+    " textoject-anyblock: restrict matching to (), [], {}, <>
+    let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
+
 
     " highlight targets of next f/F/t/T find command
     Plug 'unblevable/quick-scope'
+    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
     " new motion: sneak
     Plug 'justinmk/vim-sneak'
 
     " autocompletion for python
     Plug 'davidhalter/jedi-vim'
+    let g:jedi#popup_on_dot=0
+    let g:jedi#show_call_signatures_delay=0
+
 
     " fzf integration (fuzzy finder)
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
+    nnoremap <Leader>b :Buffers<CR>
+    nnoremap <Leader>f :Files<CR>
+    nnoremap <Leader>l :Locate<Space>
+    nnoremap <Leader>h :Helptags<CR>
+
 
     " markdown folding, concealing and syntax highlight
     Plug 'plasticboy/vim-markdown'
+    let g:vim_markdown_conceal_code_blocks = 0
 
     " visualization of undotree
     Plug 'mbbill/undotree'
+    nnoremap <Leader>u :UndotreeToggle<CR>
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" Disable default option to show current mode, as airline will do this for us
-augroup airline_showmode
-    autocmd!
-    autocmd User AirlineToggledOn set noshowmode
-    autocmd User AirlineToggledOff set showmode
-augroup END
-" Display buffers in the tab line if only one tab is open
-let g:airline#extensions#tabline#enabled = 1
-" Show only filename in tabline
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-" unicode symbols
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-
-" textoject-anyblock: restrict matching to (), [], {}, <>
-let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
-
-" Quick-Scope:
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-" Configuration for jedi-vim
-let g:jedi#popup_on_dot=0
-let g:jedi#show_call_signatures_delay=0
-
-" Mappings for fzf
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>l :Locate<Space>
-nnoremap <Leader>h :Helptags<CR>
-
-" Disable concealing of code fences
-let g:vim_markdown_conceal_code_blocks = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
