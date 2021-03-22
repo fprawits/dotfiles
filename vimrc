@@ -230,6 +230,9 @@ call plug#begin('~/.vim/plugged')
     " git integration
     Plug 'tpope/vim-fugitive'
 
+    " read man pages in vim, see `:h :Man`
+    Plug 'vim-utils/vim-man'
+
     " visualization of undotree
     Plug 'mbbill/undotree'
     nnoremap <Leader>u :UndotreeToggle<CR>
