@@ -190,6 +190,9 @@ call plug#begin('~/.vim/plugged')
     " markdown folding, concealing and syntax highlight
     Plug 'plasticboy/vim-markdown'
 
+    " visualization of undotree
+    Plug 'mbbill/undotree'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -374,12 +377,25 @@ set encoding=utf-8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Turn off backup and swap files, use persistent undo instead
 set nobackup
 set nowb
 set noswapfile
 
 set undolevels=700
+
+if has("persistent_undo")
+   let s:target_path = expand('~/.vim/undodir')
+
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(s:target_path)
+        call mkdir(s:target_path, "p", 0700)
+    endif
+
+    let &undodir = s:target_path . '//'
+    set undofile
+endif
 
 " variable assignment no longer blocks <C-X><C-F> filename completion
 set isfname-==
