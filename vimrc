@@ -224,6 +224,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'plasticboy/vim-markdown'
     let g:vim_markdown_conceal_code_blocks = 0
 
+    " asynchronous linting
+    Plug 'dense-analysis/ale'
+
     " visualization of undotree
     Plug 'mbbill/undotree'
     nnoremap <Leader>u :UndotreeToggle<CR>
