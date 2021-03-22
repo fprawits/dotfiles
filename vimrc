@@ -227,6 +227,9 @@ call plug#begin('~/.vim/plugged')
     " asynchronous linting
     Plug 'dense-analysis/ale'
 
+    " git integration
+    Plug 'tpope/vim-fugitive'
+
     " visualization of undotree
     Plug 'mbbill/undotree'
     nnoremap <Leader>u :UndotreeToggle<CR>
