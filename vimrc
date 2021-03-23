@@ -237,6 +237,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'mbbill/undotree'
     nnoremap <Leader>u :UndotreeToggle<CR>
 
+    " recursively diff directories
+    Plug 'will133/vim-dirdiff'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
