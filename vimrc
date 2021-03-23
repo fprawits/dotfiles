@@ -218,7 +218,7 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>f :Files<CR>
     nnoremap <Leader>l :Locate<Space>
     nnoremap <Leader>h :Helptags<CR>
-
+    nnoremap <Leader>r :Rg<Space>
 
     " markdown folding, concealing and syntax highlight
     Plug 'plasticboy/vim-markdown'
