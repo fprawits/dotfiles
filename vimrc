@@ -486,6 +486,9 @@ CNoreAbbrev bdel buffers<CR>:bdelete
 CNoreAbbrev sb buffers<CR>:sb
 CNoreAbbrev vsb buffers<CR>:vertical sb
 
+" open help in vertical split
+CNoreAbbrev h vert h
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
