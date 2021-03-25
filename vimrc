@@ -564,9 +564,6 @@ vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
 " Open Ack and put the cursor in the right position
 "noremap <Leader>g :Ack
 
-" Open the quickfix window (display errors, search results)
-noremap <Leader>qq :botright copen<cr>
-
 " map <F3> and <S-F3> to jump between locations in a quickfix list, or
 " differences if in window in diff mode
 nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
@@ -644,3 +641,15 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+function! ToggleQuickFix()
+    if getqflist({'winid' : 0}).winid
+    " Alternative implementation
+    " if !empty(filter(getwininfo(), 'v:val.quickfix'))
+        cclose
+    else
+        copen
+    endif
+endfunction
+command! -nargs=0 -bar ToggleQuickFix silent call ToggleQuickFix()
+nnoremap <silent> <Leader>q :silent ToggleQuickFix<CR>
