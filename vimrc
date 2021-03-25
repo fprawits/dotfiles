@@ -321,10 +321,6 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
-" Don't redraw while executing macros (good performance config)
-" Disabled as it causes the statusline to be drawn only after a key is pressed
-"set lazyredraw
-
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
@@ -351,7 +347,8 @@ set display+=lastline   " show as much of the last (wrapped) line as possible
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-"
+set termguicolors
+
 " Enable syntax highlighting
 syntax enable
 
@@ -466,7 +463,7 @@ noremap q<Space> q/
 noremap <Leader><C-@> :
 noremap q<C-@> q:
 
-" Redrawing the screen also causes to disable highlight and updated diffs
+" Redrawing the screen also disables highlight and updates diffs
 nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " With this function we can create cabbreviations that trigger only if:
