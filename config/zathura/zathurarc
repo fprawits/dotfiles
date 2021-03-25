@@ -26,15 +26,12 @@ set window-width  1200
 set window-height 1080
 
 # Change the page background from white to sepia
-# This mode can be deactivated using 'ctrl+r'
-set recolor true
 set recolor-lightcolor "#FDF5E6"
 set recolor-darkcolor "#000000"
 
 # Change font color of input bar to black
-# set inputbar-bg "#AFEEEE"
 set inputbar-fg "#000000"
-set inputbar-bg "#E0FFFF"
+set inputbar-bg "#FFFFFF"
 
 # Increase the font from 9 (default) to 12
 set font "monospace normal 12"
@@ -47,3 +44,6 @@ map <Space> feedkeys /
 
 # custom goto mark command
 map gm mark_evaluate
+
+# Access index similar to how netrw jumps up the hierarchy
+map - toggle_index
