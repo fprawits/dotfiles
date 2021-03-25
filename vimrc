@@ -142,8 +142,12 @@ call plug#begin('~/.vim/plugged')
     " latex-suite for vim
     Plug 'vim-latex/vim-latex'
     " set grep program to always generate a file-name, even for single match
-    set grepprg=grep\ -nH\ $*
-    " set grepprg=rg\ -H\ --vimgrep\ $*
+    if executable('rg')
+        let &grepprg = 'rg --vimgrep $*'
+        set grepformat=%f:%l:%c:%m
+    else
+        set grepprg=grep\ -nH\ $*
+    endif
 
     " better manipulation of brackets and HTML/XML tags
     Plug 'tpope/vim-surround'
