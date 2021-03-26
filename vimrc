@@ -227,6 +227,7 @@ call plug#begin('~/.vim/plugged')
     " markdown folding, concealing and syntax highlight
     Plug 'plasticboy/vim-markdown'
     let g:vim_markdown_conceal_code_blocks = 0
+    let g:highlightedyank_max_lines = 1000
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
@@ -243,6 +244,10 @@ call plug#begin('~/.vim/plugged')
 
     " recursively diff directories
     Plug 'will133/vim-dirdiff'
+
+    " highlight the yanked text
+    Plug 'machakann/vim-highlightedyank'
+    let g:highlightedyank_highlight_duration = 500
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -277,7 +282,7 @@ set ruler
 " Change cursor depending on current mode, works for VTE compatible terminals
 " taken from: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 if &term =~ 'xterm'
-    let &t_SI = "\<Esc>[5 q"
+    " let &t_SI = "\<Esc>[5 q"
     let &t_SR = "\<Esc>[4 q"
     let &t_EI = "\<Esc>[2 q"
 endif
@@ -537,7 +542,6 @@ augroup END
 
 " useful mappings for direct interaction with system clipboard
 if has('clipboard')
-    " nnoremap <Leader>y "+yiw <bar> :echo 'Yanked to clipboard:' <bar> echo '  '.@*<CR>
     nnoremap <Leader>y "+y
     xnoremap <Leader>y "+y
     onoremap <Leader>y "+y
