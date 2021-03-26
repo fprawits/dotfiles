@@ -60,14 +60,18 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+BLUE="\[$(tput bold)$(tput setaf 4)\]"
+GREEN="\[$(tput bold)$(tput setaf 2)\]"
+RESET="\[$(tput sgr0)\]"
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1="${GREEN}\u@\h${RESET}:${BLUE}\w${RESET}\$ "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='\u@\h:\w\$ '
 fi
-unset color_prompt force_color_prompt
+unset color_prompt force_color_prompt BLUE GREEN RESET
+PS1='${debian_chroot:+($debian_chroot)}'"${PS1}"
 
-# If this is an xterm set the title to user@host:dir
+# If this is an xterm set the *title* to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
@@ -108,7 +112,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
