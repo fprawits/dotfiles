@@ -78,7 +78,11 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if [ -r ~/.dircolors ]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -159,14 +163,14 @@ fi
 # point to the local installation (usual default: ~/anaconda3 or ~/miniconda3)
 __anaconda_dir=( "${HOME}"/@(ana|mini)conda3 )
 
-__conda_setup="$("${__anaconda_dir}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$("${__anaconda_dir[0]}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "${__anaconda_dir}/etc/profile.d/conda.sh" ]; then
-        . "${__anaconda_dir}/etc/profile.d/conda.sh"
+    if [ -f "${__anaconda_dir[0]}/etc/profile.d/conda.sh" ]; then
+        . "${__anaconda_dir[0]}/etc/profile.d/conda.sh"
     else
-        export PATH="${__anaconda_dir}/bin:$PATH"
+        export PATH="${__anaconda_dir[0]}/bin:$PATH"
     fi
 fi
 unset __conda_setup __anaconda_dir
