@@ -380,6 +380,9 @@ endif
 
 try
     let g:gruvbox_italic = '1'
+    if !has("gui_running")
+        let g:gruvbox_guisp_fallback = 'bg'
+    endif
     colorscheme gruvbox
 catch
 endtry
