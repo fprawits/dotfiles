@@ -420,6 +420,7 @@ cnoremap <expr> %% getcmdtype()==':' ? expand('%:h') . '/' : '%%'
 " TODO: maybe replace by abbrev or use filetype specific mappings mapped to common key, e.g. <F9>
 cnoremap <expr> %c getcmdtype()==':' ? '**/*.[ch]' : '%c'
 cnoremap <expr> %py getcmdtype()==':' ? '**/*.py' : '%py'
+cnoremap <expr> %md getcmdtype()==':' ? '**/*.md' : '%md'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
