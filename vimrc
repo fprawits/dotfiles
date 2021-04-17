@@ -211,9 +211,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'unblevable/quick-scope'
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-    " new motion: sneak
-    Plug 'justinmk/vim-sneak'
-
     " autocompletion for python
     Plug 'davidhalter/jedi-vim'
     let g:jedi#popup_on_dot=0
