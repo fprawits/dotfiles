@@ -258,6 +258,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'machakann/vim-highlightedyank'
     let g:highlightedyank_highlight_duration = 500
 
+    " Snippets
+    Plug 'sirver/ultisnips'
+
     " Exchange command `cx`
     Plug 'tommcdo/vim-exchange'
 
