@@ -257,6 +257,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'machakann/vim-highlightedyank'
     let g:highlightedyank_highlight_duration = 500
 
+    " Exchange command `cx`
+    Plug 'tommcdo/vim-exchange'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
