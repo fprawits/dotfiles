@@ -363,6 +363,13 @@ let &showbreak = '↪ '   " highlight wrapped lines
 set nowrap              " dont wrap lines
 set display+=lastline   " show as much of the last (wrapped) line as possible
 
+" Disable macro recording when insinde cmdline-window (`q:`, `q/`, `q?`)
+" and press 'q' to close the window
+augroup cmdlinewindow
+    autocmd!
+    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q <Cmd>quit<CR>
+augroup END
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
