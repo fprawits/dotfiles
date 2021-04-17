@@ -1,0 +1,13 @@
+[alias]
+	lol = log --oneline --decorate --graph
+    ctags = !.git/hooks/ctags
+[core]
+	editor = vim
+    autocrlf = input
+[init]
+    templatedir = ~/.git_template
+[push]
+	default = simple
+[user]
+	name = fprawits
+	email = prawits.florian@gmail.com
