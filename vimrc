@@ -132,6 +132,11 @@ endif
 " activate the matchit plugin that ships with vi by default
 packadd! matchit
 
+" activate man pager that ships with vim
+runtime ftplugin/man.vim
+let g:ft_man_open_mode = 'vert'
+set keywordprg=:Man
+
 " Make sure that vim-plug is installed, see:
 " https://github.com/junegunn/vim-plug/wiki/tutorial
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -240,9 +245,6 @@ call plug#begin('~/.vim/plugged')
 
     " git integration
     Plug 'tpope/vim-fugitive'
-
-    " read man pages in vim, see `:h :Man`
-    Plug 'vim-utils/vim-man'
 
     " visualization of undotree
     Plug 'mbbill/undotree'
