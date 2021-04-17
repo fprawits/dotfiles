@@ -76,8 +76,9 @@ augroup END
 "   nnoremap <Space> <Nop>
 " causing its own problems as the timedout sequence is trapped, see:
 " https://vi.stackexchange.com/questions/13862/using-a-no-op-key-in-insert-mode-cant-use-key-after-using-no-op-mapping
+" Mapping the desired key to <Leader> directly instead has the additional
+" advantage of echoing when `showcmd` is set.
 map <Space> <Leader>
-map <C-Space> <LocalLeader>
 
 " better copy & paste
 set clipboard=unnamed,unnamedplus
@@ -482,10 +483,8 @@ noremap k gk
 
 " Easier to enter cmd- and search-mode
 " Remark: <C-Space> is send to vim by the terminal as <C-@>
-noremap <Leader><Space> /
-noremap q<Space> q/
-noremap <Leader><C-@> :
-noremap q<C-@> q:
+noremap <C-Space> /
+noremap <Leader><Space> za
 
 " Redrawing the screen also disables highlight and updates diffs
 nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
