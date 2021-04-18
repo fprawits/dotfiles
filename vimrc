@@ -138,6 +138,9 @@ runtime ftplugin/man.vim
 let g:ft_man_open_mode = 'vert'
 set keywordprg=:Man
 
+" automatically update the gnu-global database, see `~/.local/plugin/gtags.vim`
+let g:Gtags_Auto_Update = 1
+
 " Make sure that vim-plug is installed, see:
 " https://github.com/junegunn/vim-plug/wiki/tutorial
 if empty(glob('~/.vim/autoload/plug.vim'))
