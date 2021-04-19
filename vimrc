@@ -12,7 +12,6 @@
 "   -> Visual mode related
 "   -> Moving around, tabs and buffers
 "   -> Editing mappings
-"   -> vimgrep searching and cope displaying
 "   -> Spell checking
 "   -> Misc
 "   -> Helper functions
@@ -238,6 +237,7 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>fL :BLines<CR>
     nnoremap <Leader>fh :Helptags<CR>
     nnoremap <Leader>fr :Rg<Space>
+    vnoremap <Leader>fr y:Rg<Space><C-R>"<CR>
     nnoremap <Leader>fw :Windows<CR>
     nnoremap <Leader>fa :Locate<Space>
     nnoremap <Leader>ft :Tags<CR>
@@ -265,6 +265,8 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> yoa <Plug>(ale_toggle)
     nmap <silent> ]oa <Plug>(ale_enable)
     nmap <silent> [oa <Plug>(ale_disable)
+    nmap <silent> <Leader>ad <Plug>(ale_detail)
+    nmap <silent> <Leader>af <Plug>(ale_fix)
 
     " git integration
     Plug 'tpope/vim-fugitive'
@@ -544,6 +546,11 @@ CNoreAbbrev vsb buffers<CR>:vertical sb
 " open help in vertical split
 CNoreAbbrev h vert h
 
+" map <F3> and <S-F3> to jump between locations in a quickfix list, or
+" differences if in window in diff mode
+nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
+nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -606,22 +613,6 @@ noremap <Leader>D "_D
 
 " When you press <Leader>r you can search and replace the selected text
 vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ack searching and cope displaying
-"    requires ack.vim - it's much better than vimgrep/grep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you Ack after the selected text
-"vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open Ack and put the cursor in the right position
-"noremap <Leader>g :Ack
-
-" map <F3> and <S-F3> to jump between locations in a quickfix list, or
-" differences if in window in diff mode
-nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
-nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
