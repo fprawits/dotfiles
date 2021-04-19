@@ -43,7 +43,7 @@ if !has('gui_running')
         set <M-l>=l
         set <M-h>=h
         map <C-@> <C-Space>
-        imap <C-@> <C-Space>
+        map! <C-@> <C-Space>
     endif
 endif
 
@@ -498,6 +498,9 @@ noremap k gk
 " Remark: <C-Space> is send to vim by the terminal as <C-@>
 noremap <C-Space> /
 noremap <Leader><Space> za
+
+" Use <C-Space> to put word under cursor into commandline
+cnoremap <C-Space> <C-R><C-W>
 
 " Redrawing the screen also disables highlight and updates diffs
 nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
