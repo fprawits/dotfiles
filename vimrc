@@ -229,11 +229,24 @@ call plug#begin('~/.vim/plugged')
     " fzf integration (fuzzy finder)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    nnoremap <Leader>b :Buffers<CR>
-    nnoremap <Leader>f :Files<CR>
-    nnoremap <Leader>l :Locate<Space>
-    nnoremap <Leader>h :Helptags<CR>
-    nnoremap <Leader>r :Rg<Space>
+    nnoremap <Leader>fb :Buffers<CR>
+    nnoremap <Leader>ff :Files<CR>
+    nnoremap <Leader>fl :Lines<CR>
+    nnoremap <Leader>fL :BLines<CR>
+    nnoremap <Leader>fh :Helptags<CR>
+    nnoremap <Leader>fr :Rg<Space>
+    nnoremap <Leader>fw :Windows<CR>
+    nnoremap <Leader>fa :Locate<Space>
+    nnoremap <Leader>ft :Tags<CR>
+    nnoremap <Leader>fT :BTags<CR>
+    nnoremap <Leader>fm :Marks<CR>
+    nnoremap <Leader>f: :History:<CR>
+    nnoremap <Leader>f/ :History/<CR>
+    nnoremap <Leader>c :Commands<CR>
+    nnoremap <Leader>gf :GFiles<CR>
+    nnoremap <Leader>gF :GFiles?<CR>
+    nnoremap <Leader>gc :Commits<CR>
+    nnoremap <Leader>gC :BCommits<CR>
 
     " markdown folding, concealing and syntax highlight
     Plug 'plasticboy/vim-markdown'
@@ -249,6 +262,7 @@ call plug#begin('~/.vim/plugged')
 
     " git integration
     Plug 'tpope/vim-fugitive'
+    nnoremap <Leader>gs :Git<CR>
 
     " visualization of undotree
     Plug 'mbbill/undotree'
