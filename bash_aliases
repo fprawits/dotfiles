@@ -2,6 +2,7 @@ alias vi='vim'
 alias ..='cd ..'
 alias rs='rsync -avhF'
 alias lc='locate'
+alias nb='newsbeuter'
 
 alias ipy='ipython --pylab'
 alias jqt='jupyter qtconsole'
