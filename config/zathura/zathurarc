@@ -40,7 +40,7 @@ set font "monospace normal 12"
 set adjust-open "width"
 
 # start a search with <Space>
-map <Space> feedkeys /
+map <C-Space> feedkeys /
 
 # custom goto mark command
 map gm mark_evaluate
