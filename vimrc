@@ -330,6 +330,12 @@ endif
 " show line numbers
 set number
 
+" Save space by including signcolumn into number column
+try
+    set signcolumn=number
+catch
+endtry
+
 " Highlight active window with rel. line numbers, cursorline and colorcolumn
 augroup highlight_active_window
     autocmd!
