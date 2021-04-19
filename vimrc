@@ -177,6 +177,9 @@ call plug#begin('~/.vim/plugged')
 
     " pairs of useful mappings
     Plug 'tpope/vim-unimpaired'
+    nnoremap <silent> yoq :silent ToggleQuickFix<CR>
+    nnoremap <silent> ]oq :copen<CR>
+    nnoremap <silent> [oq :cclose<CR>
 
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
@@ -259,6 +262,9 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [w <Plug>(ale_previous)
     nmap <silent> ]w <Plug>(ale_next)
     nmap <silent> ]W <Plug>(ale_last)
+    nmap <silent> yoa <Plug>(ale_toggle)
+    nmap <silent> ]oa <Plug>(ale_enable)
+    nmap <silent> [oa <Plug>(ale_disable)
 
     " git integration
     Plug 'tpope/vim-fugitive'
@@ -700,4 +706,3 @@ function! ToggleQuickFix()
     endif
 endfunction
 command! -nargs=0 -bar ToggleQuickFix silent call ToggleQuickFix()
-nnoremap <silent> <Leader>q :silent ToggleQuickFix<CR>
