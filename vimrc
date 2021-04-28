@@ -129,8 +129,17 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" activate the matchit plugin that ships with vi by default
+" activate the matchit plugin that ships with vim by default
 packadd! matchit
+
+" activate plugin for gdb integration that ships with vim
+packadd! termdebug
+let g:termdebug_wide = 1
+nnoremap <Leader>db :Break<CR>
+nnoremap <Leader>dB :Clear<CR>
+nnoremap <Leader>dj :Over<CR>
+nnoremap <Leader>dJ :Continue<CR>
+nnoremap <Leader>dl :Step<CR>
 
 " activate man pager that ships with vim
 runtime ftplugin/man.vim
@@ -270,7 +279,7 @@ call plug#begin('~/.vim/plugged')
 
     " git integration
     Plug 'tpope/vim-fugitive'
-    nnoremap <Leader>gs :Git<CR>
+    nnoremap gs :Git<CR>
 
     " visualization of undotree
     Plug 'mbbill/undotree'
