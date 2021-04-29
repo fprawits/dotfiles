@@ -1,3 +1,3 @@
 setlocal noexpandtab
 
-let b:ale_fixers = ['shellcheck']
+let b:ale_fixers = ['shfmt']
