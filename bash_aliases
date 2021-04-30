@@ -11,7 +11,7 @@ alias jlab='jupyter lab --browser chromium-browser 1>/tmp/jupyter-lab.log 2>&1 &
 alias jconvert='jupyter nbconvert --to html --HTMLExporter.exclude_input=True'
 
 if [ -f "$HOME/.exclude.diff" ]; then
-    alias xdiff="diff -qr --exclude-from $HOME/.exclude.diff"
+	alias xdiff="diff -qr --exclude-from $HOME/.exclude.diff"
 fi
 
 alias save="rsync -avhFr \
