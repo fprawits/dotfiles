@@ -1,5 +1,5 @@
-alias vi='vim'
 alias ..='cd ..'
+alias ...='cd ../..'
 alias rs='rsync -avhF'
 alias lc='locate'
 alias nb='newsbeuter'
