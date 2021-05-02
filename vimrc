@@ -246,7 +246,7 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>fL :BLines<CR>
     nnoremap <Leader>fh :Helptags<CR>
     nnoremap <Leader>fr :Rg<Space>
-    vnoremap <Leader>fr y:Rg<Space><C-R>"<CR>
+    vnoremap <Leader>fr y:Rg<Space><C-R>0<CR>
     nnoremap <Leader>fw :Windows<CR>
     nnoremap <Leader>fa :Locate<Space>
     nnoremap <Leader>ft :Tags<CR>
@@ -254,7 +254,8 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>fm :Marks<CR>
     nnoremap <Leader>f: :History:<CR>
     nnoremap <Leader>f/ :History/<CR>
-    nnoremap <Leader>c :Commands<CR>
+    nnoremap <Leader>fc :Commands<CR>
+    nnoremap <Leader>fs :Snippets<CR>
     nnoremap <Leader>gf :GFiles<CR>
     nnoremap <Leader>gF :GFiles?<CR>
     nnoremap <Leader>gc :Commits<CR>
@@ -263,17 +264,17 @@ call plug#begin('~/.vim/plugged')
     " markdown folding, concealing and syntax highlight
     Plug 'plasticboy/vim-markdown'
     let g:vim_markdown_conceal_code_blocks = 0
-    let g:highlightedyank_max_lines = 1000
+    let g:vim_markdown_new_list_item_indent = 0
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
-    nmap <silent> [W <Plug>(ale_first)
-    nmap <silent> [w <Plug>(ale_previous)
-    nmap <silent> ]w <Plug>(ale_next)
-    nmap <silent> ]W <Plug>(ale_last)
-    nmap <silent> yoa <Plug>(ale_toggle)
-    nmap <silent> ]oa <Plug>(ale_enable)
-    nmap <silent> [oa <Plug>(ale_disable)
+    nmap <silent> [W         <Plug>(ale_first)
+    nmap <silent> [w         <Plug>(ale_previous)
+    nmap <silent> ]w         <Plug>(ale_next)
+    nmap <silent> ]W         <Plug>(ale_last)
+    nmap <silent> yoa        <Plug>(ale_toggle)
+    nmap <silent> ]oa        <Plug>(ale_enable)
+    nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
 
@@ -290,10 +291,13 @@ call plug#begin('~/.vim/plugged')
 
     " highlight the yanked text
     Plug 'machakann/vim-highlightedyank'
+    let g:highlightedyank_max_lines = 250
     let g:highlightedyank_highlight_duration = 500
 
     " Snippets
     Plug 'sirver/ultisnips'
+    Plug 'honza/vim-snippets'
+    let g:UltiSnipsExpandTrigger = "<Tab>"
 
     " Exchange command `cx`
     Plug 'tommcdo/vim-exchange'
