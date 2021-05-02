@@ -729,3 +729,11 @@ function! ToggleQuickFix()
     endif
 endfunction
 command! -nargs=0 -bar ToggleQuickFix silent call ToggleQuickFix()
+
+" latex-suite already defines a mapping (<leader>ls) for forward searching.
+" Alternatively the following can be used
+"function! SyncTexForward()
+"    let execstr = "silent !zathura --synctex-forward ".line(".").":".col(".").":%:p %:p:r.pdf &"
+"    exec execstr
+"endfunction
+"noremap <leader>lf :call SyncTexForward()<CR>

@@ -47,3 +47,9 @@ map gm mark_evaluate
 
 # Access index similar to how netrw jumps up the hierarchy
 map - toggle_index
+
+# synctex integration with vim
+# NOTE: the use of gvim is encouraged as it automatically runs as a server with
+# the name `GVIM`, therefore not requiring to start editing the `*.tex` files
+# with `vim --servername VIM *.tex`.
+set synctex-editor-command "gvim --servername GVIM --remote +%{line} %{input}"
