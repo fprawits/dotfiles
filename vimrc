@@ -261,6 +261,11 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>gc :Commits<CR>
     nnoremap <Leader>gC :BCommits<CR>
 
+    " align text objects, useful for tables, etc.
+    Plug 'junegunn/vim-easy-align'
+    nmap ga <Plug>(EasyAlign)
+    xmap ga <Plug>(EasyAlign)
+
     " markdown folding, concealing and syntax highlight
     Plug 'plasticboy/vim-markdown'
     let g:vim_markdown_conceal_code_blocks = 0
