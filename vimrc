@@ -108,6 +108,10 @@ if has('path_extra')
     setglobal tags-=./tags tags-=./tags; tags^=./tags;
 endif
 
+" use tjump to select tags if there is more than one match
+noremap <C-]> g<C-]>
+noremap g<C-]> <C-]>
+
 " time to wait for completing mappings / terminal keycodes [ms]
 " NOTE: as keycodes aren't typed manually, low timeouts prevent blocking <Esc>
 set timeoutlen=750 ttimeoutlen=25
@@ -419,7 +423,7 @@ set display+=lastline   " show as much of the last (wrapped) line as possible
 " and press 'q' to close the window
 augroup cmdlinewindow
     autocmd!
-    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q <Cmd>quit<CR>
+    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q :quit<CR>
 augroup END
 
 
