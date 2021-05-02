@@ -129,6 +129,10 @@ if has('nvim') || v:version >= 800
     tnoremap <C-V><Esc> <Esc>
 endif
 
+if has("patch-8.1.0360")
+    set diffopt+=algorithm:histogram,indent-heuristic
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
