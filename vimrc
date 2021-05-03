@@ -124,11 +124,6 @@ if v:version >= 800
     let &t_TE = ""
 endif
 
-if has('nvim') || v:version >= 800
-    tnoremap <Esc> <C-\><C-N>
-    tnoremap <C-V><Esc> <Esc>
-endif
-
 if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram,indent-heuristic
 endif
