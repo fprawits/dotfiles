@@ -646,6 +646,11 @@ noremap <Leader>D "_D
 " When you press <Leader>r you can search and replace the selected text
 vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
 
+" Use * or # as motion for the change/delete commands, repeat with `.` afterwards
+nnoremap c* *``cgn
+nnoremap c# #``cgN
+nnoremap d* *``dgn
+nnoremap d# #``dgN
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
