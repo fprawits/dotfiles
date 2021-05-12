@@ -11,3 +11,5 @@
 [user]
 	name = fprawits
 	email = prawits.florian@gmail.com
+[diff]
+	algorithm = histogram
