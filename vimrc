@@ -749,3 +749,16 @@ command! -nargs=0 -bar ToggleQuickFix silent call ToggleQuickFix()
 "    exec execstr
 "endfunction
 "noremap <leader>lf :call SyncTexForward()<CR>
+"
+
+" Cite as you write integration of Zotero API, taken from
+" https://retorque.re/zotero-better-bibtex/citing/cayw/
+function! ZoteroCite()
+  " pick a format based on the filetype (customize at will)
+  let format = &filetype =~ '.*tex' ? 'citep' : 'pandoc'
+  let api_call = 'http://127.0.0.1:23119/better-bibtex/cayw?format='.format.'&brackets=1'
+  let ref = system('curl -s '.shellescape(api_call))
+  return ref
+endfunction
+noremap <leader>z "=ZoteroCite()<CR>p
+inoremap <C-z> <C-r>=ZoteroCite()<CR>

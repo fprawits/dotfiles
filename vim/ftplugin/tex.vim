@@ -4,6 +4,9 @@
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf,dvi'
 
+" Use biber instead of bibtex
+let g:Tex_BibtexFlavor = 'biber'
+
 " Use zathura to view pdfs
 if executable('zathura')
     let g:Tex_ViewRule_pdf='zathura'
@@ -29,3 +32,9 @@ setlocal breakindent
 
 " Disable visual hints for tabs, EOL, trailing whitespace etc.
 "setlocal nolist
+
+" Ignore compiled files created by latex engine
+setlocal suffixes+=.bcf,.lof,.lot,.synctex.gz,.run.xml
+
+" Typical endings for `gf` command
+setlocal suffixesadd+=.sty,.cls
