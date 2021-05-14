@@ -149,6 +149,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # use `fd` instead of `find`
 if command -v fd &>/dev/null; then
+	export FZF_DEFAULT_OPTS="--bind tab:toggle-out,shift-tab:toggle-in"
 	export FZF_DEFAULT_COMMAND='fd --type f'
 	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 	_fzf_compgen_path() {
