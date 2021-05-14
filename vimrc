@@ -238,34 +238,36 @@ call plug#begin('~/.vim/plugged')
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
     " autocompletion for python
-    Plug 'davidhalter/jedi-vim'
-    let g:jedi#popup_on_dot=0
-    let g:jedi#show_call_signatures_delay=0
+    " Plug 'davidhalter/jedi-vim'
+    " let g:jedi#popup_on_dot=0
+    " let g:jedi#show_call_signatures_delay=0
 
 
     " fzf integration (fuzzy finder)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    nnoremap <Leader>fb :Buffers<CR>
-    nnoremap <Leader>ff :Files<CR>
-    nnoremap <Leader>fl :Lines<CR>
-    nnoremap <Leader>fL :BLines<CR>
-    nnoremap <Leader>fh :Helptags<CR>
-    nnoremap <Leader>fr :Rg<Space>
-    vnoremap <Leader>fr y:Rg<Space><C-R>0<CR>
-    nnoremap <Leader>fw :Windows<CR>
-    nnoremap <Leader>fa :Locate<Space>
-    nnoremap <Leader>ft :Tags<CR>
-    nnoremap <Leader>fT :BTags<CR>
-    nnoremap <Leader>fm :Marks<CR>
-    nnoremap <Leader>f: :History:<CR>
-    nnoremap <Leader>f/ :History/<CR>
-    nnoremap <Leader>fc :Commands<CR>
-    nnoremap <Leader>fs :Snippets<CR>
-    nnoremap <Leader>gf :GFiles<CR>
-    nnoremap <Leader>gF :GFiles?<CR>
-    nnoremap <Leader>gc :Commits<CR>
-    nnoremap <Leader>gC :BCommits<CR>
+    nnoremap <Leader>fb   :Buffers<CR>
+    nnoremap <Leader>ff   :Files<CR>
+    nnoremap <Leader>fl   :Lines<CR>
+    nnoremap <Leader>fL   :BLines<CR>
+    nnoremap <Leader><F1> :Helptags<CR>
+    nnoremap <Leader>fr   :Rg<Space><C-R><C-W><CR>
+    vnoremap <Leader>fr   y:Rg<Space><C-R>0<CR>
+    nnoremap <Leader>fR   :Rg<Space>
+    nnoremap <Leader>fw   :Windows<CR>
+    nnoremap <Leader>fa   :Locate<Space>
+    nnoremap <Leader>ft   :Tags<CR>
+    nnoremap <Leader>fT   :BTags<CR>
+    nnoremap <Leader>fm   :Marks<CR>
+    nnoremap <Leader>fh   :History<CR>
+    nnoremap <Leader>f:   :History:<CR>
+    nnoremap <Leader>f/   :History/<CR>
+    nnoremap <Leader>fc   :Commands<CR>
+    nnoremap <Leader>fs   :Snippets<CR>
+    nnoremap <Leader>gf   :GFiles<CR>
+    nnoremap <Leader>gF   :GFiles?<CR>
+    nnoremap <Leader>gc   :Commits<CR>
+    nnoremap <Leader>gC   :BCommits<CR>
 
     " align text objects, useful for tables, etc.
     Plug 'junegunn/vim-easy-align'
@@ -558,13 +560,16 @@ noremap k gk
 " Easier to enter cmd- and search-mode
 " Remark: <C-Space> is send to vim by the terminal as <C-@>
 noremap <C-Space> /
-noremap <Leader><Space> za
-
+" Restrict search to visually selected area
+vnoremap <C-Space> <Esc>/\%V
 " Use <C-Space> to put word under cursor into commandline
 cnoremap <C-Space> <C-R><C-W>
 
 " Redrawing the screen also disables highlight and updates diffs
 nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+
+" Toggle folds
+noremap <Leader><Space> za
 
 " With this function we can create cabbreviations that trigger only if:
 "   1) commandline is beginning with ':', not '/' or '?'
