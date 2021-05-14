@@ -638,17 +638,9 @@ augroup END
 
 " useful mappings for direct interaction with system clipboard
 if has('clipboard')
-    nnoremap <Leader>y "+y
-    xnoremap <Leader>y "+y
-    onoremap <Leader>y "+y
-    nnoremap <Leader>Y "+y$
     nnoremap <expr> <Leader>p &paste ? '"+p' : ':setlocal paste<CR>"+p:setlocal nopaste<CR>'
     xnoremap <expr> <Leader>p &paste ? '"+p' : ':setlocal paste<CR>"+p:setlocal nopaste<CR>'
 endif
-
-" delete to blackhole register
-noremap <Leader>d "_d
-noremap <Leader>D "_D
 
 " When you press <Leader>r you can search and replace the selected text
 vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
