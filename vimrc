@@ -651,6 +651,14 @@ nnoremap c# #``cgN
 nnoremap d* *``dgn
 nnoremap d# #``dgN
 
+" Uniform escaping and quitting
+inoremap <C-Q>     <Esc>
+noremap  <C-Q>     <Esc>
+cnoremap <C-Q>     <C-C>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :qa!<CR>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
