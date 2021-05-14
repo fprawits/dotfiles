@@ -373,6 +373,9 @@ set cmdheight=2
 " Show typed commands, useful for showing incomplete sequences of mappings
 set showcmd
 
+" Show the number of matches when searching
+set shortmess-=S
+
 " A buffer becomes hidden when it is abandoned
 set hidden
 
