@@ -105,7 +105,7 @@ nnoremap Q <Nop>
 
 " search for tags in current directory and all parents (until root)
 if has('path_extra')
-    setglobal tags-=./tags tags-=./tags; tags^=./tags;
+    setglobal tags=./tags;~
 endif
 
 " use tjump to select tags if there is more than one match
@@ -150,7 +150,10 @@ let g:ft_man_open_mode = 'vert'
 set keywordprg=:Man
 
 " automatically update the gnu-global database, see `~/.local/plugin/gtags.vim`
-let g:Gtags_Auto_Update = 1
+" Note: should be managed by gutentags for now
+"let g:Gtags_Auto_Update = 1
+noremap <Leader>gg :GtagsCursor<CR>
+"set cscopetags
 
 " Make sure that vim-plug is installed, see:
 " https://github.com/junegunn/vim-plug/wiki/tutorial
@@ -309,6 +312,12 @@ call plug#begin('~/.vim/plugged')
 
     " Exchange command `cx`
     Plug 'tommcdo/vim-exchange'
+
+    " Automatic tag generation and management
+    Plug 'ludovicchabant/vim-gutentags'
+    Plug 'skywind3000/gutentags_plus'
+    let g:gutentags_modules = ['ctags', 'gtags_cscope']
+    let g:gutentags_project_root = ['.root']
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
