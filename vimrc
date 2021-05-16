@@ -449,14 +449,6 @@ set termguicolors
 " Enable syntax highlighting
 syntax enable
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T  " remove toolbar
-    set guioptions-=e  " remove tabbar
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
 try
     let g:gruvbox_italic = '1'
     if !has("gui_running")
