@@ -1,0 +1,12 @@
+# gutentags vim plugin
+.gutctags
+.notags
+.root
+
+# GNU global / gtags
+GPATH
+GRTAGS
+GTAGS
+
+# ctags
+tags

@@ -322,8 +322,15 @@ call plug#begin('~/.vim/plugged')
     " Automatic tag generation and management
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'
+    let g:gutentags_exclude_project_root = ['/usr/local', '~/.dotfiles', '~/.vim']
     let g:gutentags_modules = ['ctags', 'gtags_cscope']
     let g:gutentags_project_root = ['.root']
+    let g:gutentags_file_list_command = {
+        \ 'markers': {
+            \ '.git': 'git ls-files',
+            \ '.hg': 'hg files',
+            \ },
+        \ }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
