@@ -145,7 +145,7 @@ nnoremap <Leader>dJ :Continue<CR>
 nnoremap <Leader>dl :Step<CR>
 
 " activate man pager that ships with vim
-runtime ftplugin/man.vim
+runtime! ftplugin/man.vim
 let g:ft_man_open_mode = 'vert'
 set keywordprg=:Man
 
