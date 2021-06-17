@@ -282,6 +282,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'plasticboy/vim-markdown'
     let g:vim_markdown_conceal_code_blocks = 0
     let g:vim_markdown_new_list_item_indent = 0
+    let g:vim_markdown_folding_style_pythonic = 1
+    let g:vim_markdown_no_extensions_in_markdown = 1
+
+    " Vimwiki - manage notes, todo lists, etc.
+    Plug 'vimwiki/vimwiki'
+    let g:vimwiki_global_ext = 0
+    let g:vimwiki_list = [{ 'path' : '~/Documents/vimwiki/',
+                           \'syntax': 'markdown',
+                           \'ext': '.md'}]
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
@@ -356,7 +365,7 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-" when populating wildmenus, the suffixes list is considered with least priority
+" when populating wildmenus, exclude files with these suffixes
 set suffixes+=.pdf,.png,.jpg
 
 " Always show current position - obsolete with airline
@@ -688,7 +697,7 @@ noremap <Leader>ss z=
 noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 " Fast saving
-noremap <Leader>w :update<cr>
+noremap <C-S> :update<cr>
 
 " :w!! sudo saves the file
 " (useful for handling the permission-denied error)
