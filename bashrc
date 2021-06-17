@@ -170,15 +170,17 @@ elif [ -d "${HOME}/miniconda3" ]; then
 	__anaconda_dir="${HOME}"/miniconda3
 fi
 
-__conda_setup="$("${__anaconda_dir}/bin/conda" 'shell.bash' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-	eval "$__conda_setup"
-else
-	if [ -f "${__anaconda_dir}/etc/profile.d/conda.sh" ]; then
-		. "${__anaconda_dir}/etc/profile.d/conda.sh"
+if [ -d "${__anaconda_dir}" ]; then
+	__conda_setup="$("${__anaconda_dir}/bin/conda" 'shell.bash' 'hook' 2>/dev/null)"
+	if [ $? -eq 0 ]; then
+		eval "$__conda_setup"
 	else
-		export PATH="${__anaconda_dir}/bin:$PATH"
+		if [ -f "${__anaconda_dir}/etc/profile.d/conda.sh" ]; then
+			. "${__anaconda_dir}/etc/profile.d/conda.sh"
+		else
+			export PATH="${__anaconda_dir}/bin:$PATH"
+		fi
 	fi
+	unset __conda_setup __anaconda_dir
 fi
-unset __conda_setup __anaconda_dir
 # <<< conda initialize <<<
