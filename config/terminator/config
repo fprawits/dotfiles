@@ -7,7 +7,8 @@
   broadcast_all = Delete
   broadcast_group = Delete
   broadcast_off = Delete
-  close_term = None
+  close_term = <Primary><Shift>w
+  edit_tab_title = <Primary><Shift>r
   go_down = <Alt>j
   go_left = <Alt>h
   go_next = None
@@ -29,6 +30,7 @@
   page_down_half = None
   page_up_half = None
   prev_tab = <Primary>Left
+  reset = None
   resize_down = <Alt>Down
   resize_left = <Alt>Left
   resize_right = <Alt>Right
