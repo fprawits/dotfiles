@@ -617,9 +617,6 @@ inoremap jj <ESC>
 " Make Y consistent with other cmds in capital form
 noremap Y y$
 
-" Remap VIM 0 to first non-blank character
-noremap 0 ^
-
 " Easier typing of go to mark command
 noremap gm `
 noremap gM '
