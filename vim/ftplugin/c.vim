@@ -2,4 +2,4 @@
 setlocal cinoptions=:0
 
 " Add system headers to tags
-set tags+=~/.vim/systags
+setlocal tags+=~/.vim/systags
