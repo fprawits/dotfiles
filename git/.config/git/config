@@ -1,11 +1,11 @@
 [alias]
 	lol = log --oneline --decorate --graph
-    ctags = !.git/hooks/ctags
+	ctags = !.git/hooks/ctags
 [core]
 	editor = vim
-    autocrlf = input
+	autocrlf = input
 [init]
-    templatedir = ~/.git_template
+	templatedir = ~/.git_template
 [push]
 	default = simple
 [user]
