@@ -1,0 +1,92 @@
+# General
+# =======
+refresh-on-startup  yes
+max-items           20
+show-read-feeds     no
+browser             firefox
+
+
+# Key bindings
+# ============
+# bind-key  key     operation                       [dialog]
+bind-key    j       down
+bind-key    k       up
+bind-key    J       next-feed
+bind-key    K       prev-feed
+bind-key    o       open-in-browser                 article
+bind-key    o       open-in-browser-and-mark-read   articlelist
+
+
+# Colors
+# ======
+# cmd / element                             fg          bg          attr
+# ----------------------------------------------------------------------
+color background                            white       default
+color info                                  black       white       bold
+color article                               white       default
+color listnormal                            white       default
+color listnormal_unread                     color87     default     bold
+color listfocus                             white       color23     bold
+color listfocus_unread                      yellow      color23     bold
+
+search-highlight-colors                     yellow      color23     bold
+
+highlight article "\\[[0-9]\\+\\]"          color110    default     bold
+highlight article "\\[[^0-9].*[0-9]\\+\\]"  color167    default     bold
+
+
+
+# Format
+# ======
+feedlist-title-format "Feeds (%u unread / %t total)%?T? - tag '%T'&?"
+articlelist-title-format "%T (%u / %t) - %U"
+itemview-title-format "Article %T (%u / %t)"
+
+
+# Test config snippets
+# ====================
+# articlelist-format "%4i %f %D %?T?|%-17T| ?%t"
+# highlight feedlist "^ *[0-9]+ *N " white default
+# highlight articlelist "^ *[0-9]+ *N " white default
+
+# highlight article "^(Feed|Title|Author|Link|Date|Linux):.*" color75 default
+# highlight article "^Podcast Download URL:.*" color71 default
+# highlight article "^Links:" white color0 underline
+# highlight article "\\[[0-9][0-9]*\\]" color72 default bold
+# highlight article "\\[image [0-9][0-9]*\\]" color72 default bold
+# highlight article "\\[embedded flash: [0-9][0-9]*\\]" color72 default bold
+# highlight article ":.*\\(link\\)$" color74 default
+# highlight article ":.*\\(image\\)$" color74 default
+# highlight article ":.*\\(embedded flash\\)$" color74 default
+
+# color listnormal color208 color234
+# color listnormal_unread color244 color234
+# color listfocus   color15 color0 blink
+# color info  red default bold
+# color listfocus_unread color166 color0 bold
+# color info color38 color235
+# color background color15 color0
+# color article color15 color0
+
+# feedlist-format "%-65t %?d?- %-65d&? %> %u"
+# articlelist-format "%-4i %f %t"
+# feedlist-title-format "%N %V %> %u feeds with new articles"
+# articlelist-title-format "%T"
+
+
+# gruvbox color and highlight scheme
+# ----------------------------------
+# color article                              color223 color236
+# color background                           color100 color236
+# color info                                 color142 color235
+# color listfocus                            color214 color239
+# color listfocus_unread                     color214 color96
+# color listnormal                           color246 color237
+# color listnormal_unread                    color175 color237
+# highlight article "^Feed:.*"               color175 color237
+# highlight article "^Title:.*"              color142 color237 bold
+# highlight article "^Author:.*"             color167 color237
+# highlight article "^Link:.*"               color109 color237
+# highlight article "^Date:.*"               color214 color237
+# highlight article "\\[[0-9]\\+\\]"         color208 color237 bold
+# highlight article "\\[[^0-9].*[0-9]\\+\\]" color167 color237 bold

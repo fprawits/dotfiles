@@ -29,12 +29,18 @@ Contents
 │   ├── .bashrc  # bash configuration
 │   ├── .exclude.diff  # excluded files for the `xdiff` alias
 │   └── .list.rsync  # list of files that are backed up via the `save` alias
+├── conda
+│   └── .condarc  # conda configuration
 ├── git
 │   ├── .config
 │   │   └── git
 │   │       └── ignore  # (global) git ignore list
 │   └── .gitconfig  # (global) git configuration
 ├── makesymlinks.sh  # installation script
+├── newsbeuter
+│   └── .config
+│       └── newsbeuter
+│           └── config  # newsbeuter configuration
 ├── README.md
 ├── ssh
 │   └── .ssh
