@@ -60,13 +60,20 @@ if [ -n "$force_color_prompt" ]; then
 	fi
 fi
 
-BLUE="\[$(tput bold)$(tput setaf 4)\]"
-GREEN="\[$(tput bold)$(tput setaf 2)\]"
-RESET="\[$(tput sgr0)\]"
 if [ "$color_prompt" = yes ]; then
+	BLUE="\[$(tput bold)$(tput setaf 4)\]"
+	GREEN="\[$(tput bold)$(tput setaf 2)\]"
+else
+	BLUE=
+	GREEN=
+fi
+RESET="\[$(tput sgr0)\]"
+
+# If we are on a remote machine, add user and hostname to prompt
+if [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
 	PS1="${GREEN}\u@\h${RESET}:${BLUE}\w${RESET}\$ "
 else
-	PS1='\u@\h:\w\$ '
+	PS1="${BLUE}\w${RESET}\$ "
 fi
 unset color_prompt force_color_prompt BLUE GREEN RESET
 PS1='${debian_chroot:+($debian_chroot)}'"${PS1}"
