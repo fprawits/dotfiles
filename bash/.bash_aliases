@@ -3,6 +3,7 @@ alias ...='cd ../..'
 alias rs='rsync -avhF'
 alias lc='locate'
 alias nb='newsbeuter'
+alias t='task'
 
 alias ipy='ipython --pylab'
 alias jqt='jupyter qtconsole'
