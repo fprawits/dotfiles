@@ -628,6 +628,10 @@ noremap gM '
 " Insert undo breaks
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
+inoremap , ,<C-G>u
+inoremap . .<C-G>u
+inoremap ! !<C-G>u
+inoremap ? ?<C-G>u
 
 " Bash like cmdline editing mappings for moving around
 cnoremap <C-A> <Home>
