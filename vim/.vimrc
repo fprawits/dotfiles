@@ -569,6 +569,10 @@ vnoremap > >gv
 noremap j gj
 noremap k gk
 
+" Keep cursor centered when searching
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " Easier to enter cmd- and search-mode
 " Remark: <C-Space> is send to vim by the terminal as <C-@>
 noremap <C-Space> /
