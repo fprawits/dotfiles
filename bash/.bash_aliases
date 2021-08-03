@@ -4,6 +4,7 @@ alias rs='rsync -avhF'
 alias lc='locate'
 alias nb='newsbeuter'
 alias t='task'
+alias vw='vim -c "VimwikiIndex"'
 
 alias ipy='ipython --pylab'
 alias jqt='jupyter qtconsole'
