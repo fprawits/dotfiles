@@ -1,3 +1,8 @@
+# Load custom bash completion scripts
+if [ -d ~/.bash_completion.d ] && [ -n "$(ls -A ~/.bash_completion.d)" ]; then
+	for f in ~/.bash_completion.d/*; do source "$f"; done
+fi
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias rs='rsync -avhF'
