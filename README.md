@@ -37,6 +37,8 @@ Contents
 │   │       └── ignore  # (global) git ignore list
 │   └── .gitconfig  # (global) git configuration
 ├── makesymlinks.sh  # installation script
+├── manpath
+│   └── .manpath  # location to manpages of custom installed software
 ├── newsbeuter
 │   └── .config
 │       └── newsbeuter
@@ -55,6 +57,7 @@ Contents
 │   │   ├── ftplugin  # configuration specific to filetypes
 │   │   │   ├── bib.vim
 │   │   │   ├── c.vim
+│   │   │   ├── gitconfig.vim
 │   │   │   ├── help.vim
 │   │   │   ├── latex.vim
 │   │   │   ├── man.vim
