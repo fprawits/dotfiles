@@ -177,11 +177,11 @@ call plug#begin('~/.vim/plugged')
         set grepprg=grep\ -nH\ $*
     endif
 
-    " better manipulation of brackets and HTML/XML tags
-    Plug 'tpope/vim-surround'
-
     " make vim's repeat command '.' work with plugins
     Plug 'tpope/vim-repeat'
+
+    " better manipulation of brackets and HTML/XML tags
+    Plug 'tpope/vim-surround'
 
     " add 'gc' command for commenting
     Plug 'tpope/vim-commentary'
@@ -505,8 +505,8 @@ endif
 " variable assignment no longer blocks <C-X><C-F> filename completion
 set isfname-==
 
-" expand '%%' to path of current file, useful for quickly opening files in same
-" directory without the need to change cwd - try ':e %%'
+" expand `%%` to the 'head' path of current file, useful for quickly opening
+" files in same directory without the need to change cwd - try ':e %%'
 cnoremap <expr> %% getcmdtype()==':' ? expand('%:h') . '/' : '%%'
 
 " abbreviations for often used file patterns
@@ -638,7 +638,7 @@ cnoremap <Esc>f <S-Right>
 " taken from http://superuser.com/questions/656949/always-show-the-register-list-in-vim
 nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save
 func! DeleteTrailingWS()
   let l:winview = winsaveview()
   keeppatterns %s/\s\+$//e
