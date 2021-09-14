@@ -244,7 +244,7 @@ call plug#begin('~/.vim/plugged')
 
 
     " fzf integration (fuzzy finder)
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf', { 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     nnoremap <Leader>fb   :Buffers<CR>
     nnoremap <Leader>ff   :Files<CR>
