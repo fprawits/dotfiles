@@ -341,6 +341,9 @@ call plug#begin('~/.vim/plugged')
             \ },
         \ }
 
+    " Automatically pair all styles of braces and quotes
+    Plug 'lunarWatcher/auto-pairs'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
