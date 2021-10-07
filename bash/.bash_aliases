@@ -29,6 +29,7 @@ alias save="rsync -avhFr \
   --backup-dir=../xps13.deleted.rsync/$(date +%Y-%m-%d) \
   --delete \
   --delete-excluded \
+  --log-file=/tmp/save.xps13.log \
   $HOME \
   /media/sheep/backupXPS13/xps13.home.rsync \
 "
