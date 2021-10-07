@@ -290,7 +290,11 @@ call plug#begin('~/.vim/plugged')
     let g:vimwiki_global_ext = 0
     let g:vimwiki_list = [{ 'path' : '~/Documents/vimwiki/',
                            \'syntax': 'markdown',
-                           \'ext': '.md'}]
+                           \'ext': '.md',
+                           \'auto_toc': 1,
+                           \'auto_tags': 1,
+                           \'auto_diary_index': 1,
+                        \}]
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
