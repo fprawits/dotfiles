@@ -363,6 +363,12 @@ call plug#begin('~/.vim/plugged')
     " Automatically pair all styles of braces and quotes
     Plug 'lunarWatcher/auto-pairs'
 
+    " Class outline viewer
+    Plug 'preservim/tagbar' 
+    noremap [ot :TagbarOpen j<CR>
+    noremap ]ot :TagbarClose<CR>
+    noremap yot :TagbarToggle<CR>
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
