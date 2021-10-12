@@ -216,6 +216,8 @@ call plug#begin('~/.vim/plugged')
     let g:airline_symbols.branch = '⎇'
     let g:airline_symbols.spell = 'Ꞩ'
     let g:airline_symbols.notexists = 'Ɇ'
+    let g:airline_symbols.linenr = ' ㏑'
+    let g:airline_symbols.colnr = ' ㏇'
 
     " collection of color schemes
     Plug 'rafi/awesome-vim-colorschemes'
