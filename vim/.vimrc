@@ -149,10 +149,10 @@ runtime ftplugin/man.vim
 let g:ft_man_open_mode = 'vert'
 set keywordprg=:Man
 
-" automatically update the gnu-global database, see `~/.local/plugin/gtags.vim`
+" automatically update the gnu-global database, see `~/.vim/plugin/gtags.vim`
 " Note: should be managed by gutentags for now
 "let g:Gtags_Auto_Update = 1
-noremap <Leader>gg :GtagsCursor<CR>
+noremap <Leader>c] :GtagsCursor<CR>
 "set cscopetags
 
 " Make sure that vim-plug is installed, see:
@@ -344,6 +344,19 @@ call plug#begin('~/.vim/plugged')
             \ '.hg': 'hg files',
             \ },
         \ }
+    " The following maps are introduced by gutentags_plus
+    " | keymap       | desc                                             |
+    " | --------     | ------                                           |
+    " | `<leader>cs` | Find symbol (reference) under cursor             |
+    " | `<leader>cg` | Find symbol definition under cursor              |
+    " | `<leader>cd` | Functions called by this function                |
+    " | `<leader>cc` | Functions calling this function                  |
+    " | `<leader>ct` | Find text string under cursor                    |
+    " | `<leader>ce` | Find egrep pattern under cursor                  |
+    " | `<leader>cf` | Find file name under cursor                      |
+    " | `<leader>ci` | Find files #including the file name under cursor |
+    " | `<leader>ca` | Find places where current symbol is assigned     |
+    " | `<leader>cz` | Find current word in ctags database              |
 
     " Automatically pair all styles of braces and quotes
     Plug 'lunarWatcher/auto-pairs'
