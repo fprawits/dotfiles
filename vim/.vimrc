@@ -289,10 +289,13 @@ call plug#begin('~/.vim/plugged')
     let g:vimwiki_list = [{ 'path' : '~/Documents/vimwiki/',
                            \'syntax': 'markdown',
                            \'ext': '.md',
+                           \'links_space_char': '_',
+                           \'auto_header': 1,
                            \'auto_toc': 1,
                            \'auto_tags': 1,
                            \'auto_diary_index': 1,
                         \}]
+    nmap <Leader>w<Space>w <Plug>VimwikiMakeDiaryNote
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
