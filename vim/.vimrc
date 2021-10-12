@@ -250,18 +250,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     nnoremap <Leader>fb   :Buffers<CR>
     nnoremap <Leader>ff   :Files<CR>
-    nnoremap <Leader>F    :Files<CR>
     nnoremap <Leader>fl   :Lines<CR>
     nnoremap <Leader>fL   :BLines<CR>
     nnoremap <Leader><F1> :Helptags<CR>
     nnoremap <Leader>fr   :Rg<Space><C-R><C-W><CR>
-    nnoremap <Leader>R    :Rg<Space><C-R><C-W><CR>
-    nnoremap <C-G>        :Rg<Space><C-R><C-W><CR>
     vnoremap <Leader>fr   y:Rg<Space><C-R>0<CR>
-    vnoremap <Leader>R    y:Rg<Space><C-R>0<CR>
     nnoremap <Leader>fR   :Rg<Space>
     nnoremap <Leader>fw   :Windows<CR>
-    nnoremap <Leader>fa   :Locate<Space>
+    nnoremap <Leader>fg   :Locate<Space>
     nnoremap <Leader>ft   :Tags<CR>
     nnoremap <Leader>fT   :BTags<CR>
     nnoremap <Leader>fm   :Marks<CR>
