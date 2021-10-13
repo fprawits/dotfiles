@@ -216,8 +216,9 @@ call plug#begin('~/.vim/plugged')
     let g:airline_symbols.branch = '⎇'
     let g:airline_symbols.spell = 'Ꞩ'
     let g:airline_symbols.notexists = 'Ɇ'
-    let g:airline_symbols.linenr = ' ㏑'
-    let g:airline_symbols.colnr = ' ㏇'
+    let g:airline_symbols.linenr = ' '
+    let g:airline_symbols.maxlinenr = ''
+    let g:airline_symbols.colnr = ':'
 
     " collection of color schemes
     Plug 'rafi/awesome-vim-colorschemes'
@@ -296,6 +297,8 @@ call plug#begin('~/.vim/plugged')
                            \'auto_diary_index': 1,
                         \}]
     nmap <Leader>w<Space>w <Plug>VimwikiMakeDiaryNote
+    nmap <Leader>w<Space>y <Plug>VimwikiMakeYesterdayDiaryNote
+    nmap <Leader>w<Space>m <Plug>VimwikiMakeTomorrowDiaryNote
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
@@ -363,7 +366,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'lunarWatcher/auto-pairs'
 
     " Class outline viewer
-    Plug 'preservim/tagbar' 
+    Plug 'preservim/tagbar'
     noremap [ot :TagbarOpen j<CR>
     noremap ]ot :TagbarClose<CR>
     noremap yot :TagbarToggle<CR>
@@ -379,6 +382,9 @@ call plug#end()
 set scrolloff=7
 set sidescroll=1
 set sidescrolloff=5
+
+" Insert completion menu settings
+set completeopt=longest,menuone,preview
 
 " Turn on the WiLd menu
 set wildmenu

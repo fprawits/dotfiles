@@ -4,12 +4,12 @@
 [core]
 	editor = vim
 	autocrlf = input
+[diff]
+	algorithm = histogram
 [init]
 	templatedir = ~/.git_template
 [push]
 	default = simple
 [user]
-	name = fprawits
-	email = prawits.florian@gmail.com
-[diff]
-	algorithm = histogram
+	name = prawitsf
+	email = florian.prawits@ait.ac.at
