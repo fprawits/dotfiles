@@ -311,6 +311,8 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
+    " Disable ale for markdown to avoid conflict with vimwiki's location list
+    let g:ale_pattern_options = {'\.md$': {'ale_enabled': 0}}
 
     " git integration
     Plug 'tpope/vim-fugitive'
