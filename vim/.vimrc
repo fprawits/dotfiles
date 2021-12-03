@@ -199,8 +199,11 @@ call plug#begin('~/.vim/plugged')
     " pairs of useful mappings
     Plug 'tpope/vim-unimpaired'
     nnoremap <silent> yoq :silent ToggleQuickFix<CR>
-    nnoremap <silent> ]oq :copen<CR>
     nnoremap <silent> [oq :cclose<CR>
+    nnoremap <silent> ]oq :copen<CR>
+    nnoremap <silent> =sq :silent ToggleQuickFix<CR>
+    nnoremap <silent> <sq :cclose<CR>
+    nnoremap <silent> >sq :copen<CR>
 
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
@@ -420,8 +423,8 @@ set number
 " Highlight active window with rel. line numbers, cursorline and colorcolumn
 augroup highlight_active_window
     autocmd!
-    autocmd VimEnter,WinEnter * set cursorline relativenumber colorcolumn=80
-    autocmd WinLeave * set nocursorline norelativenumber colorcolumn=
+    autocmd VimEnter,WinEnter * setlocal cursorline relativenumber colorcolumn=80
+    autocmd WinLeave * setlocal nocursorline norelativenumber colorcolumn=
 augroup END
 
 " Always show the status line
