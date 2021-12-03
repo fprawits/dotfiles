@@ -128,6 +128,13 @@ if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram,indent-heuristic
 endif
 
+" Disable macro recording when insinde cmdline-window (`q:`, `q/`, `q?`)
+" and press 'q' to close the window
+augroup cmdlinewindow
+    autocmd!
+    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q :quit<CR>
+augroup END
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -361,9 +368,10 @@ call plug#begin('~/.vim/plugged')
 
     " Automatically pair all styles of braces and quotes
     Plug 'lunarWatcher/auto-pairs'
+    let g:AutoPairsMapBS = 1
 
     " Class outline viewer
-    Plug 'preservim/tagbar' 
+    Plug 'preservim/tagbar'
     noremap [ot :TagbarOpen j<CR>
     noremap ]ot :TagbarClose<CR>
     noremap yot :TagbarToggle<CR>
@@ -472,13 +480,6 @@ set listchars=tab:▸\ ,eol:¬,trail:•,extends:»,precedes:«,nbsp:␣
 let &showbreak = '↪ '   " highlight wrapped lines
 set nowrap              " dont wrap lines
 set display+=lastline   " show as much of the last (wrapped) line as possible
-
-" Disable macro recording when insinde cmdline-window (`q:`, `q/`, `q?`)
-" and press 'q' to close the window
-augroup cmdlinewindow
-    autocmd!
-    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q :quit<CR>
-augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -775,7 +776,7 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 function! ToggleQuickFix()
-    if getqflist({'winid' : 0}).winid
+    if getqflist({'winid': 0}).winid
     " Alternative implementation
     " if !empty(filter(getwininfo(), 'v:val.quickfix'))
         cclose
