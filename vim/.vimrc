@@ -632,6 +632,9 @@ CNoreAbbrev bdel buffers<CR>:bdelete
 CNoreAbbrev sb buffers<CR>:sb
 CNoreAbbrev vsb buffers<CR>:vertical sb
 
+" Close all buffers except for the current one
+nnoremap <Leader>bo :%bdelete<Bar>edit #<Bar>bdelete #<Bar>normal g`"<CR>
+
 " open help in vertical split
 CNoreAbbrev h vert h
 
