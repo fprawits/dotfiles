@@ -423,8 +423,8 @@ set number
 " Highlight active window with rel. line numbers, cursorline and colorcolumn
 augroup highlight_active_window
     autocmd!
-    autocmd VimEnter,WinEnter * set cursorline relativenumber colorcolumn=80
-    autocmd WinLeave * set nocursorline norelativenumber colorcolumn=
+    autocmd VimEnter,WinEnter * call HighlightActiveWindow()
+    autocmd WinLeave * setlocal nocursorline norelativenumber colorcolumn=
 augroup END
 
 " Always show the status line
@@ -767,6 +767,13 @@ iabbrev xdate <C-R>=strftime("%F %T")<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! HighlightActiveWindow()
+    if &number
+        setlocal relativenumber
+    endif
+    setlocal cursorline colorcolumn=80
+endfunction
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
