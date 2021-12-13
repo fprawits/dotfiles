@@ -285,7 +285,7 @@ call plug#begin('~/.vim/plugged')
     let g:vim_markdown_no_extensions_in_markdown = 1
 
     " Vimwiki - manage notes, todo lists, etc.
-    Plug 'vimwiki/vimwiki'
+    Plug 'vimwiki/vimwiki', {'branch': 'dev'}
     let g:vimwiki_global_ext = 0
     let g:vimwiki_list = [{ 'path' : '~/Documents/vimwiki/',
                            \'syntax': 'markdown',
