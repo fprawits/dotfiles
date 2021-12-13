@@ -716,6 +716,12 @@ nnoremap <Leader>Q :qa!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set dictionary+=spell
+if has('unix')
+    set dictionary+=/usr/share/dict/words
+    set thesaurus+=~/.vim/thesaurus/english.txt
+endif
+
 " Turn on spell checking with specific language
 noremap <Leader>se :setlocal spell spelllang=en_us<CR>
 noremap <Leader>sd :setlocal spell spelllang=de_de<CR>
