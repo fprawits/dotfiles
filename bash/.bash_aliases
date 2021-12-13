@@ -24,6 +24,7 @@ alias save="rsync -avhFr \
   --log-file=/tmp/save.$(hostname).log \
   $HOME \
   /media/$USER/office_Prawits/sync\
+  && sync && notify-send 'backup completed'\
 "
 
 alias fsave="rsync -avhr \
@@ -33,7 +34,8 @@ alias fsave="rsync -avhr \
   --delete-excluded \
   --log-file=/tmp/save.$(hostname).log \
   $HOME \
-  /media/$USER/office_Prawits/sync
+  /media/$USER/office_Prawits/sync\
+  && sync && notify-send 'backup completed'
 "
 
 alias tags='rm tags; ctags -R --exclude=.git --exclude="LibRelease-*" --exclude="LQuNet_Mike"; ctags -a --c-kinds=+px-d include/AIT/*.h'
