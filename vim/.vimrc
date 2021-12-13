@@ -640,6 +640,9 @@ CNoreAbbrev h vert h
 nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
 nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
 
+" Close all buffers except for current one
+noremap <Leader>bo :%bdelete<Bar>edit #<Bar>bdelete #<Bar>normal g`"<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
