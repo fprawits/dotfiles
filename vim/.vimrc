@@ -231,6 +231,7 @@ call plug#begin('~/.vim/plugged')
     let g:airline_symbols.linenr = ' '
     let g:airline_symbols.maxlinenr = ''
     let g:airline_symbols.colnr = ': '
+    let g:airline#extensions#obsession#indicator_text = 'Ⓞ'
 
     " collection of color schemes
     Plug 'rafi/awesome-vim-colorschemes'
@@ -387,6 +388,9 @@ call plug#begin('~/.vim/plugged')
     noremap [ot :TagbarOpen j<CR>
     noremap ]ot :TagbarClose<CR>
     noremap yot :TagbarToggle<CR>
+
+    " Better session management
+    Plug 'tpope/vim-obsession'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
