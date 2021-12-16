@@ -296,9 +296,9 @@ call plug#begin('~/.vim/plugged')
     let g:vim_markdown_no_extensions_in_markdown = 1
 
     " Vimwiki - manage notes, todo lists, etc.
-    Plug 'vimwiki/vimwiki'
+    Plug 'vimwiki/vimwiki', {'branch': 'dev'}
     let g:vimwiki_global_ext = 0
-    let g:vimwiki_list = [{ 'path' : '~/Documents/vimwiki/',
+    let g:vimwiki_list = [{ 'path': '~/Documents/vimwiki/',
                            \'syntax': 'markdown',
                            \'ext': '.md',
                            \'links_space_char': '_',
@@ -307,7 +307,11 @@ call plug#begin('~/.vim/plugged')
                            \'auto_tags': 1,
                            \'auto_diary_index': 1,
                         \}]
+    " Fix standard mappings not recognizing second leader
     nmap <Leader>w<Space>w <Plug>VimwikiMakeDiaryNote
+    nmap <Leader>w<Space>t <Plug>VimwikiTabMakeDiaryNote
+    nmap <Leader>w<Space>y <Plug>VimwikiMakeYesterdayDiaryNote
+    nmap <Leader>w<Space>m <Plug>VimwikiMakeTomorrowDiaryNote
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
