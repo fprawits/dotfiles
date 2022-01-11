@@ -303,6 +303,13 @@ call plug#begin('~/.vim/plugged')
     nmap <Leader>w<Space>y <Plug>VimwikiMakeYesterdayDiaryNote
     nmap <Leader>w<Space>m <Plug>VimwikiMakeTomorrowDiaryNote
 
+    " Add calendar
+    Plug 'mattn/calendar-vim'
+    let g:vimwiki_use_calendar = 1
+    let g:calendar_monday = 1
+    let g:calendar_no_mappings = 0
+    let g:calendar_mark = 'right'
+
     " asynchronous linting
     Plug 'dense-analysis/ale'
     nmap <silent> [W         <Plug>(ale_first)
