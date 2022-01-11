@@ -17,7 +17,7 @@ fi
 cd "$(dirname "${BASH_SOURCE[0]}")"
 DOTFILE_DIR="$PWD"
 
-for d in $(git ls-tree -d --name-only master); do
+for d in $(git ls-tree -d --name-only HEAD); do
 	stow --restow --verbose=1 --dir="$DOTFILE_DIR" --target="$HOME" "$d"
 done
 
