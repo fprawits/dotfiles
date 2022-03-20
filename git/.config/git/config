@@ -4,12 +4,21 @@
 [core]
 	editor = vim
 	autocrlf = input
+[diff]
+	algorithm = histogram
+	tool = meld
+[difftool]
+	prompt = false
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
 [init]
 	templatedir = ~/.git_template
+[meld]
+	tool = meld
+[mergetool "meld"]
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --ouput "$MERGED"
 [push]
 	default = simple
 [user]
 	name = fprawits
 	email = prawits.florian@gmail.com
-[diff]
-	algorithm = histogram
