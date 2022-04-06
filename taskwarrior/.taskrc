@@ -30,3 +30,6 @@ data.location=~/.task
 #include /home/prawitsf/.local/share/doc/task/rc/no-color.theme
 
 weekstart=monday
+news.version=2.6.0
+
+search.case.sensitive=no
