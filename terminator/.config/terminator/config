@@ -4,41 +4,33 @@
   title_transmit_bg_color = "#a5c261"
   inactive_color_offset = 0.7
 [keybindings]
-  broadcast_all = None
-  broadcast_group = None
-  broadcast_off = None
-  close_term = <Primary><Shift>w
-  edit_tab_title = <Primary><Shift>r
-  go_down = <Alt>j
-  go_left = <Alt>h
+  zoom_in = <Primary>equal
+  cycle_next = <Alt>bracketright
+  cycle_prev = <Alt>bracketleft
   go_next = None
   go_prev = None
-  go_right = <Alt>l
   go_up = <Alt>k
-  group_all = None
-  group_all_toggle = <Super>g
-  group_tab = None
-  group_tab_toggle = <Super>t
-  help = None
-  hide_window = None
-  layout_launcher = <Primary><Shift>l
-  line_down = None
-  line_up = None
-  move_tab_right = <Primary><Shift>Right
-  move_tab_left = <Primary><Shift>Left
-  new_terminator = <Super>n
-  new_window = <Primary><Shift>n
-  next_tab = <Primary>Right
-  page_down_half = None
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  rotate_cw = <Shift><Alt>braceright
+  rotate_ccw = <Shift><Alt>braceleft
+  split_horiz = <Alt>minus
+  split_vert = <Alt>equal
+  close_term = <Primary><Shift>w
   page_up_half = None
-  prev_tab = <Primary>Left
-  reset = None
+  page_down_half = None
+  line_up = None
+  line_down = None
+  resize_up = <Alt>Up
   resize_down = <Alt>Down
   resize_left = <Alt>Left
   resize_right = <Alt>Right
-  resize_up = <Alt>Up
-  split_horiz = <Super>minus
-  split_vert = <Super>less
+  move_tab_right = <Primary><Shift>Right
+  move_tab_left = <Primary><Shift>Left
+  toggle_zoom = <Alt>o
+  next_tab = <Primary>Right
+  prev_tab = <Primary>Left
   switch_to_tab_1 = <Alt>1
   switch_to_tab_2 = <Alt>2
   switch_to_tab_3 = <Alt>3
@@ -49,7 +41,32 @@
   switch_to_tab_8 = <Alt>8
   switch_to_tab_9 = <Alt>9
   switch_to_tab_10 = <Alt>0
-  toggle_zoom = <Super>o
+  reset = None
+  hide_window = None
+  group_all = None
+  group_all_toggle = None
+  ungroup_all = None
+  group_tab = None
+  group_tab_toggle = <Alt>g
+  ungroup_tab = None
+  new_window = <Primary><Shift>n
+  new_terminator = <Super>n
+  broadcast_off = None
+  broadcast_group = None
+  broadcast_all = None
+  edit_tab_title = <Primary><Shift>r
+  layout_launcher = <Primary><Shift>l
+  help = None
+[profiles]
+  [[default]]
+    background_color = "#282828"
+    cursor_color = "#ffffff"
+    font = DejaVu Sans Mono 12
+    foreground_color = "#ebdbb2"
+    scrollback_lines = 10000
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    custom_command = TERM=xterm-256color bash
+    use_system_font = False
 [layouts]
   [[default]]
     [[[child1]]]
@@ -59,14 +76,106 @@
     [[[window0]]]
       parent = ""
       type = Window
+  [[uniqorn-cow]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 64:27
+      maximised = True
+      fullscreen = False
+      size = 3376, 1413
+      title = prawitsf@l3dss2026: ~/uniqorn-cow
+      last_active_window = True
+    [[[child1]]]
+      type = Notebook
+      parent = child0
+      order = 0
+      labels = None, None, None, None
+      last_active_term = 2b6e6a8a-e4fe-40e4-b6ac-3e5dc38dff93, 86bca297-4845-4667-988e-7eeaaec0d936, a74b2476-8039-45fb-ac31-7ea0b129318d, 31bedf19-146d-483d-85d1-eafb83c9f2ea
+      active_page = 1
+    [[[child2]]]
+      type = HPaned
+      parent = child1
+      order = 0
+      position = 1684
+      ratio = 0.4998515880083111
+    [[[terminal3]]]
+      type = Terminal
+      parent = child2
+      order = 0
+      profile = default
+      uuid = 2b6e6a8a-e4fe-40e4-b6ac-3e5dc38dff93
+    [[[terminal4]]]
+      type = Terminal
+      parent = child2
+      order = 1
+      profile = default
+      uuid = 7ba45b17-498c-4399-b396-da2df730d5c2
+    [[[terminal5]]]
+      type = Terminal
+      parent = child1
+      order = 1
+      profile = default
+      uuid = 86bca297-4845-4667-988e-7eeaaec0d936
+    [[[child6]]]
+      type = HPaned
+      parent = child1
+      order = 2
+      position = 1684
+      ratio = 0.4998515880083111
+    [[[child7]]]
+      type = VPaned
+      parent = child6
+      order = 0
+      position = 684
+      ratio = 0.4996347699050402
+    [[[terminal8]]]
+      type = Terminal
+      parent = child7
+      order = 0
+      profile = default
+      uuid = a74b2476-8039-45fb-ac31-7ea0b129318d
+    [[[terminal9]]]
+      type = Terminal
+      parent = child7
+      order = 1
+      profile = default
+      uuid = 3e595c34-51c3-4942-9311-1a7d05c716d4
+    [[[child10]]]
+      type = VPaned
+      parent = child6
+      order = 1
+      position = 684
+      ratio = 0.4996347699050402
+    [[[terminal11]]]
+      type = Terminal
+      parent = child10
+      order = 0
+      profile = default
+      uuid = ca28ce65-a890-462e-85cf-98fef8756654
+    [[[terminal12]]]
+      type = Terminal
+      parent = child10
+      order = 1
+      profile = default
+      uuid = 1d423fae-3ff0-43d2-9093-b1450797d536
+    [[[child13]]]
+      type = HPaned
+      parent = child1
+      order = 3
+      position = 1684
+      ratio = 0.4998515880083111
+    [[[terminal14]]]
+      type = Terminal
+      parent = child13
+      order = 0
+      profile = default
+      uuid = 31bedf19-146d-483d-85d1-eafb83c9f2ea
+    [[[terminal15]]]
+      type = Terminal
+      parent = child13
+      order = 1
+      profile = default
+      uuid = 3f8a37a1-6687-4de1-b396-5cecc937d0a6
 [plugins]
-[profiles]
-  [[default]]
-    background_color = "#282828"
-    cursor_color = "#ffffff"
-    custom_command = TERM=xterm-256color bash
-    font = DejaVu Sans Mono 12
-    foreground_color = "#ebdbb2"
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
-    scrollback_lines = 10000
-    use_system_font = False
