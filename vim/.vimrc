@@ -290,7 +290,7 @@ call plug#begin('~/.vim/plugged')
     " Vimwiki - manage notes, todo lists, etc.
     Plug 'vimwiki/vimwiki', {'branch': 'dev'}
     let g:vimwiki_global_ext = 0
-    let g:vimwiki_list = [{ 'path' : '~/Documents/vimwiki/',
+    let g:vimwiki_list = [{ 'path': '~/Documents/vimwiki/',
                            \'syntax': 'markdown',
                            \'ext': '.md',
                            \'links_space_char': '_',
@@ -815,7 +815,7 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 function! ToggleQuickFix()
-    if getqflist({'winid' : 0}).winid
+    if getqflist({'winid': 0}).winid
     " Alternative implementation
     " if !empty(filter(getwininfo(), 'v:val.quickfix'))
         cclose
