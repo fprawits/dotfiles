@@ -344,6 +344,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
     let g:UltiSnipsExpandTrigger = "<Tab>"
+    let g:snips_author = "Florian Prawits"
+    let g:snips_email = "florian.prawits@ait.ac.at"
+    let g:snips_github = "https://git-service.ait.ac.at/prawitsf"
 
     " Exchange command `cx`
     Plug 'tommcdo/vim-exchange'
