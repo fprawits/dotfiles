@@ -193,8 +193,24 @@ call plug#begin('~/.vim/plugged')
     " add 'gc' command for commenting
     Plug 'tpope/vim-commentary'
 
+    " Add common UNIX shell commands
+    Plug 'tpope/vim-eunuch'
+
     " enhance netrw behaviour
     Plug 'tpope/vim-vinegar'
+
+    " Use dirvish as file explorer
+    Plug 'justinmk/vim-dirvish'
+    Plug 'kristijanhusak/vim-dirvish-git'
+    let g:dirvish_git_indicators = {
+    \ 'Modified'  : '✹',
+    \ 'Staged'    : '✚',
+    \ 'Untracked' : '✭',
+    \ 'Renamed'   : '➜',
+    \ 'Unmerged'  : '═',
+    \ 'Ignored'   : '☒',
+    \ 'Unknown'   : '?'
+    \ }
 
     " pairs of useful mappings
     Plug 'tpope/vim-unimpaired'
