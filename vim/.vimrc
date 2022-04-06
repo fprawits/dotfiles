@@ -128,6 +128,13 @@ if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram,indent-heuristic
 endif
 
+" Disable macro recording when insinde cmdline-window (`q:`, `q/`, `q?`)
+" and press 'q' to close the window
+augroup cmdlinewindow
+    autocmd!
+    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q :quit<CR>
+augroup END
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -192,8 +199,11 @@ call plug#begin('~/.vim/plugged')
     " pairs of useful mappings
     Plug 'tpope/vim-unimpaired'
     nnoremap <silent> yoq :silent ToggleQuickFix<CR>
-    nnoremap <silent> ]oq :copen<CR>
     nnoremap <silent> [oq :cclose<CR>
+    nnoremap <silent> ]oq :copen<CR>
+    nnoremap <silent> =sq :silent ToggleQuickFix<CR>
+    nnoremap <silent> <sq :cclose<CR>
+    nnoremap <silent> >sq :copen<CR>
 
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
@@ -300,7 +310,9 @@ call plug#begin('~/.vim/plugged')
                            \'auto_tags': 1,
                            \'auto_diary_index': 1,
                         \}]
+    " Fix standard mappings not recognizing second leader
     nmap <Leader>w<Space>w <Plug>VimwikiMakeDiaryNote
+    nmap <Leader>w<Space>t <Plug>VimwikiTabMakeDiaryNote
     nmap <Leader>w<Space>y <Plug>VimwikiMakeYesterdayDiaryNote
     nmap <Leader>w<Space>m <Plug>VimwikiMakeTomorrowDiaryNote
 
@@ -322,7 +334,7 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
-    " Disable ale for markdown to avoid conflict with vimwiki's location list
+    " Disable for markdown to avoid local list conflict with vimwiki
     let g:ale_pattern_options = {'\.md$': {'ale_enabled': 0}}
 
     " git integration
@@ -380,6 +392,7 @@ call plug#begin('~/.vim/plugged')
 
     " Automatically pair all styles of braces and quotes
     Plug 'lunarWatcher/auto-pairs'
+    let g:AutoPairsMapBS = 1
 
     " Class outline viewer
     Plug 'preservim/tagbar'
@@ -500,13 +513,6 @@ set listchars=tab:▸\ ,eol:¬,trail:•,extends:»,precedes:«,nbsp:␣
 let &showbreak = '↪ '   " highlight wrapped lines
 set nowrap              " dont wrap lines
 set display+=lastline   " show as much of the last (wrapped) line as possible
-
-" Disable macro recording when insinde cmdline-window (`q:`, `q/`, `q?`)
-" and press 'q' to close the window
-augroup cmdlinewindow
-    autocmd!
-    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q :quit<CR>
-augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -659,9 +665,6 @@ CNoreAbbrev h vert h
 " differences if in window in diff mode
 nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
 nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
-
-" Close all buffers except for current one
-noremap <Leader>bo :%bdelete<Bar>edit #<Bar>bdelete #<Bar>normal g`"<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
