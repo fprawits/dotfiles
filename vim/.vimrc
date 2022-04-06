@@ -401,6 +401,9 @@ set sidescrolloff=5
 " Insert completion menu settings
 set completeopt=longest,menuone,preview
 
+" Ignore include files as it causes long complete times
+set complete-=i
+
 " Turn on the WiLd menu
 set wildmenu
 set wildmode=longest:full,full
