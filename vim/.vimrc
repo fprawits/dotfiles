@@ -350,6 +350,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'
     nnoremap gs :Git<CR>
 
+    " test inline diff / git-status symbols
+    Plug 'airblade/vim-gitgutter'
+
     " visualization of undotree
     Plug 'mbbill/undotree'
     nnoremap <Leader>u :UndotreeToggle<CR>
