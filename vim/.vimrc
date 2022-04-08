@@ -205,6 +205,9 @@ call plug#begin('~/.vim/plugged')
     nnoremap <silent> <sq :cclose<CR>
     nnoremap <silent> >sq :copen<CR>
 
+    " Vim commands for popular UNIX shell commands
+    Plug 'tpope/vim-eunuch'
+
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
