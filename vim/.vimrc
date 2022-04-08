@@ -248,7 +248,6 @@ call plug#begin('~/.vim/plugged')
     " textoject-anyblock: restrict matching to (), [], {}, <>
     let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
 
-
     " highlight targets of next f/F/t/T find command
     Plug 'unblevable/quick-scope'
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -257,7 +256,6 @@ call plug#begin('~/.vim/plugged')
     " Plug 'davidhalter/jedi-vim'
     " let g:jedi#popup_on_dot=0
     " let g:jedi#show_call_signatures_delay=0
-
 
     " fzf integration (fuzzy finder)
     Plug 'junegunn/fzf', { 'do': './install --all' }
@@ -381,6 +379,10 @@ call plug#begin('~/.vim/plugged')
     " | `<leader>ci` | Find files #including the file name under cursor |
     " | `<leader>ca` | Find places where current symbol is assigned     |
     " | `<leader>cz` | Find current word in ctags database              |
+
+    " Better file navigator
+    Plug 'justinmk/vim-dirvish'
+    Plug 'kristijanhusak/vim-dirvish-git'
 
     " Automatically pair all styles of braces and quotes
     Plug 'lunarWatcher/auto-pairs'
