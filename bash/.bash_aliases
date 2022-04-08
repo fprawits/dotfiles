@@ -31,5 +31,5 @@ alias save="rsync -avhFr \
   --delete-excluded \
   --log-file=/tmp/save.xps13.log \
   $HOME \
-  /media/sheep/backupXPS13/xps13.home.rsync \
+  /media/$USER/backupXPS13/xps13.home.rsync \
 "
