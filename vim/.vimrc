@@ -193,8 +193,24 @@ call plug#begin('~/.vim/plugged')
     " add 'gc' command for commenting
     Plug 'tpope/vim-commentary'
 
+    " Add common UNIX shell commands
+    Plug 'tpope/vim-eunuch'
+
     " enhance netrw behaviour
     Plug 'tpope/vim-vinegar'
+
+    " Use dirvish as file explorer
+    Plug 'justinmk/vim-dirvish'
+    Plug 'kristijanhusak/vim-dirvish-git'
+    let g:dirvish_git_indicators = {
+    \ 'Modified'  : '✹',
+    \ 'Staged'    : '✚',
+    \ 'Untracked' : '✭',
+    \ 'Renamed'   : '➜',
+    \ 'Unmerged'  : '═',
+    \ 'Ignored'   : '☒',
+    \ 'Unknown'   : '?'
+    \ }
 
     " pairs of useful mappings
     Plug 'tpope/vim-unimpaired'
@@ -204,9 +220,6 @@ call plug#begin('~/.vim/plugged')
     nnoremap <silent> =sq :silent ToggleQuickFix<CR>
     nnoremap <silent> <sq :cclose<CR>
     nnoremap <silent> >sq :copen<CR>
-
-    " Vim commands for popular UNIX shell commands
-    Plug 'tpope/vim-eunuch'
 
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
@@ -229,11 +242,11 @@ call plug#begin('~/.vim/plugged')
     endif
     let g:airline_symbols.crypt = '🔒'
     let g:airline_symbols.branch = 'ᚠ'
-    let g:airline_symbols.spell = 'Ꞩ'
+    let g:airline_symbols.spell = 'Ⓢ'
     let g:airline_symbols.notexists = 'Ɇ'
     let g:airline_symbols.linenr = ' '
     let g:airline_symbols.maxlinenr = ''
-    let g:airline_symbols.colnr = ': '
+    let g:airline_symbols.colnr = ':'
     let g:airline#extensions#obsession#indicator_text = 'Ⓞ'
 
     " collection of color schemes
@@ -382,10 +395,6 @@ call plug#begin('~/.vim/plugged')
     " | `<leader>ci` | Find files #including the file name under cursor |
     " | `<leader>ca` | Find places where current symbol is assigned     |
     " | `<leader>cz` | Find current word in ctags database              |
-
-    " Better file navigator
-    Plug 'justinmk/vim-dirvish'
-    Plug 'kristijanhusak/vim-dirvish-git'
 
     " Automatically pair all styles of braces and quotes
     Plug 'lunarWatcher/auto-pairs'
