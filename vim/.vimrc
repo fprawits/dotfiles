@@ -151,6 +151,9 @@ nnoremap <Leader>dj :Over<CR>
 nnoremap <Leader>dJ :Continue<CR>
 nnoremap <Leader>dl :Step<CR>
 
+" activate the quickfix list filter plugin that ships with vim
+packadd! cfilter
+
 " activate man pager that ships with vim
 runtime ftplugin/man.vim
 let g:ft_man_open_mode = 'vert'
