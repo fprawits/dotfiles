@@ -97,6 +97,9 @@ set nrformats-=octal
 " Delete comment character when joining commented lines
 set formatoptions+=j
 
+" Move viminfo file to ~/.vim directory to prevent clutter in $HOME
+set viminfofile=~/.vim/viminfo
+
 " Remember global variables consisting of capital letters (e.g. 'KEEP_THIS')
 set viminfo^=!
 
