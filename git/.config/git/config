@@ -13,10 +13,10 @@
 	cmd = meld "$LOCAL" "$REMOTE"
 [init]
 	templatedir = ~/.git_template
-[meld]
+[merge]
 	tool = meld
 [mergetool "meld"]
-	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --ouput "$MERGED"
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [push]
 	default = simple
 [user]
