@@ -97,6 +97,9 @@ set nrformats-=octal
 " Delete comment character when joining commented lines
 set formatoptions+=j
 
+" Move viminfo file to ~/.vim directory to prevent clutter in $HOME
+set viminfofile=~/.vim/viminfo
+
 " Remember global variables consisting of capital letters (e.g. 'KEEP_THIS')
 set viminfo^=!
 
@@ -151,6 +154,9 @@ nnoremap <Leader>dB :Clear<CR>
 nnoremap <Leader>dj :Over<CR>
 nnoremap <Leader>dJ :Continue<CR>
 nnoremap <Leader>dl :Step<CR>
+
+" activate the quickfix list filter plugin that ships with vim
+packadd! cfilter
 
 " activate man pager that ships with vim
 runtime ftplugin/man.vim
@@ -235,13 +241,15 @@ call plug#begin('~/.vim/plugged')
     let g:airline#extensions#tabline#enabled = 1
     " Show only filename in tabline
     let g:airline#extensions#tabline#formatter = 'unique_tail'
+    " Disable tagbar extension
+    let g:airline#extensions#tagbar#enabled = 0
     " unicode symbols
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
     endif
     let g:airline_symbols.crypt = '🔒'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.spell = 'Ꞩ'
+    let g:airline_symbols.branch = 'ᚠ'
+    let g:airline_symbols.spell = 'Ⓢ'
     let g:airline_symbols.notexists = 'Ɇ'
     let g:airline_symbols.linenr = ' '
     let g:airline_symbols.maxlinenr = ''
@@ -263,7 +271,6 @@ call plug#begin('~/.vim/plugged')
     " textoject-anyblock: restrict matching to (), [], {}, <>
     let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
 
-
     " highlight targets of next f/F/t/T find command
     Plug 'unblevable/quick-scope'
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -272,7 +279,6 @@ call plug#begin('~/.vim/plugged')
     " Plug 'davidhalter/jedi-vim'
     " let g:jedi#popup_on_dot=0
     " let g:jedi#show_call_signatures_delay=0
-
 
     " fzf integration (fuzzy finder)
     Plug 'junegunn/fzf', { 'do': './install --all' }
@@ -677,6 +683,9 @@ CNoreAbbrev bd buffers<CR>:bdelete
 CNoreAbbrev bdel buffers<CR>:bdelete
 CNoreAbbrev sb buffers<CR>:sb
 CNoreAbbrev vsb buffers<CR>:vertical sb
+
+" Close all buffers except for the current one
+nnoremap <Leader>bo :%bdelete<Bar>edit #<Bar>bdelete #<Bar>normal g`"<CR>
 
 " open help in vertical split
 CNoreAbbrev h vert h
