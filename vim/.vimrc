@@ -124,6 +124,7 @@ if v:version >= 800
     let &t_TE = ""
 endif
 
+set diffopt+=vertical
 if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram,indent-heuristic
 endif
