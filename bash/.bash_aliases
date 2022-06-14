@@ -3,6 +3,7 @@ alias ...='cd ../..'
 alias rs='rsync -avhF'
 alias lc='locate'
 alias nb='newsboat'
+alias vi='vim'
 alias vw='vim -c "VimwikiIndex"'
 
 alias t='task'; _completion_loader task; complete -o nospace -F _task t
