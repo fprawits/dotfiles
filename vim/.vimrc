@@ -161,7 +161,7 @@ set keywordprg=:Man
 " Note: should be managed by gutentags for now
 "let g:Gtags_Auto_Update = 1
 noremap <Leader>c] :GtagsCursor<CR>
-"set cscopetags
+"set cscopetag
 
 " Make sure that vim-plug is installed, see:
 " https://github.com/junegunn/vim-plug/wiki/tutorial
