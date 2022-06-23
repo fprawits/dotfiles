@@ -1,5 +1,6 @@
 [global_config]
   borderless = True
+  focus = system
   inactive_color_offset = 0.7
   title_transmit_bg_color = "#a5c261"
   title_transmit_fg_color = "#000000"
