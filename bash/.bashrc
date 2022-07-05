@@ -194,3 +194,8 @@ if [ -d "${__anaconda_dir}" ]; then
 	unset __conda_setup __anaconda_dir
 fi
 # <<< conda initialize <<<
+
+# use `ipdb` as a python debugger
+if command -v ipdb3 &>/dev/null; then
+	export PYTHONBREAKPOINT=ipdb.set_trace
+fi
