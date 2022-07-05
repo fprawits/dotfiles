@@ -21,7 +21,7 @@ HISTSIZE=10000
 HISTFILESIZE=10000
 
 # exclude these commands from the history as they are just polluting the hist
-HISTIGNORE="&:l[sal]:cd:[bf]g:exit:pwd:history:clear:mount:unmount"
+HISTIGNORE="&:l[salt]:cd:[bf]g:exit:pwd:history:clear:mount:unmount"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -107,9 +107,11 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -CF --color=auto'
+alias la='ls -A --color=auto'
+alias ll='ls -alF --color=auto'
+alias lt='ls -altF --color=auto'
+alias l.='ls -d --color=auto .*'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
