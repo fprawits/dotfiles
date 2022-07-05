@@ -199,3 +199,9 @@ fi
 if command -v ipdb3 &>/dev/null; then
 	export PYTHONBREAKPOINT=ipdb.set_trace
 fi
+
+# color the `minicom` terminal
+
+if command -v minicom &>/dev/null; then
+	export MINICOM='-c on'
+fi
