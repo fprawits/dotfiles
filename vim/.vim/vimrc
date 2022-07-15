@@ -533,6 +533,9 @@ let &showbreak = '↪ '   " highlight wrapped lines
 set nowrap              " dont wrap lines
 set display+=lastline   " show as much of the last (wrapped) line as possible
 
+" Split new windows to the right
+set splitright
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
