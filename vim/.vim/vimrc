@@ -139,6 +139,10 @@ augroup cmdlinewindow
     autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q :quit<CR>
 augroup END
 
+" The swap file as well as a lot of other stuff depends on `updatetime`.
+" We do not use swap, but gitgutter and tagbar are more pleasant with this.
+set updatetime=250
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -791,7 +795,7 @@ noremap <Leader>ss z=
 noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 " Fast saving
-noremap <C-S> :update<cr>
+noremap <C-S> :update<CR>
 
 " :w!! sudo saves the file
 " (useful for handling the permission-denied error)
