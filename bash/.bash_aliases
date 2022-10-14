@@ -5,6 +5,7 @@ fi
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias -- -='cd -'
 alias rs='rsync -avhF'
 alias lc='locate'
 alias nb='newsbeuter'
