@@ -457,7 +457,13 @@ set scrolloff=7
 set sidescroll=1
 set sidescrolloff=5
 
-" Turn on the WiLd menu
+" Insert completion menu settings
+set completeopt=longest,menuone,preview
+
+" Ignore include files as it causes long complete times
+set complete-=i
+
+" Turn on the wild menu
 set wildmenu
 set wildmode=longest:full,full
 
