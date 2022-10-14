@@ -421,7 +421,7 @@ call plug#begin('~/.vim/plugged')
 
     " Class outline viewer
     Plug 'preservim/tagbar'
-    noremap [ot :TagbarOpen j<CR>
+    noremap [ot :TagbarOpen<CR>
     noremap ]ot :TagbarClose<CR>
     noremap yot :TagbarToggle<CR>
 
