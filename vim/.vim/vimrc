@@ -351,6 +351,16 @@ call plug#begin('~/.vim/plugged')
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
+    " Disable for markdown to avoid local list conflict with vimwiki
+    let g:ale_pattern_options = {'\.md$': {'ale_enabled': 0}}
+    " Use a balloon-like floating instead of a separate preview-window
+    let g:ale_floating_preview = 1
+    let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+    " Use balloons to present errors and hover info (currently only in gvim)
+    let g:ale_set_balloons = 1
+    " Disable printing hover info to echo line 
+    let g:ale_hover_cursor = 0
+    " ALE mappings
     nmap <silent> [W         <Plug>(ale_first)
     nmap <silent> [w         <Plug>(ale_previous)
     nmap <silent> ]w         <Plug>(ale_next)
@@ -360,8 +370,10 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
-    " Disable for markdown to avoid local list conflict with vimwiki
-    let g:ale_pattern_options = {'\.md$': {'ale_enabled': 0}}
+    augroup ALELSPMappings
+        autocmd!
+        autocmd User ALELSPStarted call ALELSPMappings()
+    augroup END
 
     " git integration
     Plug 'tpope/vim-fugitive'
@@ -884,3 +896,17 @@ function! ZoteroCite()
 endfunction
 noremap <leader>z "=ZoteroCite()<CR>p
 inoremap <C-z> <C-r>=ZoteroCite()<CR>
+
+function ALELSPMappings()
+  imap <buffer> <C-Space> <Plug>(ale_complete)
+  " Only working for tsserver
+  " nmap <buffer> K <Plug>(ale_documentation)
+  nmap <buffer> <Leader>k <Plug>(ale_hover)
+  nmap <buffer> gr <Plug>(ale_find_references)
+  nmap <buffer> gd <Plug>(ale_go_to_definition)
+  nnoremap <buffer> gs :ALESymbolSearch <C-R><C-W><CR>
+  " Does not seem to work with clangd?
+  " nmap <buffer> gt <Plug>(ale_go_to_type_definition)
+  " nmap <buffer> gi <Plug>(ale_go_to_implementation)
+  setlocal omnifunc=ale#completion#OmniFunc
+endfunction
