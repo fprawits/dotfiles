@@ -784,6 +784,9 @@ cnoremap <C-Q>     <C-C>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa!<CR>
 
+" Hitting <CR> during ins-completion will accept current selection, irrespective of state
+" Currently shadowed by Eunuch and Autopairs
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
