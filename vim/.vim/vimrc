@@ -376,7 +376,8 @@ call plug#begin('~/.vim/plugged')
 
     " git integration
     Plug 'tpope/vim-fugitive'
-    nnoremap gs :Git<CR>
+    nnoremap <Leader>gs :Git<CR>
+    nnoremap <Leader>gg :Ggrep --quiet <C-R><C-W><CR>
 
     " test inline diff / git-status symbols
     Plug 'airblade/vim-gitgutter'
