@@ -201,7 +201,16 @@ if command -v ipdb3 &>/dev/null; then
 fi
 
 # color the `minicom` terminal
-
 if command -v minicom &>/dev/null; then
 	export MINICOM='-c on'
 fi
+
+# Add a bash function to use DirDiff plugin for vim from command line
+function vimdirdiff() {
+	# Shell-escape each path:
+	DIR1=$(printf '%q' "$1")
+	shift
+	DIR2=$(printf '%q' "$1")
+	shift
+	vim $@ -c "DirDiff $DIR1 $DIR2"
+}
