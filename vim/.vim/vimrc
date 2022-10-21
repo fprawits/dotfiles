@@ -241,8 +241,6 @@ call plug#begin('~/.vim/plugged')
     let g:airline#extensions#tabline#enabled = 1
     " Show only filename in tabline
     let g:airline#extensions#tabline#formatter = 'unique_tail'
-    " Disable tagbar extension
-    let g:airline#extensions#tagbar#enabled = 0
     " unicode symbols
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
