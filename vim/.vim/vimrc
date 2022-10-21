@@ -346,6 +346,8 @@ call plug#begin('~/.vim/plugged')
 
     " asynchronous linting
     Plug 'dense-analysis/ale'
+    " Disable for markdown to avoid local list conflict with vimwiki
+    let g:ale_pattern_options = {'\.md$': {'ale_enabled': 0}}
     nmap <silent> [W         <Plug>(ale_first)
     nmap <silent> [w         <Plug>(ale_previous)
     nmap <silent> ]w         <Plug>(ale_next)
@@ -355,8 +357,6 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
-    " Disable for markdown to avoid local list conflict with vimwiki
-    let g:ale_pattern_options = {'\.md$': {'ale_enabled': 0}}
 
     " git integration
     Plug 'tpope/vim-fugitive'
@@ -420,7 +420,7 @@ call plug#begin('~/.vim/plugged')
 
     " Class outline viewer
     Plug 'preservim/tagbar'
-    noremap [ot :TagbarOpen j<CR>
+    noremap [ot :TagbarOpen<CR>
     noremap ]ot :TagbarClose<CR>
     noremap yot :TagbarToggle<CR>
 
@@ -445,7 +445,7 @@ set completeopt=longest,menuone,preview
 " Ignore include files as it causes long complete times
 set complete-=i
 
-" Turn on the WiLd menu
+" Turn on the wild menu
 set wildmenu
 set wildmode=longest:full,full
 
@@ -747,7 +747,7 @@ if has('clipboard')
 endif
 
 " When you press <Leader>r you can search and replace the selected text
-vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
+" vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
 
 " Use * or # as motion for the change/delete commands, repeat with `.` afterwards
 nnoremap c* *``cgn
@@ -790,7 +790,7 @@ noremap <Leader>ss z=
 noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 " Fast saving
-noremap <C-S> :update<cr>
+noremap <C-S> :update<CR>
 
 " :w!! sudo saves the file
 " (useful for handling the permission-denied error)
