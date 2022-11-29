@@ -562,11 +562,11 @@ set display+=lastline   " show as much of the last (wrapped) line as possible
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
-set termguicolors
-
 " Enable syntax highlighting
 syntax enable
+
+set background=dark
+set termguicolors
 
 try
     let g:gruvbox_italic = '1'
