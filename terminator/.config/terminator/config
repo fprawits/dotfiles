@@ -3,6 +3,7 @@
   title_transmit_fg_color = "#000000"
   title_transmit_bg_color = "#a5c261"
   inactive_color_offset = 0.7
+  case_sensitive = False
 [keybindings]
   zoom_in = <Primary>equal
   cycle_next = <Alt>bracketright
