@@ -807,6 +807,9 @@ noremap <Leader>sp [s
 noremap <Leader>sa zg
 noremap <Leader>ss z=
 
+" Easy insertion of trailing ';' or ',' from insert mode
+inoremap ;; <Esc>A;<Esc>
+inoremap ,, <Esc>A;<Esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
