@@ -8,7 +8,7 @@
   broadcast_all = None
   broadcast_group = None
   broadcast_off = None
-  close_term = <Primary><Shift>w
+  close_term = None
   edit_tab_title = <Primary><Shift>r
   go_down = <Alt>j
   go_left = <Alt>h
