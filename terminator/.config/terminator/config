@@ -17,7 +17,7 @@
   rotate_ccw = <Shift><Alt>braceleft
   split_horiz = <Alt>minus
   split_vert = <Alt>equal
-  close_term = <Primary><Shift>w
+  close_term = ""
   page_up_half = None
   page_down_half = None
   line_up = None
