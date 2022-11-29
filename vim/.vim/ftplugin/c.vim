@@ -10,3 +10,6 @@ let g:ale_c_build_dir_names = ['build', 'build/Debug', 'build/Release',
                               \'Debug', 'Debug/bin', 'Debug/build',
                               \'Release', 'Release/bin', 'Release/build'
                               \]
+
+" Quickly switch between header and source file
+nnoremap <buffer> <Leader>6 :find **/%:t:s@.hp\{,2}$@.X123X@:s@.cp\{,2}$@.h*@:s@.X123X$@.c*@<CR>
