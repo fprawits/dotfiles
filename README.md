@@ -48,9 +48,7 @@ Contents
 │   └── .ssh
 │       └── config  # ssh configuration
 ├── tmux
-│   └── .config
-│       └── tmux
-│           └── tmux.conf  # tmux configuration
+│   └── .tmux.conf  # tmux configuration
 ├── terminator
 │   └── .config
 │       └── terminator
