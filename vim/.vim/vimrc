@@ -518,6 +518,13 @@ if &term =~ 'xterm'
     let &t_EI = "\<Esc>[2 q"
 endif
 
+" Toggle cursorline depending on normal/insert mode
+augroup toggle_cursorline
+    autocmd!
+    autocmd InsertEnter * set nocursorline
+    autocmd InsertLeave * set cursorline
+augroup END
+
 " show line numbers
 set number
 
