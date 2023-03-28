@@ -38,8 +38,8 @@
   resize_left = <Alt>Left
   resize_right = <Alt>Right
   resize_up = <Alt>Up
-  split_horiz = <Super>minus
-  split_vert = <Super>less
+  split_horiz = <Alt>minus
+  split_vert = <Alt>equal
   switch_to_tab_1 = <Alt>1
   switch_to_tab_10 = <Alt>0
   switch_to_tab_2 = <Alt>2
