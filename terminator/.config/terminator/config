@@ -51,6 +51,7 @@
   switch_to_tab_8 = <Alt>8
   switch_to_tab_9 = <Alt>9
   toggle_zoom = <Super>o
+  zoom_normal = <Primary>0
 [layouts]
   [[default]]
     [[[child1]]]
