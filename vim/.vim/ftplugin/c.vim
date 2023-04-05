@@ -11,5 +11,7 @@ let g:ale_c_build_dir_names = ['build', 'build/Debug', 'build/Release',
                               \'Release', 'Release/bin', 'Release/build'
                               \]
 
+let b:ale_fixers = ['remove_trailing_lines', 'trim_whitespace']
+
 " Quickly switch to corresponding header file
 nnoremap <buffer> <Leader>6 :find **/%:t:s@\.hp\{,2}$@.X123X@:s@.cp\{,2}$@.h*@:s@.X123X$@.c*@<CR>
