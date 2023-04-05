@@ -1,5 +1,5 @@
 " Set spellchecking
-setlocal spell
+" setlocal spell
 setlocal spelllang=en_us,de_de
 
 " Set text wrapping
