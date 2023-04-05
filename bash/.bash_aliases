@@ -1,6 +1,11 @@
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
+
+alias t1='tree -L 1'
+alias t2='tree -L 2'
+alias t3='tree -L 3'
+
 alias rs='rsync -avhF'
 alias lc='locate'
 alias nb='newsboat'
