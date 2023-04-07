@@ -18,7 +18,9 @@ let b:ale_python_pylsp_config = {
       \       'pyflakes' : { 'enabled': v:false },
       \       'flake8': {
       \         'enabled': v:true,
-      \         'config': 'setup.cfg',
+      \         'maxLineLength': 88,
+      \         'ignore': ['E023',],
+      \         'exclude': ['.git', '__pycache__', 'build', 'dist'],
       \       },
       \     'configurationSources': ['flake8'],
       \     },
