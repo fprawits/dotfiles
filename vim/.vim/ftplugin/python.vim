@@ -19,7 +19,7 @@ let b:ale_python_pylsp_config = {
       \       'flake8': {
       \         'enabled': v:true,
       \         'maxLineLength': 88,
-      \         'ignore': ['E023',],
+      \         'ignore': ['E203', 'W503',],
       \         'exclude': ['.git', '__pycache__', 'build', 'dist'],
       \       },
       \     'configurationSources': ['flake8'],
