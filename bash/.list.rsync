@@ -2,7 +2,7 @@
 /.list.rsync
 /.local/bin/
 /.local/share/evolution/tasks/
-/.local/share/icons/evolution*.png
+/.local/share/icons/
 /.local/share/keepassxc/
 /.rsync-filter
 /.task/
