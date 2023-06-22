@@ -214,3 +214,6 @@ function vimdirdiff() {
 	shift
 	vim $@ -c "DirDiff $DIR1 $DIR2"
 }
+
+# hook `direnv` to the shell
+eval "$(direnv hook bash)"
