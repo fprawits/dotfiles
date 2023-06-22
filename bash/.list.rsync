@@ -1,8 +1,9 @@
-/.config/./terminator/
 /.dotfiles/
 /.list.rsync
-/.local/share/./evolution/tasks/
-/.local/share/./keepassxc/
+/.local/bin/
+/.local/share/evolution/tasks/
+/.local/share/icons/evolution*.png
+/.local/share/keepassxc/
 /.rsync-filter
 /.task/
 /.taskrc/
