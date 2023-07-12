@@ -196,7 +196,7 @@ fi
 # <<< conda initialize <<<
 
 # use `ipdb` as a python debugger
-if command -v ipdb3 &>/dev/null; then
+if command -v ipdb{,3} &>/dev/null; then
 	export PYTHONBREAKPOINT=ipdb.set_trace
 fi
 
