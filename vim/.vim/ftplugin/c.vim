@@ -4,6 +4,9 @@ setlocal cinoptions+=:0
 " Add system headers to tags
 setlocal tags+=~/.vim/systags
 
+" Add syntax highlight for doxygen
+let b:load_doxygen_syntax=1
+
 " Add additonal directories to search for `compile_commands.json`
 let g:ale_c_build_dir_names = ['build', 'build/Debug', 'build/Release',
                               \'bin', 'bin/Debug', 'bin/Release'
