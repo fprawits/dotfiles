@@ -875,7 +875,10 @@ command! -bang Qa qa<bang>
 command! -bang QA qa<bang>
 
 " insert current date and time
-iabbrev xdate <C-R>=strftime("%F %T")<CR>
+iabbrev <expr> cdate strftime("%F")
+iabbrev <expr> xdate strftime("%F %T")
+" insert email address
+iabbrev @@ florian.prawits@ait.ac.at
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
