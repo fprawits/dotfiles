@@ -479,6 +479,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'editorconfig/editorconfig-vim'
     let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+    " Edit directly in the quickfix window and save changes back to corresponding files
+    Plug 'stefandtw/quickfix-reflector.vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
