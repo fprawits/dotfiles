@@ -406,6 +406,11 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>gs :Git<CR>
     nnoremap <Leader>gg :Ggrep --quiet <C-R><C-W><CR>
     Plug 'junegunn/gv.vim'
+    nnoremap <Leader>gv :GV<CR>
+    nnoremap <Leader>gV :GV!<CR>
+    Plug 'shumphrey/fugitive-gitlab.vim'
+    let g:fugitive_gitlab_domains = [ 'https://git-service.ait.ac.at' ]
+    nnoremap <Leader>gb :GBrowse<CR>
 
     " test inline diff / git-status symbols
     Plug 'airblade/vim-gitgutter'
