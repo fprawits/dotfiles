@@ -266,12 +266,8 @@ call plug#begin('~/.vim/plugged')
     " new text object based on indentation level
     Plug 'michaeljsmith/vim-indent-object'
 
-    " create custom textobjects - requisite for unify plugin below
-    Plug 'kana/vim-textobj-user'
-    " unify (), [], {}, "", '', <> textobjects under shortcut `ib` and `ab`
-    Plug 'rhysd/vim-textobj-anyblock'
-    " textoject-anyblock: restrict matching to (), [], {}, <>
-    let g:textobj#anyblock#blocks = ['(', '[', '{', '<']
+    " Additional textobjects to operate on
+    Plug 'wellle/targets.vim'
 
     " highlight targets of next f/F/t/T find command
     Plug 'unblevable/quick-scope'
