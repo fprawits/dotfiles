@@ -1,3 +1,13 @@
+format = """
+$all\
+$fill\
+$cmake\
+$nodejs\
+$python\
+$time\
+$line_break\
+$character"""
+
 [character]
 #error_symbol = '[✗](bold red) '
 
@@ -6,9 +16,23 @@ format = ' [$symbol($version )]($style)'
 
 [conda]
 format = ' [$symbol$environment]($style) '
+ignore_base = false
+style = 'white'
 
 [directory]
 style = 'bold blue'
 
+[fill]
+symbol = ' '
+
+[jobs]
+symbol = '⚙'
+style = 'bold purple'
+
 [python]
 format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[time]
+disabled = false
+format =' [$time]($style) ' 
+style = 'bright-black'
