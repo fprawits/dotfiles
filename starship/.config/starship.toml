@@ -1,0 +1,11 @@
+[character]
+error_symbol = '[✗](bold red) '
+
+[cmake]
+format = ' [$symbol($version )]($style)'
+
+[conda]
+format = ' [$symbol$environment]($style) '
+
+[python]
+format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
