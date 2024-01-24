@@ -217,3 +217,6 @@ function vimdirdiff() {
 
 # hook `direnv` to the shell
 eval "$(direnv hook bash)"
+
+# load starship prompt
+eval "$(starship init bash)"
