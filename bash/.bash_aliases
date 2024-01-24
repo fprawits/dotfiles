@@ -46,3 +46,5 @@ alias fsave="rsync -avhr \
 "
 
 alias tags='rm tags; ctags -R --exclude=.git --exclude="LibRelease-*" --exclude="LQuNet_Mike"; ctags -a --c-kinds=+px-d include/AIT/*.h'
+
+alias xo='xdg-open'
