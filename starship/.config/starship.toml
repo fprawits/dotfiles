@@ -8,6 +8,8 @@ $time\
 $line_break\
 $character"""
 
+add_newline = false
+
 [character]
 #error_symbol = '[✗](bold red) '
 
