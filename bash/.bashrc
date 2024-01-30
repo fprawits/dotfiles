@@ -218,5 +218,10 @@ function vimdirdiff() {
 # hook `direnv` to the shell
 eval "$(direnv hook bash)"
 
+function set_win_title() {
+    echo -ne "\033]0; $(basename "$PWD") \007"
+}
+# let starship also set the window title to cwd
+starship_precmd_user_func="set_win_title"
 # load starship prompt
 eval "$(starship init bash)"
