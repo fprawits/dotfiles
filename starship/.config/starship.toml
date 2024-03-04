@@ -1,6 +1,7 @@
 format = """
 $all\
 $fill\
+$c\
 $cmake\
 $nodejs\
 $python\
@@ -12,6 +13,9 @@ add_newline = false
 
 [character]
 #error_symbol = '[✗](bold red) '
+
+[c]
+format = '[$symbol($version(-$name) )]($style)'
 
 [cmake]
 format = ' [$symbol($version )]($style)'
