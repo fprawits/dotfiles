@@ -289,7 +289,7 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>fL   :BLines<CR>
     nnoremap <Leader><F1> :Helptags<CR>
     nnoremap <Leader>fr   :Rg<Space><C-R><C-W><CR>
-    vnoremap <Leader>fr   y:Rg<Space><C-R>0<CR>
+    vnoremap <Leader>fr   "zy:Rg<Space><C-R>z<CR>
     nnoremap <Leader>fR   :Rg<Space>
     nnoremap <Leader>fw   :Windows<CR>
     nnoremap <Leader>fg   :Locate<Space>
