@@ -1,6 +1,6 @@
 # Load custom bash completion scripts
 if [ -d ~/.bash_completion.d ] && [ -n "$(ls -A ~/.bash_completion.d)" ]; then
-	for f in ~/.bash_completion.d/*; do source "$f"; done
+    for f in ~/.bash_completion.d/*; do source "$f"; done
 fi
 
 alias ..='cd ..'
@@ -21,7 +21,7 @@ alias jlab='jupyter lab --browser chromium-browser 1>/tmp/jupyter-lab.log 2>&1 &
 alias jconvert='jupyter nbconvert --to html --HTMLExporter.exclude_input=True'
 
 if [ -f "$HOME/.exclude.diff" ]; then
-	alias xdiff="diff -qr --exclude-from $HOME/.exclude.diff"
+    alias xdiff="diff -qr --exclude-from $HOME/.exclude.diff"
 fi
 
 alias save="rsync -avhFr \
