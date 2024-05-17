@@ -4,15 +4,22 @@
 [core]
 	editor = vim
 	autocrlf = input
+	pager = delta
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	side-by-side = true
 [diff]
 	algorithm = histogram
 	tool = meld
+	colorMoved = default
 [difftool]
 	prompt = false
 [difftool "meld"]
 	cmd = meld "$LOCAL" "$REMOTE"
 [init]
 	templatedir = ~/.git_template
+[interactive]
+	diffFilter = delta --color-only
 [merge]
 	tool = meld
 [mergetool "meld"]
