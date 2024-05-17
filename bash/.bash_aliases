@@ -14,7 +14,7 @@ alias vw='vim -c "VimwikiIndex"'
 
 alias t='task'; _completion_loader task; complete -o nospace -F _task t
 
-alias ipy='ipython --pylab'
+alias ipy='ipython3 --pylab'
 alias jqt='jupyter qtconsole'
 alias jnb='jupyter notebook'
 alias jlab='jupyter lab --browser chromium 1>/tmp/jupyter-lab.log 2>&1 & disown "$!"'
