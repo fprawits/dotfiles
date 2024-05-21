@@ -1,6 +1,18 @@
 [alias]
-	lol = log --oneline --decorate --graph
+	br = branch
+	c  = commit --vebose
+	ca = commit --amend --verbose
+	co = checkout
+	s  = status --short
+	st = status
+	sw = switch
+	z  = stash list
+	za = stash apply
+	zz = stash
+	alias = config --get-regexp ^alias\\.
 	ctags = !.git/hooks/ctags
+	last = log -1 HEAD
+	lol = log --oneline --decorate --graph
 [core]
 	editor = vim
 	autocrlf = input
