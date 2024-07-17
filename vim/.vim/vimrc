@@ -300,9 +300,12 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>gF   :GFiles?<CR>
     nnoremap <Leader>gc   :Commits<CR>
     nnoremap <Leader>gC   :BCommits<CR>
-    imap <c-x><c-k> <plug>(fzf-complete-word)
-    imap <c-x><c-f> <plug>(fzf-complete-path)
-    imap <c-x><c-l> <plug>(fzf-complete-line)
+    nmap <leader><tab> <plug>(fzf-maps-n)
+    xmap <leader><tab> <plug>(fzf-maps-x)
+    omap <leader><tab> <plug>(fzf-maps-o)
+    imap <C-k> <plug>(fzf-complete-word)
+    imap <C-f> <plug>(fzf-complete-path)
+    imap <c-l> <plug>(fzf-complete-line)
     " Customize fzf colors to match color scheme
     let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
@@ -831,6 +834,14 @@ cnoremap <C-Q>     <C-C>
 " Hitting <CR> during ins-completion will accept current selection, irrespective of state
 " Currently shadowed by Eunuch and Autopairs
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Insert completion mappings
+inoremap <C-]> <C-x><C-]>
+inoremap <C-b> <C-x><C-p>
+" The mappings below are currently used by the fzf completion equivalents
+" inoremap <C-k> <C-x><C-k>
+" inoremap <C-f> <C-x><C-f>
+" inoremap <C-l> <C-x><C-l>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
