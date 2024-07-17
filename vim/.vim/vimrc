@@ -708,6 +708,10 @@ vnoremap > >gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Uniform closing
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :qa!<CR>
+
 " Treat long lines as break lines (useful when moving around in them)
 noremap j gj
 noremap k gk
@@ -819,12 +823,10 @@ nnoremap c# #``cgN
 nnoremap d* *``dgn
 nnoremap d# #``dgN
 
-" Uniform escaping and quitting
+" Uniform escaping
 inoremap <C-Q>     <Esc>
 noremap  <C-Q>     <Esc>
 cnoremap <C-Q>     <C-C>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :qa!<CR>
 
 " Hitting <CR> during ins-completion will accept current selection, irrespective of state
 " Currently shadowed by Eunuch and Autopairs
