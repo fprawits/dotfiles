@@ -639,8 +639,6 @@ set nobackup
 set nowb
 set noswapfile
 
-set undolevels=700
-
 if has("persistent_undo")
    let s:target_path = expand('~/.vim/undodir')
 
