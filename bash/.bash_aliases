@@ -9,7 +9,19 @@ alias t3='tree -L 3'
 alias rs='rsync -avhF'
 alias lc='locate'
 alias nb='newsboat'
-alias vi='vim'
+
+function vimsession() {
+    local session_file="Session.vim"
+
+    if [[ -f $session_file && $# -eq 0 ]]; then
+        vim -S $session_file
+    else
+        vim "$@"
+    fi
+}
+
+alias vi='vimsession'
+alias vim='vimsession'
 alias vw='vim -c "VimwikiIndex"'
 
 alias t='task'; _completion_loader task; complete -o nospace -F _task t
