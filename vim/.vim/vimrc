@@ -392,6 +392,7 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
+    nmap <silent> <Leader>ar <Plug>(ale_rename)
     augroup ALELSPMappings
         autocmd!
         autocmd User ALELSPStarted call ALELSPMappings()
