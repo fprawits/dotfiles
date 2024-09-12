@@ -226,4 +226,6 @@ function set_win_title() {
 # let starship also set the window title to cwd
 starship_precmd_user_func="set_win_title"
 # load starship prompt
-eval "$(starship init bash)"
+if command -v starship &>/dev/null; then
+    eval "$(starship init bash)"
+fi
