@@ -216,7 +216,9 @@ function vimdirdiff() {
 }
 
 # hook `direnv` to the shell
-eval "$(direnv hook bash)"
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook bash)"
+fi
 
 function set_win_title() {
     echo -ne "\033]0; $(basename "$PWD") \007"
