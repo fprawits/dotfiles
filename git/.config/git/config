@@ -8,6 +8,7 @@
 	sw = switch
 	z  = stash list
 	za = stash apply
+	zp = stash pop
 	zz = stash
 	alias = config --get-regexp ^alias\\.
 	ctags = !.git/hooks/ctags
