@@ -1,19 +1,19 @@
 [alias]
-	br = branch
-	c  = commit --vebose
-	ca = commit --amend --verbose
-	co = checkout
-	s  = status --short
-	st = status
-	sw = switch
-	z  = stash list
-	za = stash apply
-	zp = stash pop
-	zz = stash
 	alias = config --get-regexp ^alias\\.
+	br = branch
+	ca = commit --amend --verbose
+	c  = commit --vebose
+	co = checkout
 	ctags = !.git/hooks/ctags
 	last = log -1 HEAD
 	lol = log --oneline --decorate --graph
+	s  = status --short
+	st = status
+	sw = switch
+	za = stash apply
+	zp = stash pop
+	z  = stash list
+	zz = stash
 [core]
 	editor = vim
 	autocrlf = input
