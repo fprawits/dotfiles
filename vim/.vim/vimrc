@@ -491,8 +491,8 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Better scrolling
-set scrolloff=7
+" Better scrolling, high scrolloff keeps cursor centered
+set scrolloff=999
 set sidescroll=1
 set sidescrolloff=5
 
