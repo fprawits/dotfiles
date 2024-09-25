@@ -1,0 +1,13 @@
+max-items 20
+auto-reload yes
+reload-time 300
+reload-threads 4
+
+bind-key j down
+bind-key k up
+bind-key J next-feed articlelist
+bind-key J prev-feed articlelist
+bind-key g home
+bind-key G end
+bind-key o open-in-browser-and-mark-read
+bind-key o open-in-browser article
