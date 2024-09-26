@@ -955,6 +955,15 @@ function! ToggleQuickFix()
 endfunction
 command! -nargs=0 -bar ToggleQuickFix silent call ToggleQuickFix()
 
+function! ToggleLocation()
+    if getloclist(0, {'winid': 0}).winid
+        lclose
+    else
+        lopen
+    endif
+endfunction
+command! -nargs=0 -bar ToggleLocation silent! call ToggleLocation()
+
 " latex-suite already defines a mapping (<leader>ls) for forward searching.
 " Alternatively the following can be used
 "function! SyncTexForward()
