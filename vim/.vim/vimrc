@@ -136,7 +136,7 @@ endif
 " and press 'q' to close the window
 augroup cmdlinewindow
     autocmd!
-    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q :quit<CR>
+    autocmd CmdwinEnter * noremap <buffer> <silent> <nowait> q <Cmd>quit<CR>
 augroup END
 
 " The swap file as well as a lot of other stuff depends on `updatetime`.
@@ -157,11 +157,11 @@ let g:termdebug_config = #{
                          \ disasm_window: v:false,
                          \ variables_window: v:false,
                          \}
-nnoremap <Leader>db :Break<CR>
-nnoremap <Leader>dB :Clear<CR>
-nnoremap <Leader>dj :Over<CR>
-nnoremap <Leader>dJ :Continue<CR>
-nnoremap <Leader>dl :Step<CR>
+nnoremap <Leader>db <Cmd>Break<CR>
+nnoremap <Leader>dB <Cmd>Clear<CR>
+nnoremap <Leader>dj <Cmd>Over<CR>
+nnoremap <Leader>dJ <Cmd>Continue<CR>
+nnoremap <Leader>dl <Cmd>Step<CR>
 
 " activate the quickfix list filter plugin that ships with vim
 packadd! cfilter
@@ -174,7 +174,7 @@ set keywordprg=:Man
 " automatically update the gnu-global database, see `~/.vim/plugin/gtags.vim`
 " Note: should be managed by gutentags for now
 "let g:Gtags_Auto_Update = 1
-noremap <Leader>c] :GtagsCursor<CR>
+noremap <Leader>c] <Cmd>GtagsCursor<CR>
 "set cscopetag
 
 " Make sure that vim-plug is installed, see:
@@ -231,12 +231,12 @@ call plug#begin('~/.vim/plugged')
 
     " pairs of useful mappings
     Plug 'tpope/vim-unimpaired'
-    nnoremap <silent> yoq :silent ToggleQuickFix<CR>
-    nnoremap <silent> [oq :cclose<CR>
-    nnoremap <silent> ]oq :copen<CR>
-    nnoremap <silent> =sq :silent ToggleQuickFix<CR>
-    nnoremap <silent> <sq :cclose<CR>
-    nnoremap <silent> >sq :copen<CR>
+    nnoremap <silent> yoq <Cmd>silent ToggleQuickFix<CR>
+    nnoremap <silent> [oq <Cmd>cclose<CR>
+    nnoremap <silent> ]oq <Cmd>copen<CR>
+    nnoremap <silent> =sq <Cmd>silent ToggleQuickFix<CR>
+    nnoremap <silent> <sq <Cmd>cclose<CR>
+    nnoremap <silent> >sq <Cmd>copen<CR>
 
     " Better Statusbar - vim airline + themes
     Plug 'vim-airline/vim-airline'
@@ -282,28 +282,28 @@ call plug#begin('~/.vim/plugged')
     " fzf integration (fuzzy finder)
     Plug 'junegunn/fzf', { 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    nnoremap <Leader>fb   :Buffers<CR>
-    nnoremap <Leader>ff   :Files<CR>
-    nnoremap <Leader>fl   :Lines<CR>
-    nnoremap <Leader>fL   :BLines<CR>
-    nnoremap <Leader><F1> :Helptags<CR>
-    nnoremap <Leader>fr   :Rg<Space><C-R><C-W><CR>
-    vnoremap <Leader>fr   "zy:Rg<Space><C-R>z<CR>
+    nnoremap <Leader>fb   <Cmd>Buffers<CR>
+    nnoremap <Leader>ff   <Cmd>Files<CR>
+    nnoremap <Leader>fl   <Cmd>Lines<CR>
+    nnoremap <Leader>fL   <Cmd>BLines<CR>
+    nnoremap <Leader><F1> <Cmd>Helptags<CR>
+    nnoremap <Leader>fr   <Cmd>Rg<Space><C-R><C-W><CR>
+    vnoremap <Leader>fr   "zy<Cmd>Rg<Space><C-R>z<CR>
     nnoremap <Leader>fR   :Rg<Space>
-    nnoremap <Leader>fw   :Windows<CR>
+    nnoremap <Leader>fw   <Cmd>Windows<CR>
     nnoremap <Leader>fg   :Locate<Space>
-    nnoremap <Leader>ft   :Tags<CR>
-    nnoremap <Leader>fT   :BTags<CR>
-    nnoremap <Leader>fm   :Marks<CR>
-    nnoremap <Leader>fh   :History<CR>
-    nnoremap <Leader>f:   :History:<CR>
-    nnoremap <Leader>f/   :History/<CR>
-    nnoremap <Leader>fc   :Commands<CR>
-    nnoremap <Leader>fs   :Snippets<CR>
-    nnoremap <Leader>gf   :GFiles<CR>
-    nnoremap <Leader>gF   :GFiles?<CR>
-    nnoremap <Leader>gc   :Commits<CR>
-    nnoremap <Leader>gC   :BCommits<CR>
+    nnoremap <Leader>ft   <Cmd>Tags<CR>
+    nnoremap <Leader>fT   <Cmd>BTags<CR>
+    nnoremap <Leader>fm   <Cmd>Marks<CR>
+    nnoremap <Leader>fh   <Cmd>History<CR>
+    nnoremap <Leader>f:   <Cmd>History:<CR>
+    nnoremap <Leader>f/   <Cmd>History/<CR>
+    nnoremap <Leader>fc   <Cmd>Commands<CR>
+    nnoremap <Leader>fs   <Cmd>Snippets<CR>
+    nnoremap <Leader>gf   <Cmd>GFiles<CR>
+    nnoremap <Leader>gF   <Cmd>GFiles?<CR>
+    nnoremap <Leader>gc   <Cmd>Commits<CR>
+    nnoremap <Leader>gC   <Cmd>BCommits<CR>
     nmap <leader><tab> <plug>(fzf-maps-n)
     xmap <leader><tab> <plug>(fzf-maps-x)
     omap <leader><tab> <plug>(fzf-maps-o)
@@ -404,21 +404,21 @@ call plug#begin('~/.vim/plugged')
 
     " git integration
     Plug 'tpope/vim-fugitive'
-    nnoremap <Leader>gs :Git<CR>
-    nnoremap <Leader>gg :Ggrep --quiet <C-R><C-W><CR>
+    nnoremap <Leader>gs <Cmd>Git<CR>
+    nnoremap <Leader>gg <Cmd>Ggrep --quiet <C-R><C-W><CR>
     Plug 'junegunn/gv.vim'
-    nnoremap <Leader>gv :GV<CR>
-    nnoremap <Leader>gV :GV!<CR>
+    nnoremap <Leader>gv <Cmd>GV<CR>
+    nnoremap <Leader>gV <Cmd>GV!<CR>
     Plug 'shumphrey/fugitive-gitlab.vim'
     let g:fugitive_gitlab_domains = [ 'https://git-service.ait.ac.at' ]
-    nnoremap <Leader>gb :GBrowse<CR>
+    nnoremap <Leader>gb <Cmd>GBrowse<CR>
 
     " test inline diff / git-status symbols
     Plug 'airblade/vim-gitgutter'
 
     " visualization of undotree
     Plug 'mbbill/undotree'
-    nnoremap <Leader>u :UndotreeToggle<CR>
+    nnoremap <Leader>u <Cmd>UndotreeToggle<CR>
 
     " recursively diff directories
     Plug 'will133/vim-dirdiff'
@@ -471,9 +471,9 @@ call plug#begin('~/.vim/plugged')
 
     " Class outline viewer
     Plug 'preservim/tagbar'
-    noremap [ot :TagbarOpen<CR>
-    noremap ]ot :TagbarClose<CR>
-    noremap yot :TagbarToggle<CR>
+    noremap [ot <Cmd>TagbarOpen<CR>
+    noremap ]ot <Cmd>TagbarClose<CR>
+    noremap yot <Cmd>TagbarToggle<CR>
 
     " Better session management
     Plug 'tpope/vim-obsession'
@@ -709,8 +709,8 @@ set smartindent
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
+vnoremap <silent> * <Cmd>call VisualSelection('f', '')<CR>
+vnoremap <silent> # <Cmd>call VisualSelection('b', '')<CR>
 
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
@@ -723,8 +723,8 @@ vnoremap > >gv
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Uniform closing
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :qa!<CR>
+nnoremap <Leader>q <Cmd>q<CR>
+nnoremap <Leader>Q <Cmd>qa!<CR>
 
 " Treat long lines as break lines (useful when moving around in them)
 noremap j gj
@@ -765,7 +765,7 @@ CNoreAbbrev sb buffers<CR>:sb
 CNoreAbbrev vsb buffers<CR>:vertical sb
 
 " Close all buffers except for the current one
-nnoremap <Leader>bo :%bdelete<Bar>edit #<Bar>bdelete #<Bar>normal g`"<CR>
+nnoremap <Leader>bo <Cmd>%bdelete<Bar>edit #<Bar>bdelete #<Bar>normal g`"<CR>
 
 " Quick switch between current and alternate buffer
 nnoremap <Backspace> <C-^>
@@ -813,7 +813,7 @@ cnoremap <Esc>f <S-Right>
 
 " show registers
 " taken from http://superuser.com/questions/656949/always-show-the-register-list-in-vim
-nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
+nnoremap <silent> "" <Cmd>registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
@@ -887,7 +887,7 @@ endif
 noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 " Fast saving
-noremap <C-S> :update<CR>
+noremap <C-S> <Cmd>update<CR>
 
 " :w!! sudo saves the file
 " (useful for handling the permission-denied error)
