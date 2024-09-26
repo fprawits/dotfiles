@@ -393,7 +393,6 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
-    nmap <silent> <Leader>ar <Plug>(ale_rename)
     augroup ALELSPMappings
         autocmd!
         autocmd User ALELSPStarted call ALELSPMappings()
@@ -990,9 +989,10 @@ function ALELSPMappings()
   " Only working for tsserver
   " nmap <buffer> K <Plug>(ale_documentation)
   nmap <buffer> <Leader>k <Plug>(ale_hover)
-  nmap <buffer> gr <Plug>(ale_find_references)
   nmap <buffer> gd <Plug>(ale_go_to_definition)
-  nnoremap <buffer> gs :ALESymbolSearch <C-R><C-W><CR>
+  nmap <buffer> gr <Plug>(ale_find_references)
+  nmap <silent> gR <Plug>(ale_rename)
+  nnoremap <buffer> gs <Cmd>ALESymbolSearch <C-R><C-W><CR>
   " Does not seem to work with clangd?
   " nmap <buffer> gt <Plug>(ale_go_to_type_definition)
   " nmap <buffer> gi <Plug>(ale_go_to_implementation)
