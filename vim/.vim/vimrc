@@ -152,7 +152,11 @@ packadd! matchit
 
 " activate plugin for gdb integration that ships with vim
 packadd! termdebug
-let g:termdebug_wide = 1
+let g:termdebug_config = #{
+                         \ wide: 1,
+                         \ disasm_window: v:false,
+                         \ variables_window: v:false,
+                         \}
 nnoremap <Leader>db :Break<CR>
 nnoremap <Leader>dB :Clear<CR>
 nnoremap <Leader>dj :Over<CR>
