@@ -147,10 +147,11 @@ set updatetime=250
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" activate the matchit plugin that ships with vim by default
+" matchit: enhanced %-key matching, ships with vim {{{
 packadd! matchit
+" }}}
 
-" activate plugin for gdb integration that ships with vim
+" termdebug: gdb integration, ships with vim {{{
 packadd! termdebug
 let g:termdebug_config = #{
                          \ wide: 1,
@@ -162,14 +163,17 @@ nnoremap <Leader>dB <Cmd>Clear<CR>
 nnoremap <Leader>dj <Cmd>Over<CR>
 nnoremap <Leader>dJ <Cmd>Continue<CR>
 nnoremap <Leader>dl <Cmd>Step<CR>
+" }}}
 
-" activate the quickfix list filter plugin that ships with vim
+" cfilteR: quickfix list filter plugin, ships with vim {{{
 packadd! cfilter
+" }}}
 
-" activate man pager that ships with vim
+" man: man pager, ships with vim {{{
 runtime ftplugin/man.vim
 let g:ft_man_open_mode = 'vert'
 set keywordprg=:Man
+" }}}
 
 " automatically update the gnu-global database, see `~/.vim/plugin/gtags.vim`
 " Note: should be managed by gutentags for now
@@ -189,7 +193,7 @@ endif
 " Make sure you use single quotes
 call plug#begin('~/.vim/plugged')
 
-    " latex-suite for vim
+    " vim-latex: latex IDE for vim {{{
     Plug 'vim-latex/vim-latex'
     " set grep program to always generate a file-name, even for single match
     if executable('rg')
@@ -198,23 +202,23 @@ call plug#begin('~/.vim/plugged')
     else
         set grepprg=grep\ -nH\ $*
     endif
-
-    " make vim's repeat command '.' work with plugins
+    " }}}
+    " vim-repeat: make repeat command '.' work with plugins {{{
     Plug 'tpope/vim-repeat'
-
-    " better manipulation of brackets and HTML/XML tags
+    " }}}
+    " vim-surrround: better manipulation of brackets and HTML/XML tags {{{
     Plug 'tpope/vim-surround'
-
-    " add 'gc' command for commenting
+    " }}}
+    " vim-commentary: add 'gc' command for commenting {{{
     Plug 'tpope/vim-commentary'
-
-    " Add common UNIX shell commands
+    " }}}
+    " vim-eunuch: Add common UNIX shell commands {{{
     Plug 'tpope/vim-eunuch'
-
-    " enhance netrw behaviour
+    " }}}
+    " vim-vinegar: enhance netrw behaviour {{{
     Plug 'tpope/vim-vinegar'
-
-    " Use dirvish as file explorer
+    " }}}
+    " vim-dirvish: file explorer {{{
     Plug 'justinmk/vim-dirvish'
     Plug 'kristijanhusak/vim-dirvish-git'
     let g:dirvish_git_indicators = {
@@ -228,8 +232,8 @@ call plug#begin('~/.vim/plugged')
     \ }
     " Group directories first
     let g:dirvish_mode = ':sort ,^.*[\/],'
-
-    " pairs of useful mappings
+    " }}}
+    " unimpaired: pairs of useful mappings {{{
     Plug 'tpope/vim-unimpaired'
     nnoremap <silent> yoq <Cmd>silent ToggleQuickFix<CR>
     nnoremap <silent> [oq <Cmd>cclose<CR>
@@ -237,8 +241,8 @@ call plug#begin('~/.vim/plugged')
     nnoremap <silent> =sq <Cmd>silent ToggleQuickFix<CR>
     nnoremap <silent> <sq <Cmd>cclose<CR>
     nnoremap <silent> >sq <Cmd>copen<CR>
-
-    " Better Statusbar - vim airline + themes
+    " }}}
+    " vim-airline: better statusbar + themes {{{
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     " Disable default option to show current mode, as airline will do this for us
@@ -263,23 +267,23 @@ call plug#begin('~/.vim/plugged')
     let g:airline_symbols.maxlinenr = ''
     let g:airline_symbols.colnr = ':'
     let g:airline#extensions#obsession#indicator_text = 'Ⓞ'
-
-    " collection of color schemes
+    " }}}
+    " collection of color schemes {{{
     Plug 'rafi/awesome-vim-colorschemes'
     Plug 'vim-scripts/peaksea'
     Plug 'skielbasa/vim-material-monokai'
-
-    " new text object based on indentation level
+    " }}}
+    " vim-indent-object: new text object based on indentation level {{{
     Plug 'michaeljsmith/vim-indent-object'
-
-    " Additional textobjects to operate on
+    " }}}
+    " targets: Additional textobjects to operate on {{{
     Plug 'wellle/targets.vim'
-
-    " highlight targets of next f/F/t/T find command
+    " }}}
+    " quick-scope: highlight targets of next f/F/t/T find command {{{
     Plug 'unblevable/quick-scope'
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-    " fzf integration (fuzzy finder)
+    " }}}
+    " fzf integration (fuzzy finder) {{{
     Plug 'junegunn/fzf', { 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     nnoremap <Leader>fb   <Cmd>Buffers<CR>
@@ -337,11 +341,12 @@ call plug#begin('~/.vim/plugged')
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
-
-    " align text objects, useful for tables, etc.
+    " }}}
+    " vim-easy-align: align text objects, useful for tables, etc. {{{
     Plug 'junegunn/vim-easy-align'
     nmap ga <Plug>(EasyAlign)
     xmap ga <Plug>(EasyAlign)
+    " }}}
 
     " " markdown folding, concealing and syntax highlight
     " Plug 'plasticboy/vim-markdown'
@@ -350,7 +355,7 @@ call plug#begin('~/.vim/plugged')
     " let g:vim_markdown_folding_style_pythonic = 1
     " let g:vim_markdown_no_extensions_in_markdown = 1
 
-    " Vimwiki - manage notes, todo lists, etc.
+    " vimwiki: manage notes, todo lists, etc. {{{
     Plug 'vimwiki/vimwiki', {'branch': 'dev'}
     let g:vimwiki_global_ext = 0
     let g:vimwiki_auto_chdir = 1
@@ -368,15 +373,16 @@ call plug#begin('~/.vim/plugged')
     nmap <Leader>w<Space>t <Plug>VimwikiTabMakeDiaryNote
     nmap <Leader>w<Space>y <Plug>VimwikiMakeYesterdayDiaryNote
     nmap <Leader>w<Space>m <Plug>VimwikiMakeTomorrowDiaryNote
-
-    " Add calendar
+    " }}}
+    " calendar-vim: calendar, particularly useful for vimwiki {{{
     Plug 'mattn/calendar-vim'
     let g:vimwiki_use_calendar = 1
     let g:calendar_monday = 1
     let g:calendar_no_mappings = 0
     let g:calendar_mark = 'right'
+    " }}}
 
-    " asynchronous linting
+    " ALE: asynchronous linting engine {{{
     Plug 'dense-analysis/ale'
     " Disable for markdown to avoid local list conflict with vimwiki
     let g:ale_pattern_options = {'\.md$': {'ale_enabled': 0}}
@@ -397,8 +403,8 @@ call plug#begin('~/.vim/plugged')
     nmap <silent> [oa        <Plug>(ale_disable)
     nmap <silent> <Leader>ad <Plug>(ale_detail)
     nmap <silent> <Leader>af <Plug>(ale_fix)
-
-    " LSP
+    " }}}
+    " LSP {{{
     let g:ale_disable_lsp = 1
     Plug 'yegappan/lsp'
     let lspOpts = #{
@@ -433,45 +439,8 @@ call plug#begin('~/.vim/plugged')
         autocmd!
         autocmd User LspAttached call LSPMappings()
     augroup END
-
-    " git integration
-    Plug 'tpope/vim-fugitive'
-    nnoremap <Leader>gs <Cmd>Git<CR>
-    nnoremap <Leader>gg <Cmd>Ggrep --quiet <C-R><C-W><CR>
-    Plug 'junegunn/gv.vim'
-    nnoremap <Leader>gv <Cmd>GV<CR>
-    nnoremap <Leader>gV <Cmd>GV!<CR>
-    Plug 'shumphrey/fugitive-gitlab.vim'
-    let g:fugitive_gitlab_domains = [ 'https://git-service.ait.ac.at' ]
-    nnoremap <Leader>gb <Cmd>GBrowse<CR>
-
-    " test inline diff / git-status symbols
-    Plug 'airblade/vim-gitgutter'
-
-    " visualization of undotree
-    Plug 'mbbill/undotree'
-    nnoremap <Leader>u <Cmd>UndotreeToggle<CR>
-
-    " recursively diff directories
-    Plug 'will133/vim-dirdiff'
-
-    " highlight the yanked text
-    Plug 'machakann/vim-highlightedyank'
-    let g:highlightedyank_max_lines = 250
-    let g:highlightedyank_highlight_duration = 500
-
-    " Snippets
-    Plug 'sirver/ultisnips'
-    Plug 'honza/vim-snippets'
-    let g:UltiSnipsExpandTrigger = "<Tab>"
-    let g:snips_author = "Florian Prawits"
-    let g:snips_email = "florian.prawits@ait.ac.at"
-    let g:snips_github = "https://git-service.ait.ac.at/prawitsf"
-
-    " Exchange command `cx`
-    Plug 'tommcdo/vim-exchange'
-
-    " Automatic tag generation and management
+    " }}}
+    " vim-gutentags: automatic tag generation and management {{{
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'
     let g:gutentags_exclude_project_root = ['/usr/local', expand('~/.dotfiles'), expand('~/.vim')]
@@ -496,30 +465,68 @@ call plug#begin('~/.vim/plugged')
     " | `<leader>ci` | Find files #including the file name under cursor |
     " | `<leader>ca` | Find places where current symbol is assigned     |
     " | `<leader>cz` | Find current word in ctags database              |
+    " }}}
 
-    " Automatically pair all styles of braces and quotes
+    " vim-fugitive: git integration {{{
+    Plug 'tpope/vim-fugitive'
+    nnoremap <Leader>gs <Cmd>Git<CR>
+    nnoremap <Leader>gg <Cmd>Ggrep --quiet <C-R><C-W><CR>
+    Plug 'junegunn/gv.vim'
+    nnoremap <Leader>gv <Cmd>GV<CR>
+    nnoremap <Leader>gV <Cmd>GV!<CR>
+    Plug 'shumphrey/fugitive-gitlab.vim'
+    let g:fugitive_gitlab_domains = [ 'https://git-service.ait.ac.at' ]
+    nnoremap <Leader>gb <Cmd>GBrowse<CR>
+    " }}}
+    " vim-gitgutter: test inline git-status symbols {{{
+    Plug 'airblade/vim-gitgutter'
+    " }}}
+
+    " Snippets {{{
+    Plug 'sirver/ultisnips'
+    Plug 'honza/vim-snippets'
+    let g:UltiSnipsExpandTrigger = "<Tab>"
+    let g:snips_author = "Florian Prawits"
+    let g:snips_email = "florian.prawits@ait.ac.at"
+    let g:snips_github = "https://git-service.ait.ac.at/prawitsf"
+    " undotree: visualization of undo history {{{
+    Plug 'mbbill/undotree'
+    nnoremap <Leader>u <Cmd>UndotreeToggle<CR>
+    " }}}
+    " vim-dirdiff: recursively diff directories {{{
+    Plug 'will133/vim-dirdiff'
+    " }}}
+    " vim-highlightedyank: highlight the yanked text {{{
+    Plug 'machakann/vim-highlightedyank'
+    let g:highlightedyank_max_lines = 250
+    let g:highlightedyank_highlight_duration = 500
+    " }}}
+    " vim-exchange: exchange command `cx` {{{
+    Plug 'tommcdo/vim-exchange'
+    " }}}
+    " auto-pairs: Automatically pair all styles of braces and quotes {{{
     Plug 'lunarWatcher/auto-pairs'
     let g:AutoPairsMapBS = 1
-
-    " Class outline viewer
+    " }}}
+    " tagbar: tagbrowser, useful for C++ classes {{{
     Plug 'preservim/tagbar'
     noremap [ot <Cmd>TagbarOpen<CR>
     noremap ]ot <Cmd>TagbarClose<CR>
     noremap yot <Cmd>TagbarToggle<CR>
-
-    " Better session management
+    " }}}
+    " vim-obsession: better session management {{{
     Plug 'tpope/vim-obsession'
-
-    " PlanUML Syntax highlighting
-    Plug 'aklt/plantuml-syntax'
-
-    " Support for `.editorconfig` files when working on cooperating on projects with different people
+    " }}}
+    " editorconfig: keep editor settings in sync via `.editorconfig` {{{
     Plug 'editorconfig/editorconfig-vim'
     let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-    " Edit directly in the quickfix window and save changes back to corresponding files
+    " }}}
+    " plantuml-syntax: highlighting {{{
+    Plug 'aklt/plantuml-syntax'
+    " }}}
+    " quickfix-reflector: edits in the quickfix window are saved to files {{{
     Plug 'stefandtw/quickfix-reflector.vim'
-
+    " }}}
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -1029,3 +1036,5 @@ function LSPMappings()
   nnoremap <buffer> gs <Cmd>LspSymbolSearch<CR>
   "setlocal omnifunc=ale#completion#OmniFunc
 endfunction
+
+" vim: foldmethod=marker
