@@ -15,7 +15,7 @@
 	z  = stash list
 	zz = stash
 [core]
-	editor = vim
+	editor = vim --nofork
 	autocrlf = input
 	pager = delta
 [delta]
