@@ -2,7 +2,7 @@
 	alias = config --get-regexp ^alias\\.
 	br = branch
 	ca = commit --amend --verbose
-	c  = commit --vebose
+	c  = commit --verbose
 	co = checkout
 	ctags = !.git/hooks/ctags
 	last = log -1 HEAD
