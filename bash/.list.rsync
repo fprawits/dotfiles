@@ -4,6 +4,7 @@
 /.local/share/evolution/tasks/
 /.local/share/icons/
 /.local/share/keepassxc/
+/.mozilla/
 /.rsync-filter
 /.task/
 /.taskrc/
