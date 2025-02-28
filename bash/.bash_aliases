@@ -38,6 +38,7 @@ fi
 
 alias save="rsync -avhFr \
   --files-from=$HOME/.list.rsync \
+  --filter=':- .gitignore' \
   --delete \
   --delete-excluded \
   --log-file=/tmp/save.$(hostname).log \
