@@ -30,6 +30,7 @@
 	algorithm = histogram
 	colorMoved = default
 	mnemonicPrefix = true
+	renames = true
 	guitool = meld
 	tool = vimdiff
 [difftool]
