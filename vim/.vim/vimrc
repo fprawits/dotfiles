@@ -35,7 +35,7 @@ filetype indent on
 
 " register terminal key codes here in order to use them in mappings
 if !has('gui_running')
-    if &term =~ 'xterm'
+    if &term =~ 'alacritty\|xterm'
         set <S-F3>=[1;2R
         set <M-j>=j
         set <M-k>=k
