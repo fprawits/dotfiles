@@ -31,6 +31,7 @@
 	colorMoved = default
 	mnemonicPrefix = true
 	renames = true
+	submodule = log
 	guitool = meld
 	tool = vimdiff
 [difftool]
