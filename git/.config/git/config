@@ -44,8 +44,9 @@
 [interactive]
 	diffFilter = delta --color-only
 [merge]
-	tool = vimdiff
+	conflictstyle = zdiff3
 	guitool = meld
+	tool = vimdiff
 [mergetool "meld"]
 	useAutoMerge = auto
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
