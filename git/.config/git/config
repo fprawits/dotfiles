@@ -7,7 +7,7 @@
 	ctags = !.git/hooks/ctags
 	last = log -1 HEAD
 	lol = log --oneline --decorate --graph
-	lola = log --oneline --decorate --graph --all
+	lola = log --oneline --decorate=full --graph --all --pretty=format:'%C(auto)%h %d %s %C(dim white)(%an)%C(reset)'
 	s  = status --short
 	st = status
 	sw = switch
