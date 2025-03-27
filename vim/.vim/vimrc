@@ -579,7 +579,7 @@ augroup toggle_cursorline
 augroup END
 
 " show line numbers
-set number
+set number relativenumber cursorline colorcolumn=80
 
 " Highlight active window with rel. line numbers, cursorline and colorcolumn
 augroup highlight_active_window
