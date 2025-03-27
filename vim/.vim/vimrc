@@ -243,7 +243,7 @@ call plug#begin('~/.vim/plugged')
     " editorconfig: keep editor settings in sync via `.editorconfig` {{{
     Plug 'editorconfig/editorconfig-vim'
     " Disable for fugutive and terminal windows
-    let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*', '^.*!\w*sh$']
     " }}}
     " vim-obsession: better session management {{{
     Plug 'tpope/vim-obsession'
