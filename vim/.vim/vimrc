@@ -81,7 +81,7 @@ map <Space> <Leader>
 
 " better copy & paste
 set clipboard=unnamed,unnamedplus
-set pastetoggle=<F9>
+set pastetoggle=<F8>
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -661,6 +661,10 @@ set display+=lastline   " show as much of the last (wrapped) line as possible
 
 " More natural placement of new windows
 " set splitbelow splitright
+
+nnoremap <Leader>t <Cmd>terminal<CR>
+nnoremap <F10> <Cmd>ToggleQuickFix<CR>
+nnoremap <F9> <Cmd>ToggleLocation<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
