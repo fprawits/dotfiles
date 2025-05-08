@@ -251,6 +251,7 @@ call plug#begin('~/.vim/plugged')
     " }}}
     " auto-pairs: Automatically pair all styles of braces and quotes {{{
     Plug 'lunarWatcher/auto-pairs'
+    let g:AutoPairsShortcutFastWrap = '<C-p><C-f>'
     let g:AutoPairsMapBS = 1
     " }}}
     " plantuml-syntax: highlighting {{{
