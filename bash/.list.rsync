@@ -6,6 +6,7 @@
 /.local/share/keepassxc/
 /.mozilla/
 /.rsync-filter
+/.ssh/
 /.task/
 /.taskrc/
 /Calibre_Library/
@@ -15,5 +16,5 @@
 /QKDPatternGen/
 /scribble/
 /uniqorn-cow/
-/VirtualBox_VMs/share
+/VirtualBox/share
 /Zotero/
