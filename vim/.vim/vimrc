@@ -141,7 +141,7 @@ augroup END
 
 " The swap file as well as a lot of other stuff depends on `updatetime`.
 " We do not use swap, but gitgutter and tagbar are more pleasant with this.
-set updatetime=250
+set updatetime=100
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
