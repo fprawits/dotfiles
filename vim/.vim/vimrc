@@ -227,6 +227,7 @@ call plug#begin('~/.vim/plugged')
     " }}}
     " undotree: visualization of undo history {{{
     Plug 'mbbill/undotree'
+    let g:undotree_WindowLayout = 4
     nnoremap <Leader>u <Cmd>UndotreeToggle<CR>
     " }}}
     " tagbar: tagbrowser, useful for C++ classes {{{
