@@ -10,3 +10,6 @@ GTAGS
 
 # ctags
 tags
+
+# environment vars, not to be committed to git
+.env
