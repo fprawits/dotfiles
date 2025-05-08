@@ -1,6 +1,7 @@
 " specifically add the python-language-server pyls to the default list:
 " Enabled Linters: ['flake8', 'mypy', 'pylint', 'pyright']
 " let b:ale_linters = ['flake8', 'pyright', 'pylint', 'pylsp']
+" cannot get pyright to work properly in ALE, run it through lsp plugin instead
 " let b:ale_linters = ['ruff', 'pyright']
 let g:ale_python_mypy_ignore_invalid_syntax = 1
 let b:ale_linters = ['ruff', 'mypy', 'pylsp']
@@ -21,6 +22,12 @@ let b:ale_python_pylsp_config = {
       \     },
       \   },
       \ }
+
+" let b:ale_python_pyright_config = {
+"     \ 'pyright': {
+"     \   'disableLanguageServices': v:true,
+"     \ },
+" \}
 
 " --- OUTDATED ---
 " py-lsp uses pycodestyle, mccabe and pyflakes by default. We are going to use
