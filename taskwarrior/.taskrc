@@ -30,6 +30,6 @@ include /home/prawitsf/.local/share/doc/task/rc/dark-16.theme
 #include /home/prawitsf/.local/share/doc/task/rc/no-color.theme
 
 weekstart=monday
-news.version=3.3.0
+news.version=3.4.1
 
 search.case.sensitive=no
