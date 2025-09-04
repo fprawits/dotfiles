@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Keep the ctags generated 'tags' file updated
+#
+# By connecting this script to git hooks, the updates are performed automatically
+# `git config --global alias.ctags '!.git/hooks/ctags' allows to invoke the 
+# the update manually by running `git ctags`
+# inspired by:
+# https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+
+set -e
+tmpfile="$$.tags"
+
+# remove the temporary file upon exit
+trap 'rm -f "$tmpfile"' EXIT
+
+# use git-ls-files to automatically ignore everyting in .gitignore and .git/info/exclude
+git ls-files | ctags --tag-relative --languages=-javascript,sql -f "$tmpfile" -L -
+
+# rename temporary file to default filename for tags ('tags' for vim)
+mv "$tmpfile" "tags"
