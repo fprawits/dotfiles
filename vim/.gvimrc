@@ -1,5 +1,9 @@
 " Change font to make it more readable
-set guifont=Fira\ Code\ 12,DejaVu\ Sans\ Mono\ 12
+if has("gui_running")
+    if has("gui_gtk")
+        set guifont=FiraCode\ Nerd\ Font\ 12,DejaVu\ Sans\ Mono\ 12
+    endif
+endif
 
 set guioptions-=T  " remove toolbar
 set guioptions-=e  " remove tabbar
