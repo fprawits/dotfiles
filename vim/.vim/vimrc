@@ -1054,6 +1054,9 @@ function LSPMappings()
   nnoremap <buffer> gr <Cmd>LspShowReferences<CR>
   nnoremap <buffer> gR <Cmd>LspRename<CR>
   nnoremap <buffer> gs <Cmd>LspSymbolSearch<CR>
+  nnoremap <buffer> yok <Cmd>LspInlayHints toggle<CR>
+  nnoremap <buffer> ]k <Cmd>LspInlayHints enable<CR>
+  nnoremap <buffer> [k <Cmd>LspInlayHints disable<CR>
   "setlocal omnifunc=ale#completion#OmniFunc
 endfunction
 
