@@ -210,7 +210,7 @@ fi
 
 # color the `minicom` terminal
 if command -v minicom &>/dev/null; then
-    export MINICOM='-c on'
+    export MINICOM='-m -c on'
 fi
 
 # Add a bash function to use DirDiff plugin for vim from command line
