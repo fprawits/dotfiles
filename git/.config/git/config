@@ -57,6 +57,8 @@
 	default = simple
 [tag]
 	sort = version:refname
+[url "git@git-service.ait.ac.at:"]
+	insteadOf = https://git-service.ait.ac.at/
 [user]
 	name = prawitsf
 	email = florian.prawits@ait.ac.at
