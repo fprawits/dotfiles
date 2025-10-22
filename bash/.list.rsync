@@ -7,6 +7,7 @@
 /.mozilla/
 /.rsync-filter
 /.ssh/
+/.subversion
 /.task/
 /.taskrc/
 /Calibre_Library/
@@ -15,6 +16,8 @@
 /pyDSsim/
 /QKDPatternGen/
 /scribble/
+/snap/thunderbird/common/.thunderbird/
+/Sync/
 /uniqorn-cow/
 /VirtualBox/share
 /Zotero/
