@@ -3,6 +3,7 @@
 # exists.
 # see /usr/share/doc/bash/examples/startup-files for examples.
 # the files are located in the bash-doc package.
+
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
@@ -48,14 +49,18 @@ fi
 
 export MANPATH
 
-# Add rust dev environment
-.  "${HOME}/.cargo/env"
+# Add rust dev environment (installed bia rustup.sh)
+if [ -f  "${HOME}/.cargo/env" ] ; then
+    source  "${HOME}/.cargo/env"
+fi
 
 # Add Raspberry Pi Pico-SDK environment variable in order to build projects
- PICO_SDK_PATH=${HOME}/Documents/pico/pico-sdk
+if [ -d "${HOME}/Documents/pico/pico-sdk" ] ; then
+    PICO_SDK_PATH="${HOME}/Documents/pico/pico-sdk"
+fi
 
- # Set XDG_CONFIG_HOME if not yet set, helps non-xdg-compliant programs to act properly (looking at you tmux!)
- XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+# Set XDG_CONFIG_HOME if not yet set, helps non-xdg-compliant programs to act properly (looking at you tmux!)
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
 # Added by Perl's cpan module when configured for local::lib, can be removed to get back the configuration dialogue
 PATH="/home/prawitsf/perl5/bin${PATH:+:${PATH}}"; export PATH;
