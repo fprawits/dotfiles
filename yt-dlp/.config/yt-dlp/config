@@ -1,0 +1,2 @@
+# Add the external javascript solver, see https://github.com/yt-dlp/yt-dlp/wiki/EJS
+--remote-components ejs:npm
