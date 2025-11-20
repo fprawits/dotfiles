@@ -151,6 +151,9 @@ man() {
         man "$@"
 }
 
+# use vim as a manpager
+export MANPAGER="vim +MANPAGER --not-a-term -"
+
 # added by fzf install script
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
