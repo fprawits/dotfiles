@@ -68,3 +68,8 @@ PERL5LIB="/home/prawitsf/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5
 PERL_LOCAL_LIB_ROOT="/home/prawitsf/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/prawitsf/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/prawitsf/perl5"; export PERL_MM_OPT;
+
+# Added by the deno (javascript runtime) installer
+if [ -f "${HOME}/.deno/env" ]; then
+    . "/home/prawitsf/.deno/env"
+fi
