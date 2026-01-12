@@ -29,7 +29,7 @@ bindings = [
 ]
 
 [font]
-normal = { family = "Fira Code" , style = "Regular"}
+normal = { family = "Fira Code Nerd Font" , style = "Regular"}
 
 [window]
 decorations = "full"
