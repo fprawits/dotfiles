@@ -71,5 +71,5 @@ PERL_MM_OPT="INSTALL_BASE=/home/prawitsf/perl5"; export PERL_MM_OPT;
 
 # Added by the deno (javascript runtime) installer
 if [ -f "${HOME}/.deno/env" ]; then
-    . "/home/prawitsf/.deno/env"
+    . "${HOME}/.deno/env"
 fi
