@@ -6,7 +6,7 @@
 let g:ale_python_mypy_ignore_invalid_syntax = 1
 let b:ale_linters = ['ruff', 'mypy', 'pylsp']
 " let b:ale_fixers = ['remove_trailing_lines', 'trim_whitespace', 'black']
-let b:ale_fixers = ['ruff_format', ]
+let b:ale_fixers = ['ruff', 'ruff_format', ]
 
 " we can replace the old tools used by pylsp (pyflakes, flake8, mccabe, pycodestyle) with ruff, see
 " https://github.com/python-lsp/python-lsp-ruff
@@ -16,6 +16,9 @@ let b:ale_python_pylsp_config = {
       \     'plugins': {
       \       'ruff': {
       \         'enabled': v:true,
+      \         'extendSelect': ['I',],
+      \         'format': ['I',],
+      \         'formatEnabled': v:true,
       \         'ignore': ['E203', 'W503',],
       \         'exclude': ['.git', '__pycache__', 'build', 'dist'],
       \       },
