@@ -510,9 +510,9 @@ call plug#begin('~/.vim/plugged')
     nmap <leader><tab> <plug>(fzf-maps-n)
     xmap <leader><tab> <plug>(fzf-maps-x)
     omap <leader><tab> <plug>(fzf-maps-o)
-    imap <C-k> <plug>(fzf-complete-word)
-    imap <C-f> <plug>(fzf-complete-path)
-    imap <c-l> <plug>(fzf-complete-line)
+    imap <C-K> <plug>(fzf-complete-word)
+    imap <C-F> <plug>(fzf-complete-path)
+    imap <C-L> <plug>(fzf-complete-line)
     " Customize fzf colors to match color scheme
     let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
