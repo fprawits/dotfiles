@@ -399,6 +399,9 @@ call plug#begin('~/.vim/plugged')
                 \   autoHighlightDiags: v:true,
                 \   completionMatcher: 'icase',
                 \   noNewLineInCompletion: v:true,
+                \   diagVirtualTextAlign: "after",
+                \   showDiagWithVirtualText: v:true,
+                \   semanticHighlight: v:true,
                 \ }
     autocmd User LspSetup call LspOptionsSet(lspOpts)
     let lspServers = [
