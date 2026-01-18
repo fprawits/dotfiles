@@ -36,6 +36,12 @@ symbol = ' '
 symbol = '⚙'
 style = 'bold purple'
 
+[localip]
+disabled = false
+
+[hostname]
+ssh_only = true
+
 [python]
 format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
