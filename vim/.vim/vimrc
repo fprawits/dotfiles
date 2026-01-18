@@ -977,7 +977,18 @@ function! HighlightActiveWindow()
     if &number
         setlocal relativenumber
     endif
-    setlocal cursorline colorcolumn=80
+    " Do not add the cursorline, if it was explicitly disabled, e.g. from an
+    " ftplugin via:
+    "   let b:disable_active_window_highlight_cul = 1
+    if !get(b:, 'disable_active_window_highlight_cul', 0)
+        setlocal cursorline
+    endif
+    " Do not add the colorcolumn, if it was explicitly disabled, e.g. from an
+    " ftplugin via:
+    "   let b:disable_active_window_highlight_cc = 1
+    if !get(b:, 'disable_active_window_highlight_cc', 0)
+        setlocal colorcolumn=80
+    endif
 endfunction
 
 function! CmdLine(str)
