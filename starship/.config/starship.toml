@@ -43,7 +43,8 @@ disabled = false
 ssh_only = true
 
 [python]
-format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = '🐍'
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [shlvl]
 disabled = false
