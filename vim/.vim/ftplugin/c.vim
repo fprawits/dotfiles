@@ -18,4 +18,4 @@ let b:ale_fixers = ['remove_trailing_lines', 'trim_whitespace', 'clang-format']
 let b:ale_c_clangformat_use_local_file = 1
 
 " Quickly switch to corresponding header file
-nnoremap <buffer> <Leader>6 :find **/%:t:s@\.hp\{,2}$@.X123X@:s@.cp\{,2}$@.h*@:s@.X123X$@.c*@<CR>
+nnoremap <buffer> <LocalLeader>6 :find **/%:t:s@\.hp\{,2}$@.X123X@:s@.cp\{,2}$@.h*@:s@.X123X$@.c*@<CR>

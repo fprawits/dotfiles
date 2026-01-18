@@ -78,6 +78,7 @@ augroup END
 " Mapping the desired key to <Leader> directly instead has the additional
 " advantage of echoing when `showcmd` is set.
 map <Space> <Leader>
+let maplocalleader = "<Leader>"
 
 " better copy & paste
 set clipboard=unnamed,unnamedplus
@@ -1049,7 +1050,7 @@ inoremap <C-z> <C-r>=ZoteroCite()<CR>
 
 function LSPMappings()
   " imap <buffer> <C-Space> <Plug>(ale_complete)
-  nnoremap <buffer> <Leader>k <Cmd>LspHover<CR>
+  nnoremap <buffer> <LocalLeader>k <Cmd>LspHover<CR>
   nnoremap <buffer> gd <Cmd>LspGotoDefinition<CR>
   nnoremap <buffer> gr <Cmd>LspShowReferences<CR>
   nnoremap <buffer> gR <Cmd>LspRename<CR>
