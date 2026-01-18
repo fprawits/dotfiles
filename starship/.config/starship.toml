@@ -45,6 +45,9 @@ ssh_only = true
 [python]
 format = ' [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
+[shlvl]
+disabled = false
+
 [time]
 disabled = false
 format =' [$time]($style) ' 
