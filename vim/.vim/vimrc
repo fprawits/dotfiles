@@ -78,7 +78,11 @@ augroup END
 " Mapping the desired key to <Leader> directly instead has the additional
 " advantage of echoing when `showcmd` is set.
 map <Space> <Leader>
-let maplocalleader = "<Leader>"
+" NOTE: while <LocalLeader> is used for <buffer> local mappings, we won't
+" change its default value (which is equivalent to <Leader>) for now. This also
+" means that the line below should **NOT** be used, for the same reasons as
+" stated for <Leader> above:
+" let maplocalleader = " "
 
 " better copy & paste
 set clipboard=unnamed,unnamedplus
