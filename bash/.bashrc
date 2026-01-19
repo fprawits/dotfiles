@@ -206,6 +206,10 @@ if [ -d "${__anaconda_dir}" ]; then
 fi
 # <<< conda initialize <<<
 
+if command -v conda &>/dev/null; then
+    conda activate py3.13
+fi
+
 # use `ipdb` as a python debugger
 if command -v ipdb{,3} &>/dev/null; then
     export PYTHONBREAKPOINT=ipdb.set_trace
