@@ -180,11 +180,13 @@ let g:ft_man_open_mode = 'vert'
 set keywordprg=:Man
 " }}}
 
+" gnu-global tags: {{{
 " automatically update the gnu-global database, see `~/.vim/plugin/gtags.vim`
 " Note: should be managed by gutentags for now
 "let g:Gtags_Auto_Update = 1
 noremap <Leader>c] <Cmd>GtagsCursor<CR>
 "set cscopetag
+" }}}
 
 " Make sure that vim-plug is installed, see:
 " https://github.com/junegunn/vim-plug/wiki/tutorial
