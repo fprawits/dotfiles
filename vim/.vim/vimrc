@@ -485,8 +485,14 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>gx <Cmd>GBrowse<CR>
     Plug 'airblade/vim-gitgutter'
     Plug 'rhysd/conflict-marker.vim'
-
+    " Clear the default link of conflict markers to the Error syntax highlight group
+    let g:conflict_marker_highlight_group = ''
+    " Include text after conflict markers
+    let g:conflict_marker_begin = '^<<<<<<<\+ .*$'
+    let g:conflict_marker_common_ancestors = '^|||||||\+ .*$'
+    let g:conflict_marker_end   = '^>>>>>>>\+ .*$'
     " }}}
+
     " Tools
     " fzf integration (fuzzy finder) {{{
     Plug 'junegunn/fzf', { 'do': './install --all' }
@@ -703,6 +709,15 @@ try
     highlight Terminal guibg='#282828' guifg='#ebdbb2'
 catch
 endtry
+
+" Use Gruvbox colors, note that the bg fills will be overriden by the cursorline
+highlight ConflictMarkerBegin ctermbg=132 guibg=#b16286 cterm=bold
+highlight ConflictMarkerCommonAncestorsHunk ctermfg=108 guifg=#8ec07c
+highlight ConflictMarkerOurs ctermfg=175 guifg=#d3869b
+highlight ConflictMarkerTheirs ctermfg=109 guifg=#83a598
+highlight ConflictMarkerEnd ctermbg=66 guibg=#458588 cterm=bold
+highlight ConflictMarkerCommonAncestors ctermbg=72 guibg=#689d6a cterm=bold
+highlight ConflictMarkerSeparator ctermfg=245 guifg=#928374
 
 " Enable syntax highlighting in fenced markdown code blocks
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'c', 'cpp']
