@@ -8,6 +8,8 @@ setlocal signcolumn=no
 setlocal colorcolumn=
 setlocal sidescrolloff=0
 
+" Quit man pages by pressing <q>, to mimic e.g. `less` behaviour
+nnoremap q <Cmd>q<CR>
 
 " The custom function HighlightActiveWindow(), defined in vimrc, will add a
 " colorcolum to the man page when the window becomes active, overriding the
