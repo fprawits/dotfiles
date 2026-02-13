@@ -212,6 +212,11 @@ call plug#begin('~/.vim/plugged')
     augroup END
     " Display buffers in the tab line if only one tab is open
     let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#tab_nr_type = 1
+    let g:airline#extensions#tabline#show_tab_type = 0
+    " skip empty sections is necessary to get rid of the suppressed inital screen draw, GitHub issue opened on this
+    let g:airline_skip_empty_sections = 1
+    let g:airline_powerline_fonts = 1
     " Show only filename in tabline
     let g:airline#extensions#tabline#formatter = 'unique_tail'
     " unicode symbols
