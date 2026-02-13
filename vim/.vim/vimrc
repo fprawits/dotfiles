@@ -529,9 +529,9 @@ call plug#begin('~/.vim/plugged')
     nnoremap <Leader>gF   <Cmd>GFiles?<CR>
     nnoremap <Leader>gc   <Cmd>Commits<CR>
     nnoremap <Leader>gC   <Cmd>BCommits<CR>
-    nmap <leader><tab> <plug>(fzf-maps-n)
-    xmap <leader><tab> <plug>(fzf-maps-x)
-    omap <leader><tab> <plug>(fzf-maps-o)
+    nmap <leader>fM <plug>(fzf-maps-n)
+    xmap <leader>fM <plug>(fzf-maps-x)
+    omap <leader>fM <plug>(fzf-maps-o)
     imap <C-K> <plug>(fzf-complete-word)
     imap <C-F> <plug>(fzf-complete-path)
     imap <C-L> <plug>(fzf-complete-line)
@@ -692,7 +692,7 @@ set display+=lastline   " show as much of the last (wrapped) line as possible
 " More natural placement of new windows
 " set splitbelow splitright
 
-nnoremap <Leader>t <Cmd>terminal<CR>
+nnoremap <Leader>T <Cmd>terminal<CR>
 nnoremap <F10> <Cmd>ToggleQuickFix<CR>
 nnoremap <F9> <Cmd>ToggleLocation<CR>
 
@@ -841,6 +841,30 @@ cnoremap <C-Space> <C-R><C-W>
 " Redrawing the screen also disables highlight and updates diffs
 nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
+" Tab creation and navigation
+nnoremap <Leader>t <Cmd>$tabnew<CR>
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <Leader>9 9gt
+
+" Moving between windows
+nnoremap <Tab> <C-W>w
+nnoremap <S-Left> <C-W>h
+nnoremap <S-Right> <C-W>l
+nnoremap <S-Up> <C-W>k
+nnoremap <S-Down> <C-W>j
+
+" Creating and resizing split windows
+nnoremap <silent> <Leader>s <C-W><C-S>
+nnoremap <silent> <Leader>v <C-W><C-V>
+nnoremap <Leader>= <C-W>=
+
 " Toggle folds
 noremap <Leader><Space> za
 
@@ -873,11 +897,6 @@ CNoreAbbrev h vert h
 " differences if in window in diff mode
 nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
 nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
-
-" Creating and resizing split windows
-nnoremap <silent> <Leader>s <C-W><C-S>
-nnoremap <silent> <Leader>v <C-W><C-V>
-nnoremap <Leader>= <C-W>=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
