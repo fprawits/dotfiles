@@ -405,12 +405,13 @@ call plug#begin('~/.vim/plugged')
     let g:ale_disable_lsp = 1
     Plug 'yegappan/lsp'
     let lspOpts = #{
+                "\   autoHighlight: v:true,
                 \   autoHighlightDiags: v:true,
                 \   completionMatcher: 'icase',
-                \   noNewLineInCompletion: v:true,
                 \   diagVirtualTextAlign: "after",
-                \   showDiagWithVirtualText: v:true,
+                \   noNewLineInCompletion: v:true,
                 \   semanticHighlight: v:true,
+                \   showDiagWithVirtualText: v:true,
                 \ }
     autocmd User LspSetup call LspOptionsSet(lspOpts)
     let lspServers = [
