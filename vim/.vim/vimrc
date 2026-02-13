@@ -585,6 +585,8 @@ set complete-=i
 set wildmenu
 set wildmode=longest:full,full
 
+set pumborder=round
+
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
