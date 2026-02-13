@@ -264,6 +264,9 @@ call plug#begin('~/.vim/plugged')
     " plantuml-syntax: highlighting {{{
     Plug 'aklt/plantuml-syntax'
     " }}}
+    " vim-peekaboo: show content of registers on " and @ {{{
+    Plug 'junegunn/vim-peekaboo'
+    " }}}
     "vim-cpp-modern: Enhanced syntax highlighting for C and C++ {{{
     Plug 'bfrg/vim-cpp-modern'
     "}}}
