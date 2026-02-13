@@ -410,6 +410,7 @@ call plug#begin('~/.vim/plugged')
                 \   completionMatcher: 'icase',
                 \   diagVirtualTextAlign: "after",
                 \   noNewLineInCompletion: v:true,
+                \   popupBorder: v:true,
                 \   semanticHighlight: v:true,
                 \   showDiagWithVirtualText: v:true,
                 \ }
