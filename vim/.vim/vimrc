@@ -133,8 +133,12 @@ if v:version >= 800
 endif
 
 set diffopt+=vertical
+" NOTE: starting with vim 9.1, indent-heuristic is already set by default
 if has("patch-8.1.0360")
     set diffopt+=algorithm:histogram,indent-heuristic
+endif
+if has("patch-9.1.1009")
+    set diffopt+=linematch:60
 endif
 
 " Disable macro recording when insinde cmdline-window (`q:`, `q/`, `q?`)
