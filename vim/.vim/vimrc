@@ -594,6 +594,9 @@ set complete-=i
 " Turn on the wild menu
 set wildmenu
 set wildmode=longest:full,full
+if has("patch-8.2.4325")
+    set wildoptions=pum
+endif
 
 " Draw a nice border for popup windows (used in ins- and cmdline-complete menus)
 if has("patch-9.1.1836")
