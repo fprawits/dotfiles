@@ -595,7 +595,10 @@ set complete-=i
 set wildmenu
 set wildmode=longest:full,full
 
-set pumborder=round
+" Draw a nice border for popup windows (used in ins- and cmdline-complete menus)
+if has("patch-9.1.1836")
+    set pumborder=round
+endif
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
