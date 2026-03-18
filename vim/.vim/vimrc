@@ -60,13 +60,16 @@ if !has("gui_running")
     augroup END
 endif
 
-" Return to last edit position when opening files
-augroup lastedit
+" Return to last edit position when opening files, see :h restore-cursor
+augroup RestoreCursor
     autocmd!
     autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
+    \ let line = line("'\"")
+    \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
+    \      && index(['xxd', 'gitrebase'], &filetype) == -1
+    \      && !&diff
+    \ |   execute "normal! g`\""
+    \ | endif
 augroup END
 
 " NOTE: the usual way of setting the <Leader>:
