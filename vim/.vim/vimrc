@@ -828,8 +828,9 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Avoid overwriting the unnamed register when pasting over visual selection by
-" using P instead of p. The pasted over text can still be recovered from "0p
+" using P instead of p.
 xnoremap p P
+xnoremap P p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
