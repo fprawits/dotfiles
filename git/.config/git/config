@@ -55,6 +55,10 @@
 	layout = "@LOCAL,REMOTE"
 [push]
 	default = simple
+[status]
+	submoduleSummary = true
+[submodule]
+	recurse = true
 [tag]
 	sort = version:refname
 [url "git@git-service.ait.ac.at:"]
