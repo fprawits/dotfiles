@@ -23,7 +23,10 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " automatic reloading of .vimrc
-autocmd! BufWritePost .vimrc source %
+augroup vimrc_reload
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
 
 " Sets how many lines of history VIM has to remember
 set history=700
