@@ -9,11 +9,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if ! command -v stow &> /dev/null
-then
-     printf '%s\n' \
-        "Required program GNU Stow not found!" \
-        "Aborting." >&2
+if ! command -v stow &> /dev/null; then
+    echo "Required program GNU Stow not found!" >&2
+    echo "Aborting." >&2
     exit 1
 fi
 
@@ -22,9 +20,8 @@ cd "$SCRIPT_DIR"
 
 # Make sure the script is located at the repository root
 if ! DOTFILE_DIR="$(git rev-parse --show-toplevel 2>/dev/null)"; then
-    printf '%s\n' \
-        "The script must be located inside a Git repository." \
-        "Aborting." >&2
+    echo "The script must be located inside a Git repository." >&2
+    echo "Aborting." >&2
     exit 1
 fi
 
