@@ -955,8 +955,7 @@ func! DeleteTrailingWS()
 endfunc
 augroup trailingws
     autocmd!
-    autocmd BufWritePre *.c,*.h :call DeleteTrailingWS()
-    autocmd BufWritePre *.cpp,.*hpp :call DeleteTrailingWS()
+    autocmd BufWritePre *.c,*.h,*.cc,*.hh,*.cpp,*.hpp  :call DeleteTrailingWS()
     autocmd BufWritePre *.py :call DeleteTrailingWS()
     autocmd BufWritePre *.coffee :call DeleteTrailingWS()
 augroup END
