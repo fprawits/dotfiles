@@ -159,41 +159,32 @@ set updatetime=100
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" comment: comment lines using gc, gcc, gC, etc., ships with vim {{{
-packadd! comment
-" }}}
-"
-" hlyank: highlight the yanked region, ships with vim {{{
-packadd! hlyank
-let g:hlyank_duration = 500
-" }}}
-"
-" matchit: enhanced %-key matching, ships with vim {{{
-packadd! matchit
-" }}}
-
-" termdebug: gdb integration, ships with vim {{{
-packadd! termdebug
-let g:termdebug_config = #{
-                         \ wide: 1,
-                         \ disasm_window: v:false,
-                         \ variables_window: v:false,
-                         \}
-nnoremap <Leader>db <Cmd>Break<CR>
-nnoremap <Leader>dB <Cmd>Clear<CR>
-nnoremap <Leader>dj <Cmd>Over<CR>
-nnoremap <Leader>dJ <Cmd>Continue<CR>
-nnoremap <Leader>dl <Cmd>Step<CR>
-" }}}
-
-" cfilteR: quickfix list filter plugin, ships with vim {{{
-packadd! cfilter
-" }}}
-
-" man: man pager, ships with vim {{{
-runtime ftplugin/man.vim
-let g:ft_man_open_mode = 'vert'
-set keywordprg=:Man
+" Built-in vim packages: {{{
+  " comment lines using gc, gcc, gC, etc.,
+  packadd! comment
+  " highlight the yanked region, ships with vim
+  packadd! hlyank
+  let g:hlyank_duration = 500
+  "enhanced %-key matching, ships with vim 
+  packadd! matchit
+  " gdb integration
+  packadd! termdebug
+  let g:termdebug_config = #{
+                           \ wide: 1,
+                           \ disasm_window: v:false,
+                           \ variables_window: v:false,
+                           \}
+  nnoremap <Leader>db <Cmd>Break<CR>
+  nnoremap <Leader>dB <Cmd>Clear<CR>
+  nnoremap <Leader>dj <Cmd>Over<CR>
+  nnoremap <Leader>dJ <Cmd>Continue<CR>
+  nnoremap <Leader>dl <Cmd>Step<CR>
+  " quickfix list filter plugin
+  packadd! cfilter
+  " vim as man pager
+  runtime ftplugin/man.vim
+  let g:ft_man_open_mode = 'vert'
+  set keywordprg=:Man
 " }}}
 
 " gnu-global tags: {{{
