@@ -163,6 +163,11 @@ set updatetime=100
 packadd! comment
 " }}}
 "
+" hlyank: highlight the yanked region, ships with vim {{{
+packadd! hlyank
+let g:hlyank_duration = 500
+" }}}
+"
 " matchit: enhanced %-key matching, ships with vim {{{
 packadd! matchit
 " }}}
@@ -261,11 +266,6 @@ call plug#begin('~/.vim/plugged')
     noremap [ot <Cmd>TagbarOpen<CR>
     noremap ]ot <Cmd>TagbarClose<CR>
     noremap yot <Cmd>TagbarToggle<CR>
-    " }}}
-    " vim-highlightedyank: highlight the yanked text {{{
-    Plug 'machakann/vim-highlightedyank'
-    let g:highlightedyank_max_lines = 250
-    let g:highlightedyank_highlight_duration = 500
     " }}}
     " editorconfig: keep editor settings in sync via `.editorconfig` {{{
     Plug 'editorconfig/editorconfig-vim'
