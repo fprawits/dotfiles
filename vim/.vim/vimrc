@@ -159,6 +159,10 @@ set updatetime=100
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" comment: comment lines using gc, gcc, gC, etc., ships with vim {{{
+packadd! comment
+" }}}
+"
 " matchit: enhanced %-key matching, ships with vim {{{
 packadd! matchit
 " }}}
@@ -302,9 +306,6 @@ call plug#begin('~/.vim/plugged')
     " }}}
     " vim-surrround: better manipulation of brackets and HTML/XML tags {{{
     Plug 'tpope/vim-surround'
-    " }}}
-    " vim-commentary: add 'gc' command for commenting {{{
-    Plug 'tpope/vim-commentary'
     " }}}
     " vim-eunuch: Add common UNIX shell commands {{{
     Plug 'tpope/vim-eunuch'
