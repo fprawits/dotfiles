@@ -66,7 +66,7 @@ search_mode = "daemon-fuzzy"
 ## To use workspace mode by default when available, set this to true and
 ## set filter_mode to "workspace" or leave it unspecified and
 ## set search.filters to include "workspace" before other filter modes.
-# workspaces = false
+workspaces = true
 
 ## which display style to use
 ## possible values: auto, full, compact
