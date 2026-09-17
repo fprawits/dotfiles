@@ -811,11 +811,6 @@ set smartindent
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * <Cmd>call VisualSelection('f', '')<CR>
-vnoremap <silent> # <Cmd>call VisualSelection('b', '')<CR>
-
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
 " then press ``>`` several times.
@@ -961,9 +956,6 @@ if has('clipboard')
     xnoremap <expr> <Leader>p &paste ? '"+p' : ':setlocal paste<CR>"+p:setlocal nopaste<CR>'
 endif
 
-" When you press <Leader>r you can search and replace the selected text
-" vnoremap <silent> <Leader>r :call VisualSelection('replace', '')<CR>
-
 " Use * or # as motion for the change/delete commands, repeat with `.` afterwards
 nnoremap c* *``cgn
 nnoremap c# #``cgN
@@ -1052,33 +1044,6 @@ function! HighlightActiveWindow()
     if !get(b:, 'disable_active_window_highlight_cc', 0)
         setlocal colorcolumn=80
     endif
-endfunction
-
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("Ack \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
 endfunction
 
 function! ToggleQuickFix()
