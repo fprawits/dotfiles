@@ -25,8 +25,17 @@ if ! DOTFILE_DIR="$(git rev-parse --show-toplevel 2>/dev/null)"; then
     exit 1
 fi
 
-for d in $(git ls-tree -d --name-only HEAD); do
-    stow --restow --verbose=1 --dir="$DOTFILE_DIR" --target="$HOME" "$d"
+mapfile -t packages < <(
+    git ls-tree -d --name-only HEAD
+)
+
+for package in "${packages[@]}"; do
+    stow \
+        --restow \
+        --verbose=1 \
+        --dir="$DOTFILE_DIR" \
+        --target="$HOME" \
+        "$package"
 done
 
 if [ ! -f ~/.vim/systags ]; then
