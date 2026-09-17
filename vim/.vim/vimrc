@@ -54,9 +54,9 @@ if !has("gui_running")
         autocmd!
         autocmd FocusGained * : silent! checktime
         autocmd WinEnter,BufEnter,BufWinEnter * :silent! checktime
-        autocmd CursorMoved,CursorMovedI * :silent! checktime
         " Disable if performance hit becomes noticable
-        autocmd CursorHold,CursorHoldI * :silent! checktime
+        "autocmd CursorMoved,CursorMovedI * :silent! checktime
+        "autocmd CursorHold,CursorHoldI * :silent! checktime
     augroup END
 endif
 
