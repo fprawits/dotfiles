@@ -17,8 +17,16 @@ then
     exit 1
 fi
 
-cd "$(dirname "${BASH_SOURCE[0]}")"
-DOTFILE_DIR="$PWD"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+cd "$SCRIPT_DIR"
+
+# Make sure the script is located at the repository root
+if ! DOTFILE_DIR="$(git rev-parse --show-toplevel 2>/dev/null)"; then
+    printf '%s\n' \
+        "The script must be located inside a Git repository." \
+        "Aborting." >&2
+    exit 1
+fi
 
 for d in $(git ls-tree -d --name-only HEAD); do
     stow --restow --verbose=1 --dir="$DOTFILE_DIR" --target="$HOME" "$d"
